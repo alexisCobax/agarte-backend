@@ -1,0 +1,1212 @@
+{
+    "info": {
+        "name": "API Collection",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "GET accesos",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/accesos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "accesos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST accesos",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/accesos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "accesos"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"rol\": \"{{rol}}\",\n    \"seccion\": \"{{seccion}}\",\n    \"tipo_permiso\": \"{{tipo_permiso}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT accesos",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/accesos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "accesos",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"rol\": \"{{rol}}\",\n    \"seccion\": \"{{seccion}}\",\n    \"tipo_permiso\": \"{{tipo_permiso}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE accesos",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/accesos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "accesos",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET clientes",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/clientes",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "clientes"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST clientes",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/clientes",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "clientes"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"domicilio\": \"{{domicilio}}\",\n    \"id_localidad\": \"{{id_localidad}}\",\n    \"email\": \"{{email}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"id_tipo_documento\": \"{{id_tipo_documento}}\",\n    \"documento\": \"{{documento}}\",\n    \"id_condicion_iva\": \"{{id_condicion_iva}}\",\n    \"fecha_alta\": \"{{fecha_alta}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\",\n    \"fecha_baja\": \"{{fecha_baja}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT clientes",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/clientes\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "clientes",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"domicilio\": \"{{domicilio}}\",\n    \"id_localidad\": \"{{id_localidad}}\",\n    \"email\": \"{{email}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"id_tipo_documento\": \"{{id_tipo_documento}}\",\n    \"documento\": \"{{documento}}\",\n    \"id_condicion_iva\": \"{{id_condicion_iva}}\",\n    \"fecha_alta\": \"{{fecha_alta}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\",\n    \"fecha_baja\": \"{{fecha_baja}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE clientes",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/clientes\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "clientes",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET empleados",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/empleados",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "empleados"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST empleados",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/empleados",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "empleados"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"apellido\": \"{{apellido}}\",\n    \"email\": \"{{email}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"id_usuario\": \"{{id_usuario}}\",\n    \"suspendido\": \"{{suspendido}}\",\n    \"fecha_alta\": \"{{fecha_alta}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\",\n    \"fecha_baja\": \"{{fecha_baja}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT empleados",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/empleados\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "empleados",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"apellido\": \"{{apellido}}\",\n    \"email\": \"{{email}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"id_usuario\": \"{{id_usuario}}\",\n    \"suspendido\": \"{{suspendido}}\",\n    \"fecha_alta\": \"{{fecha_alta}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\",\n    \"fecha_baja\": \"{{fecha_baja}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE empleados",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/empleados\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "empleados",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET estados_orden_trabajo",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "estados_orden_trabajo"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST estados_orden_trabajo",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "estados_orden_trabajo"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT estados_orden_trabajo",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "estados_orden_trabajo",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE estados_orden_trabajo",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "estados_orden_trabajo",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET orden_de_trabajo",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST orden_de_trabajo",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"facha\": \"{{facha}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"id_estado\": \"{{id_estado}}\",\n    \"total\": \"{{total}}\",\n    \"id_vendedor\": \"{{id_vendedor}}\",\n    \"id_tipo_enmarcacion\": \"{{id_tipo_enmarcacion}}\",\n    \"id_tipo_viidrio\": \"{{id_tipo_viidrio}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"fecha_estipulada\": \"{{fecha_estipulada}}\",\n    \"se\\u00f1a\": \"{{se\\u00f1a}}\",\n    \"fecha_entrega\": \"{{fecha_entrega}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT orden_de_trabajo",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"facha\": \"{{facha}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"id_estado\": \"{{id_estado}}\",\n    \"total\": \"{{total}}\",\n    \"id_vendedor\": \"{{id_vendedor}}\",\n    \"id_tipo_enmarcacion\": \"{{id_tipo_enmarcacion}}\",\n    \"id_tipo_viidrio\": \"{{id_tipo_viidrio}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"fecha_estipulada\": \"{{fecha_estipulada}}\",\n    \"se\\u00f1a\": \"{{se\\u00f1a}}\",\n    \"fecha_entrega\": \"{{fecha_entrega}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE orden_de_trabajo",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET orden_de_trabajo_detalles",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo_detalles"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST orden_de_trabajo_detalles",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo_detalles"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_orden_de_trabajo\": \"{{id_orden_de_trabajo}}\",\n    \"id_producto\": \"{{id_producto}}\",\n    \"cantidad\": \"{{cantidad}}\",\n    \"posicion\": \"{{posicion}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"precio\": \"{{precio}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT orden_de_trabajo_detalles",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo_detalles",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_orden_de_trabajo\": \"{{id_orden_de_trabajo}}\",\n    \"id_producto\": \"{{id_producto}}\",\n    \"cantidad\": \"{{cantidad}}\",\n    \"posicion\": \"{{posicion}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"precio\": \"{{precio}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE orden_de_trabajo_detalles",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "orden_de_trabajo_detalles",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET presupuestos",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST presupuestos",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"facha\": \"{{facha}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"id_estado\": \"{{id_estado}}\",\n    \"total\": \"{{total}}\",\n    \"id_vendedor\": \"{{id_vendedor}}\",\n    \"id_tipo_enmarcacion\": \"{{id_tipo_enmarcacion}}\",\n    \"id_tipo_viidrio\": \"{{id_tipo_viidrio}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT presupuestos",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_sucursal\": \"{{id_sucursal}}\",\n    \"facha\": \"{{facha}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"id_estado\": \"{{id_estado}}\",\n    \"total\": \"{{total}}\",\n    \"id_vendedor\": \"{{id_vendedor}}\",\n    \"id_tipo_enmarcacion\": \"{{id_tipo_enmarcacion}}\",\n    \"id_tipo_viidrio\": \"{{id_tipo_viidrio}}\",\n    \"comentarios\": \"{{comentarios}}\",\n    \"creado_por\": \"{{creado_por}}\",\n    \"modificado_por\": \"{{modificado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE presupuestos",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET presupuestos_detalle",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos_detalle"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST presupuestos_detalle",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos_detalle"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_presupuesto\": \"{{id_presupuesto}}\",\n    \"id_producto\": \"{{id_producto}}\",\n    \"cantidad\": \"{{cantidad}}\",\n    \"posicion\": \"{{posicion}}\",\n    \"precio\": \"{{precio}}\",\n    \"observaciones\": \"{{observaciones}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT presupuestos_detalle",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos_detalle",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_presupuesto\": \"{{id_presupuesto}}\",\n    \"id_producto\": \"{{id_producto}}\",\n    \"cantidad\": \"{{cantidad}}\",\n    \"posicion\": \"{{posicion}}\",\n    \"precio\": \"{{precio}}\",\n    \"observaciones\": \"{{observaciones}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE presupuestos_detalle",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "presupuestos_detalle",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET productos",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/productos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "productos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST productos",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/productos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "productos"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"tipo\": \"{{tipo}}\",\n    \"suspendido\": \"{{suspendido}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT productos",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/productos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "productos",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"tipo\": \"{{tipo}}\",\n    \"suspendido\": \"{{suspendido}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE productos",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/productos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "productos",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET recibos",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/recibos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "recibos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST recibos",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/recibos",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "recibos"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"fecha\": \"{{fecha}}\",\n    \"total\": \"{{total}}\",\n    \"id_orden_de_trabajo\": \"{{id_orden_de_trabajo}}\",\n    \"id_forma_de_pago\": \"{{id_forma_de_pago}}\",\n    \"suspendido\": \"{{suspendido}}\",\n    \"cargado_por\": \"{{cargado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT recibos",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/recibos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "recibos",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"id_cliente\": \"{{id_cliente}}\",\n    \"fecha\": \"{{fecha}}\",\n    \"total\": \"{{total}}\",\n    \"id_orden_de_trabajo\": \"{{id_orden_de_trabajo}}\",\n    \"id_forma_de_pago\": \"{{id_forma_de_pago}}\",\n    \"suspendido\": \"{{suspendido}}\",\n    \"cargado_por\": \"{{cargado_por}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE recibos",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/recibos\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "recibos",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET roles",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/roles",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "roles"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST roles",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/roles",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "roles"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"estado\": \"{{estado}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT roles",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/roles\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "roles",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"estado\": \"{{estado}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE roles",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/roles\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "roles",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET secciones",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/secciones",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "secciones"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST secciones",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/secciones",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "secciones"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"tag\": \"{{tag}}\",\n    \"estado\": \"{{estado}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT secciones",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/secciones\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "secciones",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"tag\": \"{{tag}}\",\n    \"estado\": \"{{estado}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE secciones",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/secciones\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "secciones",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET sucursales",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/sucursales",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "sucursales"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST sucursales",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/sucursales",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "sucursales"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"logo\": \"{{logo}}\",\n    \"domicilio\": \"{{domicilio}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"suspendido\": \"{{suspendido}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT sucursales",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/sucursales\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "sucursales",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"nombre\": \"{{nombre}}\",\n    \"logo\": \"{{logo}}\",\n    \"domicilio\": \"{{domicilio}}\",\n    \"telefono\": \"{{telefono}}\",\n    \"suspendido\": \"{{suspendido}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE sucursales",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/sucursales\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "sucursales",
+                        ":id"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET usuarios",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/usuarios",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "usuarios"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST usuarios",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/usuarios",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "usuarios"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"usuario\": \"{{usuario}}\",\n    \"clave\": \"{{clave}}\",\n    \"rol\": \"{{rol}}\",\n    \"token\": \"{{token}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "PUT usuarios",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/usuarios\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "usuarios",
+                        ":id"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id\": \"{{id}}\",\n    \"usuario\": \"{{usuario}}\",\n    \"clave\": \"{{clave}}\",\n    \"rol\": \"{{rol}}\",\n    \"token\": \"{{token}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DELETE usuarios",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http:\/\/localhost\/api\/usuarios\/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "api",
+                        "usuarios",
+                        ":id"
+                    ]
+                }
+            }
+        }
+    ]
+}
