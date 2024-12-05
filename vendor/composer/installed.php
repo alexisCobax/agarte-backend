@@ -19,6 +19,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'cynchro/module-generator' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '61468dbbaf925a2f5b1aec781c20abcd10f2c545',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../cynchro/module-generator',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'firebase/php-jwt' => array(
             'pretty_version' => 'v6.10.1',
             'version' => '6.10.1.0',

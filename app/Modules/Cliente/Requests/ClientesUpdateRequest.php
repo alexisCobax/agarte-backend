@@ -2,6 +2,7 @@
 
 namespace App\Modules\Cliente\Requests;
 
+use App\Helpers\UserDataHelper;
 use App\Helpers\ValidatorHelper;
 
 class ClientesUpdateRequest
@@ -60,24 +61,10 @@ class ClientesUpdateRequest
         return $this->data['id_condicion_iva'] ?? null;
     }
 
-    public function getFechaAlta()
-    {
-        return $this->data['fecha_alta'] ?? null;
-    }
-
-    public function getCreadoPor()
-    {
-        return $this->data['creado_por'] ?? null;
-    }
-
     public function getModificadoPor()
     {
-        return $this->data['modificado_por'] ?? null;
-    }
-
-    public function getFechaBaja()
-    {
-        return $this->data['fecha_baja'] ?? null;
+        $user = UserDataHelper::getUserData();
+        return $user['user']['id'] ?? null;
     }
 
     protected function validate()

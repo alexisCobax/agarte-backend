@@ -1,6 +1,6 @@
 {
     "info": {
-        "name": "API Collection",
+        "name": "agarte Collection",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
@@ -9,12 +9,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/accesos",
+                    "raw": "{{url}}/accesos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "accesos"
                     ]
                 }
@@ -25,12 +24,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/accesos",
+                    "raw": "{{url}}/accesos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "accesos"
                     ]
                 },
@@ -51,12 +49,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/accesos\/:id",
+                    "raw": "{{url}}/accesos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "accesos",
                         ":id"
                     ]
@@ -78,12 +75,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/accesos\/:id",
+                    "raw": "{{url}}/accesos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "accesos",
                         ":id"
                     ]
@@ -95,12 +91,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/clientes",
+                    "raw": "{{url}}/clientes",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "clientes"
                     ]
                 }
@@ -111,12 +106,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/clientes",
+                    "raw": "{{url}}/clientes",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "clientes"
                     ]
                 },
@@ -137,12 +131,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/clientes\/:id",
+                    "raw": "{{url}}/clientes\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "clientes",
                         ":id"
                     ]
@@ -164,12 +157,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/clientes\/:id",
+                    "raw": "{{url}}/clientes\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "clientes",
                         ":id"
                     ]
@@ -181,12 +173,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/empleados",
+                    "raw": "{{url}}/empleados",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "empleados"
                     ]
                 }
@@ -197,12 +188,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/empleados",
+                    "raw": "{{url}}/empleados",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "empleados"
                     ]
                 },
@@ -223,12 +213,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/empleados\/:id",
+                    "raw": "{{url}}/empleados\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "empleados",
                         ":id"
                     ]
@@ -250,12 +239,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/empleados\/:id",
+                    "raw": "{{url}}/empleados\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "empleados",
                         ":id"
                     ]
@@ -267,12 +255,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo",
+                    "raw": "{{url}}/estados_orden_trabajo",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "estados_orden_trabajo"
                     ]
                 }
@@ -283,12 +270,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo",
+                    "raw": "{{url}}/estados_orden_trabajo",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "estados_orden_trabajo"
                     ]
                 },
@@ -309,12 +295,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo\/:id",
+                    "raw": "{{url}}/estados_orden_trabajo\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "estados_orden_trabajo",
                         ":id"
                     ]
@@ -336,12 +321,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/estados_orden_trabajo\/:id",
+                    "raw": "{{url}}/estados_orden_trabajo\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "estados_orden_trabajo",
                         ":id"
                     ]
@@ -353,12 +337,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo",
+                    "raw": "{{url}}/orden_de_trabajo",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo"
                     ]
                 }
@@ -369,12 +352,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo",
+                    "raw": "{{url}}/orden_de_trabajo",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo"
                     ]
                 },
@@ -395,12 +377,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo\/:id",
+                    "raw": "{{url}}/orden_de_trabajo\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo",
                         ":id"
                     ]
@@ -422,12 +403,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo\/:id",
+                    "raw": "{{url}}/orden_de_trabajo\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo",
                         ":id"
                     ]
@@ -439,12 +419,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles",
+                    "raw": "{{url}}/orden_de_trabajo_detalles",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo_detalles"
                     ]
                 }
@@ -455,12 +434,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles",
+                    "raw": "{{url}}/orden_de_trabajo_detalles",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo_detalles"
                     ]
                 },
@@ -481,12 +459,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles\/:id",
+                    "raw": "{{url}}/orden_de_trabajo_detalles\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo_detalles",
                         ":id"
                     ]
@@ -508,12 +485,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/orden_de_trabajo_detalles\/:id",
+                    "raw": "{{url}}/orden_de_trabajo_detalles\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "orden_de_trabajo_detalles",
                         ":id"
                     ]
@@ -525,12 +501,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos",
+                    "raw": "{{url}}/presupuestos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos"
                     ]
                 }
@@ -541,12 +516,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos",
+                    "raw": "{{url}}/presupuestos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos"
                     ]
                 },
@@ -567,12 +541,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos\/:id",
+                    "raw": "{{url}}/presupuestos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos",
                         ":id"
                     ]
@@ -594,12 +567,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos\/:id",
+                    "raw": "{{url}}/presupuestos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos",
                         ":id"
                     ]
@@ -611,12 +583,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle",
+                    "raw": "{{url}}/presupuestos_detalle",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos_detalle"
                     ]
                 }
@@ -627,12 +598,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle",
+                    "raw": "{{url}}/presupuestos_detalle",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos_detalle"
                     ]
                 },
@@ -653,12 +623,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle\/:id",
+                    "raw": "{{url}}/presupuestos_detalle\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos_detalle",
                         ":id"
                     ]
@@ -680,12 +649,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/presupuestos_detalle\/:id",
+                    "raw": "{{url}}/presupuestos_detalle\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "presupuestos_detalle",
                         ":id"
                     ]
@@ -697,12 +665,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/productos",
+                    "raw": "{{url}}/productos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "productos"
                     ]
                 }
@@ -713,12 +680,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/productos",
+                    "raw": "{{url}}/productos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "productos"
                     ]
                 },
@@ -739,12 +705,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/productos\/:id",
+                    "raw": "{{url}}/productos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "productos",
                         ":id"
                     ]
@@ -766,12 +731,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/productos\/:id",
+                    "raw": "{{url}}/productos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "productos",
                         ":id"
                     ]
@@ -783,12 +747,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/recibos",
+                    "raw": "{{url}}/recibos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "recibos"
                     ]
                 }
@@ -799,12 +762,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/recibos",
+                    "raw": "{{url}}/recibos",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "recibos"
                     ]
                 },
@@ -825,12 +787,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/recibos\/:id",
+                    "raw": "{{url}}/recibos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "recibos",
                         ":id"
                     ]
@@ -852,12 +813,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/recibos\/:id",
+                    "raw": "{{url}}/recibos\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "recibos",
                         ":id"
                     ]
@@ -869,12 +829,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/roles",
+                    "raw": "{{url}}/roles",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "roles"
                     ]
                 }
@@ -885,12 +844,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/roles",
+                    "raw": "{{url}}/roles",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "roles"
                     ]
                 },
@@ -911,12 +869,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/roles\/:id",
+                    "raw": "{{url}}/roles\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "roles",
                         ":id"
                     ]
@@ -938,12 +895,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/roles\/:id",
+                    "raw": "{{url}}/roles\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "roles",
                         ":id"
                     ]
@@ -955,12 +911,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/secciones",
+                    "raw": "{{url}}/secciones",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "secciones"
                     ]
                 }
@@ -971,12 +926,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/secciones",
+                    "raw": "{{url}}/secciones",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "secciones"
                     ]
                 },
@@ -997,12 +951,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/secciones\/:id",
+                    "raw": "{{url}}/secciones\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "secciones",
                         ":id"
                     ]
@@ -1024,12 +977,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/secciones\/:id",
+                    "raw": "{{url}}/secciones\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "secciones",
                         ":id"
                     ]
@@ -1041,12 +993,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/sucursales",
+                    "raw": "{{url}}/sucursales",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "sucursales"
                     ]
                 }
@@ -1057,12 +1008,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/sucursales",
+                    "raw": "{{url}}/sucursales",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "sucursales"
                     ]
                 },
@@ -1083,12 +1033,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/sucursales\/:id",
+                    "raw": "{{url}}/sucursales\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "sucursales",
                         ":id"
                     ]
@@ -1110,12 +1059,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/sucursales\/:id",
+                    "raw": "{{url}}/sucursales\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "sucursales",
                         ":id"
                     ]
@@ -1127,12 +1075,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/usuarios",
+                    "raw": "{{url}}/usuarios",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "usuarios"
                     ]
                 }
@@ -1143,12 +1090,11 @@
             "request": {
                 "method": "POST",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/usuarios",
+                    "raw": "{{url}}/usuarios",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "usuarios"
                     ]
                 },
@@ -1169,12 +1115,11 @@
             "request": {
                 "method": "PUT",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/usuarios\/:id",
+                    "raw": "{{url}}/usuarios\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "usuarios",
                         ":id"
                     ]
@@ -1196,12 +1141,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http:\/\/localhost\/api\/usuarios\/:id",
+                    "raw": "{{url}}/usuarios\/:id",
                     "host": [
-                        "localhost"
+                        "{{url}}"
                     ],
                     "path": [
-                        "api",
                         "usuarios",
                         ":id"
                     ]

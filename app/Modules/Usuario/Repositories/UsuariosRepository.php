@@ -2,21 +2,28 @@
 
 namespace App\Modules\Usuario\Repositories;
 
-use App\Config\Database;
 use PDOException;
+use App\Config\Database;
+use App\Helpers\LogHelper;
+use App\Helpers\PaginatorHelper;
+use App\Exceptions\DatabaseException;
 
 class UsuariosRepository
 {
 
-    public static function find()
+    public static function find(): array
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM usuarios");
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            $SQL = "SELECT * FROM usuarios";
+
+            $paginator = new PaginatorHelper($connection, $SQL);
+
+            return $paginator->getPaginatedResults();
+
+        } catch (\Exception $e) {
+            LogHelper::error('Database: ' . $e->getMessage());
+            throw new DatabaseException('Error en la paginación: ' . $e->getMessage());
         }
     }
 

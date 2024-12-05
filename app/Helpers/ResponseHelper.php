@@ -16,7 +16,7 @@ class ResponseHelper
         exit;  // Terminate script to prevent further execution
     }
 
-    public static function error($message = 'An error occurred', int $statusCode = 500)
+    public static function error($message = 'An error occurred', int $statusCode = 422)
     {
         LogHelper::error($message);
         

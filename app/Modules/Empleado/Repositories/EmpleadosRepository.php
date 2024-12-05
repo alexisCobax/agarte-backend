@@ -2,8 +2,13 @@
 
 namespace App\Modules\Empleado\Repositories;
 
-use App\Config\Database;
+use PDO;
 use PDOException;
+use App\Config\Database;
+use App\Helpers\LogHelper;
+use App\Helpers\PaginatorHelper;
+use App\Exceptions\DatabaseException;
+use App\Modules\Empleado\Filters\FindFilter;
 
 class EmpleadosRepository
 {
@@ -12,11 +17,34 @@ class EmpleadosRepository
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM empleados");
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            $SQL = "SELECT 
+                    empleados.id,
+                    empleados.nombre,
+                    empleados.apellido,
+                    empleados.email,
+                    empleados.telefono,
+                    empleados.id_sucursal,
+                    empleados.id_usuario,
+                    sucursales.id AS sucursal_id,
+                    sucursales.nombre AS nombre_sucursal
+                    FROM 
+                    empleados 
+                    INNER JOIN 
+                    sucursales 
+                    ON 
+                    empleados.id_sucursal=sucursales.id";
+
+            $filters = FindFilter::getFilters();
+            if ($filters) {
+                $SQL .= " WHERE " . implode(" AND ", $filters);
+            }
+
+            $paginator = new PaginatorHelper($connection, $SQL);
+
+            return $paginator->getPaginatedResults();
+        } catch (\Exception $e) {
+            LogHelper::error('Database: ' . $e->getMessage());
+            throw new DatabaseException('Error en la paginación: ' . $e->getMessage());
         }
     }
 
@@ -32,13 +60,45 @@ class EmpleadosRepository
         }
     }
 
-    public static function create(array $datos): bool
+    public static function create(object $datos): array
     {
         try {
             $connection = Database::getConnection();
-            // Implementar la inserción en la tabla empleados
-            return true;
+            $SQL = "INSERT INTO 
+            empleados
+            (nombre, 
+            apellido, 
+            email, 
+            telefono, 
+            id_sucursal, 
+            id_usuario,
+            suspendido, 
+            fecha_alta, 
+            creado_por, 
+            modificado_por, 
+            fecha_baja) 
+            VALUES 
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $datos->getNombre(),
+                $datos->getApellido(),
+                $datos->getEmail(),
+                $datos->getTelefono(),
+                $datos->getIdSucursal(),
+                $datos->getIdUsuario(),
+                $datos->getSuspendido(),
+                $datos->getFechaAlta(),
+                $datos->getCreadoPor(),
+                $datos->getModificadoPor(),
+                $datos->getFechaBaja()
+            ]);
+
+            $id = $connection->lastInsertId();
+
+            return self::findById($id);
         } catch (PDOException $e) {
+            LogHelper::error('Database: ' . $e->getMessage());
             throw new \Exception('Error en la base de datos: ' . $e->getMessage());
         }
     }

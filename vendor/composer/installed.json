@@ -1,6 +1,58 @@
 {
     "packages": [
         {
+            "name": "cynchro/module-generator",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cynchro/module-generator.git",
+                "reference": "61468dbbaf925a2f5b1aec781c20abcd10f2c545"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cynchro/module-generator/zipball/61468dbbaf925a2f5b1aec781c20abcd10f2c545",
+                "reference": "61468dbbaf925a2f5b1aec781c20abcd10f2c545",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "time": "2024-11-21T20:54:10+00:00",
+            "default-branch": true,
+            "bin": [
+                "bin/monolito"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "MonolitoGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexis",
+                    "email": "alexissaucedo@gmail.com"
+                }
+            ],
+            "description": "Generador de módulos para un monolito modular",
+            "keywords": [
+                "generador",
+                "monolito",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/cynchro/module-generator/issues",
+                "source": "https://github.com/cynchro/module-generator/tree/main"
+            },
+            "install-path": "../cynchro/module-generator"
+        },
+        {
             "name": "firebase/php-jwt",
             "version": "v6.10.1",
             "version_normalized": "6.10.1.0",

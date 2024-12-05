@@ -48,6 +48,7 @@ class PaginatorHelper
         $data = $stmt->fetch(\PDO::FETCH_ASSOC);
         return (int)$data['total'];
     }
+
     public function getPaginatedResults(): array
     {
         $paginate = filter_var($_GET['paginate'] ?? $_POST['paginate'] ?? true, FILTER_VALIDATE_BOOLEAN);
@@ -58,6 +59,17 @@ class PaginatorHelper
 
         $stmt = $this->connection->query($paginatedQuery);
         $items = $stmt ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+
+        if (empty($items)) {
+            return [
+                'status' => 404,
+                'total' => 0,
+                'cantidad_por_pagina' => 0,
+                'pagina' => 0,
+                'cantidad_total' => 0,
+                'results' => []
+            ];
+        }
 
         $totalItems = $paginate ? $this->getTotalItems() : null;
 

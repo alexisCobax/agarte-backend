@@ -2,8 +2,11 @@
 
 namespace App\Modules\Recibo\Repositories;
 
-use App\Config\Database;
 use PDOException;
+use App\Config\Database;
+use App\Helpers\LogHelper;
+use App\Helpers\PaginatorHelper;
+use App\Exceptions\DatabaseException;
 
 class RecibosRepository
 {
@@ -12,11 +15,15 @@ class RecibosRepository
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM recibos");
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            $SQL = "SELECT * FROM recibos";
+
+            $paginator = new PaginatorHelper($connection, $SQL);
+
+            return $paginator->getPaginatedResults();
+
+        } catch (\Exception $e) {
+            LogHelper::error('Database: ' . $e->getMessage());
+            throw new DatabaseException('Error en la paginación: ' . $e->getMessage());
         }
     }
 

@@ -2,17 +2,31 @@
 
 namespace App\Modules\Presupuesto\Services;
 
+use App\Helpers\LogHelper;
 use PDOException;
 use App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository;
+use App\Modules\Presupuesto\Services\PresupuestosService;
+use App\Modules\Presupuesto\Requests\PresupuestosCreateRequest;
 
 class PresupuestosDetalleService
 {
     public function create($request): array
     {
         try {
+
+            $idPresupuesto = $request->getIdPresupuesto();
+
+            if ($idPresupuesto == 0) {
+                $presupuestoService = new PresupuestosService();
+                $createRequest = new PresupuestosCreateRequest;
+                $presupuesto = $presupuestoService->create($createRequest);
+                $request->setIdPresupuesto($presupuesto['datos']['id']);
+            }
+
             $item = PresupuestosDetalleRepository::create($request);
             return ["datos" => $item];
         } catch (PDOException $e) {
+            LogHelper::error($e->getMessage());
             throw new \Exception('Error al crear un presupuestosdetalle. Inténtalo más tarde.');
         }
     }
@@ -22,7 +36,7 @@ class PresupuestosDetalleService
         $items = PresupuestosDetalleRepository::find();
 
         if (!$items) {
-            throw new \Exception('No se encuentran presupuestosdetallees.');
+            throw new \Exception('No se encuentran presupuestosdetalles.');
         }
         return $items;
     }
@@ -62,4 +76,6 @@ class PresupuestosDetalleService
             throw new \Exception('Error al eliminar un presupuestosdetalle. Inténtalo más tarde.');
         }
     }
+
+    public function calcularCantidadDetallePresupuesto(): int {}
 }

@@ -7,6 +7,10 @@
     "require": {
         "firebase/php-jwt": "^6.10",
         "phpmailer/phpmailer": "^6.9",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "cynchro/module-generator": "dev-main"
+    },
+    "scripts": {
+        "monolito:generate": "php vendor/bin/monolito generate:module"
     }
 }

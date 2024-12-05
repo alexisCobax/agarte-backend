@@ -2,6 +2,7 @@
 
 namespace App\Modules\Cliente\Requests;
 
+use App\Helpers\UserDataHelper;
 use App\Helpers\ValidatorHelper;
 
 class ClientesCreateRequest
@@ -12,12 +13,6 @@ class ClientesCreateRequest
     {
         $this->data = $data;
         $this->validate();
-    }
-
-    // Métodos para obtener los campos
-    public function getId()
-    {
-        return $this->data['id'] ?? null;
     }
 
     public function getNombre()
@@ -62,22 +57,24 @@ class ClientesCreateRequest
 
     public function getFechaAlta()
     {
-        return $this->data['fecha_alta'] ?? null;
+        return !empty($this->data['fecha_alta']) ? $this->data['fecha_alta'] : date('Y-m-d');
     }
 
     public function getCreadoPor()
     {
-        return $this->data['creado_por'] ?? null;
+        $user = UserDataHelper::getUserData();
+        return $user['user']['id'] ?? null;
     }
 
     public function getModificadoPor()
     {
-        return $this->data['modificado_por'] ?? null;
+        $user = UserDataHelper::getUserData();
+        return $user['user']['id'] ?? null;
     }
 
     public function getFechaBaja()
     {
-        return $this->data['fecha_baja'] ?? null;
+        $data['fecha_baja'] = !empty($this->data['fecha_baja']) ? $this->data['fecha_baja'] : null;
     }
 
     protected function validate()

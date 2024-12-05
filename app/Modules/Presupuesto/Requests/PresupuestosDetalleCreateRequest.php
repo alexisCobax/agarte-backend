@@ -14,25 +14,24 @@ class PresupuestosDetalleCreateRequest
         $this->validate();
     }
 
-    // Métodos para obtener los campos
-    public function getId()
-    {
-        return $this->data['id'] ?? null;
-    }
-
     public function getIdPresupuesto()
     {
-        return $this->data['id_presupuesto'] ?? null;
+        return empty($this->data['id_presupuesto']) ? 0 : $this->data['id_presupuesto'];
     }
 
-    public function getIdProducto()
+    public function setIdPresupuesto($idPresupuesto)
     {
-        return $this->data['id_producto'] ?? null;
+        $this->data['id_presupuesto'] = $idPresupuesto;
+    }
+
+    public function getIdMaterial()
+    {
+        return $this->data['id_material'] ?? 0;
     }
 
     public function getCantidad()
     {
-        return $this->data['cantidad'] ?? null;
+        return empty($this->data['cantidad']) ? 0 : $this->data['cantidad'];
     }
 
     public function getPosicion()

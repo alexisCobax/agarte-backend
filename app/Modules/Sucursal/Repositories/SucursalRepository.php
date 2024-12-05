@@ -24,13 +24,8 @@ class SucursalRepository
 
             $paginator = new PaginatorHelper($connection, $SQL);
 
-            $resultados = $paginator->getPaginatedResults();
+            return $paginator->getPaginatedResults();
 
-            if ((isset($resultados['results']) && empty($resultados['results'])) || empty($resultados)) {
-                throw new \Exception('No se encuentran sucursales');
-            }
-
-            return $resultados;
         } catch (\Exception $e) {
             LogHelper::error('Database: '.$e->getMessage());
             throw new DatabaseException('Error en la paginación: ' . $e->getMessage());
@@ -81,15 +76,8 @@ class SucursalRepository
 
             $id = $connection->lastInsertId();
 
-            $query = "SELECT 
-                      * 
-                      FROM 
-                      sucursales 
-                      WHERE 
-                      id = ?";
-            $stmt = $connection->prepare($query);
-            $stmt->execute([$id]);
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return self::findById($id);
+
         } catch (DatabaseException $e) {
             LogHelper::error('Database: '.$e->getMessage());
             throw new DatabaseException('Error en la base de datos: ' . $e->getMessage());
@@ -119,20 +107,8 @@ class SucursalRepository
                 $datos->getId()
             ]);
 
-            $SQL = "SELECT 
-                    * 
-                    FROM 
-                    sucursales 
-                    WHERE 
-                    id = ?";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([$datos->getId()]);
+            return self::findById($datos->getId());
 
-            if ($stmt->rowCount() > 0) {
-                return $stmt->fetch(\PDO::FETCH_ASSOC);
-            }
-
-            return [];
         } catch (DatabaseException $e) {
             LogHelper::error('Database: '.$e->getMessage());
             throw new DatabaseException('Error: ' . $e->getMessage());

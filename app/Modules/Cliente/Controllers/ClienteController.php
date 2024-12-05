@@ -15,7 +15,6 @@ class ClienteController
     public function index()
     {
         $service = new ClientesService;
-
         try {
             $response = $service->getAll();
             ResponseHelper::success($response);

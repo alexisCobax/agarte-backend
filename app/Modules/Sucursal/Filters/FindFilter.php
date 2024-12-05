@@ -9,16 +9,16 @@ class FindFilter
         $filters = [];
 
         if (isset($_GET['nombre'])) {
-            $filters[] = "nombre = " . self::SQLformat($_GET['nombre']);
+            $filters[] = "nombre LIKE '%" . $_GET['nombre'] . "%'";
         }
-
+        
         if (isset($_GET['telefono'])) {
-            $filters[] = "telefono = " . $_GET['telefono'];
+            $filters[] = "telefono LIKE '%" . $_GET['telefono'] . "%'";
         }
-
+        
         if (isset($_GET['domicilio'])) {
-            $filters[] = "domicilio = " . self::SQLformat($_GET['domicilio']);
-        }
+            $filters[] = "domicilio LIKE '%" . $_GET['domicilio'] . "%'";
+        }        
 
         return $filters;
     }

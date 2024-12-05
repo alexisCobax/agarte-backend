@@ -24,6 +24,10 @@ class ComposerStaticInit9ca76865006d89cd14231c2da5ab476c
             'PhpOption\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'M' => 
+        array (
+            'MonolitoGenerator\\' => 18,
+        ),
         'G' => 
         array (
             'GrahamCampbell\\ResultType\\' => 26,
@@ -62,6 +66,10 @@ class ComposerStaticInit9ca76865006d89cd14231c2da5ab476c
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'MonolitoGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cynchro/module-generator/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (

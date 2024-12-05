@@ -7,7 +7,7 @@ use App\Modules\Cliente\Repositories\ClientesRepository;
 
 class ClientesService
 {
-    public function create($request): array
+    public function create($request)
     {
         try {
             $item = ClientesRepository::create($request);

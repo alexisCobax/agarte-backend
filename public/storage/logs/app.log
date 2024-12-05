@@ -1,18 +1,2 @@
-[2024-11-15 23:07:50] [ERROR] Invalid credentials
-[2024-11-15 23:09:29] [ERROR] Invalid credentials
-[2024-11-15 23:09:43] [ERROR] Invalid credentials
-[2024-11-15 23:09:56] [ERROR] Invalid credentials
-[2024-11-15 23:10:25] [ERROR] Invalid credentials
-[2024-11-16 11:26:28] [ERROR] Invalid credentials
-[2024-11-16 11:27:05] [ERROR] Invalid credentials
-[2024-11-16 11:27:34] [ERROR] Invalid credentials
-[2024-11-16 11:28:04] [ERROR] Invalid credentials
-[2024-11-16 11:28:19] [ERROR] Invalid credentials
-[2024-11-16 11:28:20] [ERROR] Invalid credentials
-[2024-11-16 11:28:25] [ERROR] Invalid credentials
-[2024-11-16 11:29:04] [ERROR] Invalid credentials
-[2024-11-16 11:30:08] [ERROR] Invalid credentials
-[2024-11-16 11:30:15] [ERROR] Invalid credentials
-[2024-11-16 11:32:06] [ERROR] Invalid credentials
-[2024-11-16 11:34:04] [ERROR] Invalid credentials
-[2024-11-16 13:58:05] [ERROR] Invalid credentials
+[2024-12-05 12:18:24] [ERROR] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'creado_por' cannot be null
+[2024-12-05 12:18:24] [ERROR] Error al crear un presupuestos. Inténtalo más tarde.

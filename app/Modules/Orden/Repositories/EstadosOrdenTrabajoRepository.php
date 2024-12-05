@@ -2,8 +2,11 @@
 
 namespace App\Modules\Orden\Repositories;
 
-use App\Config\Database;
 use PDOException;
+use App\Config\Database;
+use App\Helpers\LogHelper;
+use App\Helpers\PaginatorHelper;
+use App\Exceptions\DatabaseException;
 
 class EstadosOrdenTrabajoRepository
 {
@@ -12,11 +15,15 @@ class EstadosOrdenTrabajoRepository
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM estados_orden_trabajo");
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            $SQL = "SELECT * FROM estados_orden_trabajo";
+
+            $paginator = new PaginatorHelper($connection, $SQL);
+
+            return $paginator->getPaginatedResults();
+
+        } catch (\Exception $e) {
+            LogHelper::error('Database: ' . $e->getMessage());
+            throw new DatabaseException('Error en la paginación: ' . $e->getMessage());
         }
     }
 
