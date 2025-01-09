@@ -10,13 +10,32 @@ class AuthService
 {
 
 
-    public function register($request): void
+    public function register($request): array
     {
         try {
             $hashedClave = password_hash($request->getClave(), PASSWORD_BCRYPT);
-            AuthRepository::create($request->getUsuario(), $hashedClave);
+            return AuthRepository::create($request->getUsuario(), $hashedClave);
         } catch (PDOException $e) {
             throw new \Exception('Error al registrar el usuario. Inténtalo más tarde.');
+        }
+    }
+
+    public function update($request): bool
+    {
+        try {
+            $hashedClave = password_hash($request->getClave(), PASSWORD_BCRYPT);
+            return AuthRepository::update($request->getUsuario(), $hashedClave, $request->getId());
+        } catch (PDOException $e) {
+            throw new \Exception('Error al actualizar el usuario. Inténtalo más tarde.');
+        }
+    }
+
+    public function updateUser($request): bool
+    {
+        try {
+            return AuthRepository::updateUser($request->getUsuario(), $request->getId());
+        } catch (PDOException $e) {
+            throw new \Exception('Error al actualizar el usuario. Inténtalo más tarde.');
         }
     }
 
@@ -36,7 +55,7 @@ class AuthService
 
             AuthRepository::updateToken($user['user']['id'], $token);
 
-            return ["token" => $token, "accesos" => $user['accesos']];
+            return ["token" => $token];
         } catch (PDOException $e) {
             throw new \Exception('Error en la base de datos: ' . $e->getMessage());
         }
@@ -72,5 +91,20 @@ class AuthService
             throw new \Exception('Invalid token or user not found');
         }
         return ["token" => $token, "accesos" => $user['accesos']];
+    }
+
+    public function permisos($authHeader, $key)
+    {
+        if (!$authHeader || !preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
+            throw new \Exception('Token not provided');
+        }
+
+        $token = $matches[1];
+        $permisos = AuthRepository::findUserPermissions($token, $key);
+
+        if (!$permisos) {
+            return ["permisos"=>0];
+        }
+        return ["permisos"=>$permisos];
     }
 }

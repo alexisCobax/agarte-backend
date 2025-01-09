@@ -21,6 +21,18 @@ class AuthController
         }
     }
 
+    public function update(AuthRequest $request)
+    {
+        $service = new AuthService;
+
+        try {
+            $service->update($request);
+            ResponseHelper::success('Usuario actualizado con éxito');
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
 
     public function login(AuthRequest $request)
     {
@@ -28,7 +40,7 @@ class AuthController
 
         try {
             $response = $service->login($request);
-            ResponseHelper::success(['token' => $response['token'], 'accesos'=>$response['accesos']]);
+            ResponseHelper::success(['token' => $response['token']]);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }
@@ -60,6 +72,22 @@ class AuthController
         try {
             $user = $service->me($authHeader);
             ResponseHelper::success(['token' => $user['token'], 'accesos'=>$user['accesos']]);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function permisos($key)
+    {
+
+        $headers = getallheaders();
+        $authHeader = $headers['Authorization'] ?? null;
+
+        $service = new AuthService;
+
+        try {
+            $permisos = $service->permisos($authHeader, $key);
+            ResponseHelper::success($permisos['permisos']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

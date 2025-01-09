@@ -2,8 +2,9 @@
 
 namespace App\Modules\Auth\Repositories;
 
-use App\Config\Database;
 use PDOException;
+use App\Config\Database;
+use App\Helpers\LogHelper;
 
 class AuthRepository
 {
@@ -33,9 +34,48 @@ class AuthRepository
             (?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$username, $hashedPassword]);
+            return ["id" => $connection->lastInsertId()];
         } catch (PDOException $e) {
             throw new \Exception('Error en la base de datos: ' . $e->getMessage());
         }
+    }
+
+    public static function update($username, $hashedPassword, $id){
+
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE usuarios
+            SET 
+            usuario = ?,
+            clave = ?
+            WHERE 
+            id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$username, $hashedPassword, $id]);
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            throw new \Exception('Error: ' . $e->getMessage());
+        }
+
+    }
+
+
+    public static function updateUser($username, $id){
+
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE usuarios
+            SET 
+            usuario = ?
+            WHERE 
+            id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$username, $id]);
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            throw new \Exception('Error: ' . $e->getMessage());
+        }
+
     }
 
     public static function updateToken($userId, $token)
@@ -85,10 +125,6 @@ class AuthRepository
             usuarios.rol
             FROM 
             usuarios 
-            INNER JOIN 
-            accesos 
-            ON
-            accesos.rol = usuarios.rol 
             WHERE 
             usuarios.token = ?";
             $stmt = $connection->prepare($SQL);
@@ -96,13 +132,43 @@ class AuthRepository
 
             if ($stmt->rowCount() > 0) {
                 $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-                $accesos = self::findAccesosByRol($user['rol']);
-                return ["user" => $user, "accesos" => $accesos];
+                return ["user" => $user];
             }
 
             return null;
         } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+
+    }
+
+    public static function findUserPermissions($token, $key)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT 
+                roles_permisos.estado AS permiso
+            FROM 
+                usuarios 
+                LEFT JOIN roles_permisos ON roles_permisos.rol=usuarios.rol
+                LEFT JOIN permisos ON roles_permisos.permiso=permisos.id
+            WHERE 
+                usuarios.token = ?
+                AND
+                permisos.key = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$token,$key]);
+
+            if ($stmt->rowCount() > 0) {
+                $permiso = $stmt->fetch(\PDO::FETCH_ASSOC);
+                return [$permiso];
+            }
+
+            return null;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
         }
 
     }
@@ -117,10 +183,6 @@ class AuthRepository
             usuarios.rol
             FROM 
             usuarios 
-            INNER JOIN 
-            accesos 
-            ON
-            accesos.rol = usuarios.rol 
             WHERE 
             usuarios.usuario = ?";
             $stmt = $connection->prepare($SQL);
@@ -128,13 +190,14 @@ class AuthRepository
 
             if ($stmt->rowCount() > 0) {
                 $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-                $accesos = self::findAccesosByRol($user['rol']);
-                return ["user" => $user, "accesos" => $accesos];
+                //$accesos = self::findAccesosByRol($user['rol']);
+                return ["user" => $user];
             }
 
             return null;
         } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
         }
     }
 
@@ -162,7 +225,8 @@ class AuthRepository
 
             return null;
         } catch (PDOException $e) {
-            throw new \Exception('Error: ' . $e->getMessage());
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
         }
     }
 }

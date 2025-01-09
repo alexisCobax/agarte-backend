@@ -48,7 +48,7 @@ namespace {$tableNamespace};
 use App\Config\Database;
 use App\Helpers\PaginatorHelper;
 use App\Modules\\{$camelCaseName}\\Filters\\FindFilter;
-use App\Exceptions\DatabaseException;
+use PDOException;
 use App\Helpers\LogHelper;
 
 class {$className}
@@ -109,13 +109,13 @@ function generateMethods($table, $columns, $placeholders)
             \$resultados = \$paginator->getPaginatedResults();
 
             if ((isset(\$resultados['results']) && empty(\$resultados['results'])) || empty(\$resultados)) {
-                throw new \\Exception('No se encuentran registros en {$table}');
+                throw new \\PDOException('No se encuentran registros en {$table}');
             }
 
             return \$resultados;
-        } catch (\\Exception \$e) {
-            LogHelper::error('Database: ' . \$e->getMessage());
-            throw new DatabaseException('Error en la paginación: ' . \$e->getMessage());
+        } catch (\\PDOException \$e) {
+            LogHelper::error(\$e);
+            throw new PDOException('Error en la paginación: ' . \$e->getMessage());
         }
     }
 EOD,
@@ -133,9 +133,9 @@ EOD,
             }
 
             return [];
-        } catch (\\Exception \$e) {
-            LogHelper::error('Database: ' . \$e->getMessage());
-            throw new DatabaseException('Error: ' . \$e->getMessage());
+        } catch (\\PDOException \$e) {
+            LogHelper::error(\$e);
+            throw new PDOException('Error: ' . \$e->getMessage());
         }
     }
 EOD,
@@ -152,9 +152,9 @@ EOD,
 
             \$id = \$connection->lastInsertId();
             return self::findById(\$id);
-        } catch (\\Exception \$e) {
-            LogHelper::error('Database: ' . \$e->getMessage());
-            throw new DatabaseException('Error al crear en {$table}: ' . \$e->getMessage());
+        } catch (\\PDOException \$e) {
+            LogHelper::error(\$e);
+            throw new PDOException('Error al crear en {$table}: ' . \$e->getMessage());
         }
     }
 EOD,
@@ -171,9 +171,9 @@ EOD,
             ]);
 
             return self::findById(\$datos->getId());
-        } catch (\\Exception \$e) {
-            LogHelper::error('Database: ' . \$e->getMessage());
-            throw new DatabaseException('Error al actualizar en {$table}: ' . \$e->getMessage());
+        } catch (\\PDOException \$e) {
+            LogHelper::error(\$e);
+            throw new PDOException('Error al actualizar en {$table}: ' . \$e->getMessage());
         }
     }
 EOD,
@@ -187,9 +187,9 @@ EOD,
             \$stmt->execute([\$id]);
 
             return \$stmt->rowCount() > 0;
-        } catch (\\Exception \$e) {
-            LogHelper::error('Database: ' . \$e->getMessage());
-            throw new DatabaseException('Error al eliminar en {$table}: ' . \$e->getMessage());
+        } catch (\\PDOException \$e) {
+            LogHelper::error(\$e);
+            throw new PDOException('Error al eliminar en {$table}: ' . \$e->getMessage());
         }
     }
 EOD,

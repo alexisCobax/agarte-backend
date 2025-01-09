@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Modules\Logs\Controllers;
+
+use App\Helpers\RenderHelper;
+
+class LogsController
+{
+    public function show()
+    {
+        return RenderHelper::render('logs.views.logs');
+    }
+
+    public function delete()
+    {
+    }
+
+    public function deleteAll()
+    {
+
+    }
+    
+}

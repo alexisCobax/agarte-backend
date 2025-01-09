@@ -8,14 +8,18 @@ class FindFilter
     {
         $filters = [];
  
-        if (isset($_GET['id_material'])) {
-            $filters[] = "presupuestos_detalle.id_material = " . self::SQLformat($_GET['id_material']);
+        if (isset($_GET['id_tipo_material'])) {
+            $filters[] = "materiales.id_tipo_material = " . self::SQLformat($_GET['id_tipo_material']);
         }
 
         if (isset($_GET['id_presupuesto'])) {
             $filters[] = "presupuestos_detalle.id_presupuesto = " . self::SQLformat($_GET['id_presupuesto']);
         }
 
+        if (isset($_GET['id_sucursal'])) {
+            $filters[] = "presupuestos.id_sucursal = " . self::SQLformat($_GET['id_sucursal']);
+        }
+        
         return $filters;
     }
     
