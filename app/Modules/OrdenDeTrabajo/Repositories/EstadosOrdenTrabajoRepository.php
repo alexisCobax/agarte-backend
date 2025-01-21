@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Orden\Repositories;
+namespace App\Modules\OrdenDeTrabajo\Repositories;
 
 use PDOException;
 use App\Config\Database;

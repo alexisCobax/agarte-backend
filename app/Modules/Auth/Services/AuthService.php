@@ -90,7 +90,7 @@ class AuthService
         if (!$user) {
             throw new \Exception('Invalid token or user not found');
         }
-        return ["token" => $token, "accesos" => $user['accesos']];
+        return $user;
     }
 
     public function permisos($authHeader, $key)
@@ -100,11 +100,8 @@ class AuthService
         }
 
         $token = $matches[1];
-        $permisos = AuthRepository::findUserPermissions($token, $key);
-
-        if (!$permisos) {
-            return ["permisos"=>0];
-        }
-        return ["permisos"=>$permisos];
+        $permisos = AuthRepository::findUserPermissions($token, $key);        
+        
+        return $permisos;
     }
 }

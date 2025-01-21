@@ -40,7 +40,8 @@ class AuthRepository
         }
     }
 
-    public static function update($username, $hashedPassword, $id){
+    public static function update($username, $hashedPassword, $id)
+    {
 
         try {
             $connection = Database::getConnection();
@@ -56,11 +57,11 @@ class AuthRepository
         } catch (PDOException $e) {
             throw new \Exception('Error: ' . $e->getMessage());
         }
-
     }
 
 
-    public static function updateUser($username, $id){
+    public static function updateUser($username, $id)
+    {
 
         try {
             $connection = Database::getConnection();
@@ -75,7 +76,6 @@ class AuthRepository
         } catch (PDOException $e) {
             throw new \Exception('Error: ' . $e->getMessage());
         }
-
     }
 
     public static function updateToken($userId, $token)
@@ -120,19 +120,27 @@ class AuthRepository
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 
-            usuarios.id, 
-            usuarios.clave, 
-            usuarios.rol
-            FROM 
-            usuarios 
-            WHERE 
-            usuarios.token = ?";
+                        usuarios.id AS usuario_id,
+                        usuarios.rol,
+                        IFNULL(empleados.id, 0) AS empleado_id,
+                        IFNULL(empleados.nombre, \"\") AS empleado_nombre,
+                        IFNULL(empleados.email, \"\") AS empleado_email,
+                        IFNULL(empleados.id_sucursal, 0) AS id_sucursal,
+                        IFNULL(sucursales.nombre, \"\") AS sucursal_nombre
+                    FROM 
+                        usuarios
+                    LEFT JOIN 
+                        empleados ON empleados.id_usuario = usuarios.id
+                    LEFT JOIN 
+                        sucursales ON sucursales.id = empleados.id_sucursal
+                    WHERE 
+                    usuarios.token = ?;";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$token]);
 
             if ($stmt->rowCount() > 0) {
                 $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-                return ["user" => $user];
+                return $user;
             }
 
             return null;
@@ -140,7 +148,6 @@ class AuthRepository
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
         }
-
     }
 
     public static function findUserPermissions($token, $key)
@@ -158,19 +165,19 @@ class AuthRepository
                 AND
                 permisos.key = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$token,$key]);
+            $stmt->execute([$token, $key]);
 
             if ($stmt->rowCount() > 0) {
                 $permiso = $stmt->fetch(\PDO::FETCH_ASSOC);
-                return [$permiso];
+                return ["permisos" => $permiso];
             }
 
-            return null;
+            return ["permisos" => ["permiso"=>0]];
+            
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
         }
-
     }
 
     public static function findUserByName($username)

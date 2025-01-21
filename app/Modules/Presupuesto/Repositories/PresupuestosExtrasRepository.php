@@ -23,6 +23,8 @@ class PresupuestosExtrasRepository
                     FROM 
                     presupuestos_extras";
 
+            $SQL .= " WHERE presupuestos_extras.id_presupuesto=".$_GET['id_presupuesto']."";
+
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();

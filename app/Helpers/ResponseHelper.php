@@ -2,29 +2,29 @@
 
 namespace App\Helpers;
 
-use App\Helpers\LogHelper;
-
 class ResponseHelper
 {
-    public static function success($data = [], int $statusCode = 200)
+    public static function success(array $data = [], int $statusCode = 200): void
     {
-        http_response_code($statusCode);
-        echo json_encode([
+        self::sendResponse([
             'success' => true,
-            'response' => $data
-        ]);
-        exit;  // Terminate script to prevent further execution
+            'response' => $data,
+        ], $statusCode);
     }
 
-    public static function error($message = 'An error occurred', int $statusCode = 422)
+    public static function error(string $message = 'An error occurred', int $statusCode = 422): void
     {
-        //LogHelper::error($message);
-        
-        http_response_code($statusCode);
-        echo json_encode([
+        self::sendResponse([
             'success' => false,
-            'error' => $message
-        ]);
-        exit;  // Terminate script to prevent further execution
+            'error' => $message,
+        ], $statusCode);
+    }
+
+    private static function sendResponse(array $body, int $statusCode): void
+    {
+        http_response_code($statusCode);
+        header('Content-Type: application/json; charset=utf-8'); // Especificar codificación UTF-8
+        echo json_encode($body, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        exit; // Termina el script para evitar ejecución adicional
     }
 }

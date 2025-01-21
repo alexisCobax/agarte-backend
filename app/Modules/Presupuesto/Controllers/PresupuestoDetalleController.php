@@ -69,7 +69,7 @@ class PresupuestoDetalleController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('DetallePresupuesto borrado con éxito');
+            ResponseHelper::success(['DetallePresupuesto borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

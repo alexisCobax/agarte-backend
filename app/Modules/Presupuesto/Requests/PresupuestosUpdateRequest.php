@@ -15,8 +15,6 @@ class PresupuestosUpdateRequest
         $this->validate();
     }
 
-    // Métodos para obtener los campos
-
     public function getId()
     {
         return !empty($this->data['id']) ? $this->data['id'] : 0;
@@ -108,24 +106,70 @@ class PresupuestosUpdateRequest
         return !empty($this->data['propio']) ? $this->data['propio'] : 0;
     }
 
+    public function getSubtotal()
+    {
+        return !empty($this->data['subtotal']) ? $this->data['subtotal'] : 0;
+    }
+
     public function getDescuento()
     {
         return !empty($this->data['descuento']) ? $this->data['descuento'] : 0;
     }
 
-    public function getCreadoPor()
+    public function getModificadoPor()
     {
         $user = UserDataHelper::getUserData();
         return $user['user']['id'] ?? null;
     }
 
+    public function getEstadoOrdenTrabajo()
+    {
+        return !empty($this->data['descuento']) ? $this->data['descuento'] : 0;
+    }
+
+    public function getCantidad()
+    {
+        return !empty($this->data['cantidad']) ? $this->data['cantidad'] : 1;
+    }
+
+    /**
+     * Implementación del método toArray
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'id_sucursal' => $this->getIdSucursal(),
+            'fecha' => $this->getFecha(),
+            'id_cliente' => $this->getIdCliente(),
+            'id_estado' => $this->getIdEstado(),
+            'id_empleado' => $this->getIdEmpleado(),
+            'id_tipo_enmarcacion' => $this->getIdTipoEnmarcacion(),
+            'comentarios' => $this->getComentarios(),
+            'total' => $this->getTotal(),
+            'cliente_nombre' => $this->getClienteNombre(),
+            'cliente_telefono' => $this->getClienteTelefono(),
+            'cliente_email' => $this->getClienteEmail(),
+            'cliente_domicilio' => $this->getClienteDomicilio(),
+            'alto' => $this->getAlto(),
+            'ancho' => $this->getAncho(),
+            'id_objeto_a_enmarcar' => $this->getIdObjetoaEnmarcar(),
+            'modelo' => $this->getModelo(),
+            'propio' => $this->getPropio(),
+            'modificado_por' => $this->getModificadoPor(),
+            'sub_total' => $this->getSubtotal(),
+            'descuento' => $this->getDescuento(),
+            'cantidad' => $this->getCantidad(),
+            'estado_orden_trabajo' => $this->getEstadoOrdenTrabajo()
+        ];
+    }
+
     protected function validate()
     {
         $rules = [
-            // Reglas de validación
+            // Validaciones personalizadas
         ];
 
-        // Validar los datos
         $errors = ValidatorHelper::validate($this->data, $rules);
 
         if (!empty($errors)) {

@@ -19,16 +19,22 @@ class LogHelper
         $user = UserDataHelper::getUserData();
         $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'Desconocida';
         $timestamp = date('Y-m-d H:i:s'); 
+
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'] ?? 'Desconocido';
+        $url = $protocol . $host . ($_SERVER['REQUEST_URI'] ?? '/');
+
         $message = sprintf(
-            "[%s] Error: %s\nCódigo: %d\nArchivo: %s\nLínea: %d\n\nStack Trace:\n%s\n\nInput Data:\n%s\n\nUser ID: %s\nIP Address: %s",
+            "[%s] Error: %s\nCódigo: %d\nArchivo: %s\nLínea: %d\n\nURL: %s\n\nStack Trace:\n%s\n\nInput Data:\n%s\n\nUser ID: %s\nIP Address: %s",
             strtoupper('info'),
             $e->getMessage(),
             $e->getCode(),
             $e->getFile(),
             $e->getLine(),
+            $url,
             $e->getTraceAsString(),
             file_get_contents('php://input'),
-            $user['user']['id'] ?? 'N/A',
+            $user['usuario_id'] ?? 'N/A',
             $ipAddress
         );
 

@@ -26,12 +26,17 @@ class ObjetosEnmarcarUpdateRequest
 
     public function getExtraFijo()
     {
-        return $this->data['extra_fijo'] ?? null;
+        return !empty($this->data['extra_fijo']) ? $this->data['extra_fijo'] : "0.00";
     }
 
     public function getExtraPorcentual()
     {
-        return $this->data['extra_porcentual'] ?? null;
+        return !empty($this->data['extra_porcentual']) ? $this->data['extra_porcentual'] : "0.00";
+    }
+
+    public function getIdSucursal()
+    {
+        return $this->data['id_sucursal'] ?? 0;
     }
 
     protected function validate()

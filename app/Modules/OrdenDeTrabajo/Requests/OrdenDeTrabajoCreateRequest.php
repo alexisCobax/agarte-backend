@@ -25,9 +25,9 @@ class OrdenDeTrabajoCreateRequest
         return $this->data['id_sucursal'] ?? null;
     }
 
-    public function getFacha()
+    public function getFecha()
     {
-        return $this->data['facha'] ?? null;
+        return $this->data['fecha'] ?? null;
     }
 
     public function getIdCliente()

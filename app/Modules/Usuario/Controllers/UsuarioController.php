@@ -2,12 +2,13 @@
 
 namespace App\Modules\Usuario\Controllers;
 
+use App\Helpers\ResponseHelper;
+use App\Modules\Usuario\Services\UsuariosService;
 use App\Modules\Usuario\Requests\UsuariosShowRequest;
 use App\Modules\Usuario\Requests\UsuariosCreateRequest;
 use App\Modules\Usuario\Requests\UsuariosDeleteRequest;
 use App\Modules\Usuario\Requests\UsuariosUpdateRequest;
-use App\Helpers\ResponseHelper;
-use App\Modules\Usuario\Services\UsuariosService;
+use App\Modules\Usuario\Requests\UsuariosSucursalUpdateRequest;
 
 class UsuarioController
 {
@@ -55,6 +56,17 @@ class UsuarioController
 
         try {
             $response = $service->update($request);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function updateSucursal(UsuariosSucursalUpdateRequest $request)
+    {
+        try {
+            $service = new UsuariosService;
+            $response = $service->updateSucursal($request);
             ResponseHelper::success($response);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());

@@ -59,12 +59,13 @@ class ClientesRepository
             id_tipo_documento, 
             documento, 
             id_condicion_iva, 
+            descuento,
             fecha_alta, 
             creado_por, 
             modificado_por, 
             fecha_baja) 
             VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getNombre(),
@@ -75,6 +76,7 @@ class ClientesRepository
                 $datos->getIdTipoDocumento(),
                 $datos->getDocumento(),
                 $datos->getIdCondicionIva(),
+                $datos->getDescuento(),
                 $datos->getFechaAlta(),
                 $datos->getCreadoPor(),
                 $datos->getModificadoPor(),
@@ -104,6 +106,7 @@ class ClientesRepository
             id_tipo_documento = ?, 
             documento = ?, 
             id_condicion_iva = ?, 
+            descuento = ?,
             modificado_por = ?
             WHERE 
             id = ?";
@@ -117,6 +120,7 @@ class ClientesRepository
                 $datos->getIdTipoDocumento(),
                 $datos->getDocumento(),
                 $datos->getIdCondicionIva(),
+                $datos->getDescuento(),
                 $datos->getModificadoPor(),
                 $datos->getId()
             ]);

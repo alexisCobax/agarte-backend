@@ -49,6 +49,11 @@ class PresupuestosDetalleCreateRequest
         return $this->data['observaciones'] ?? null;
     }
 
+    public function getIdSucursal()
+    {
+        return empty($this->data['id_sucursal']) ? 0 : $this->data['id_sucursal'];
+    }
+
     protected function validate()
     {
         $rules = [

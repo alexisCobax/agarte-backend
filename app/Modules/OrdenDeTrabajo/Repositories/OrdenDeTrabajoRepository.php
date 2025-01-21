@@ -14,36 +14,30 @@ class OrdenDeTrabajoRepository
     {
         try {
             $connection = Database::getConnection();
-            $SQL = "SELECT
-                    orden_de_trabajo.id,
-                    DATE_FORMAT(orden_de_trabajo.fecha, '%d/%m/%Y') AS fecha,
-                    orden_de_trabajo.id_cliente,
-                    orden_de_trabajo.id_estado,
-                    orden_de_trabajo.total,
-                    orden_de_trabajo.id_empleado,
-                    orden_de_trabajo.id_tipo_enmarcacion,
-                    orden_de_trabajo.id_tipo_vidrio,
-                    orden_de_trabajo.comentarios,
-                    DATE_FORMAT(orden_de_trabajo.fecha_estipulada, '%d/%m/%Y') AS fecha_estipulada,
-                    orden_de_trabajo.reserva,
-                    DATE_FORMAT(orden_de_trabajo.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
-                    clientes.nombre AS cliente_nombre,
-                    empleados.nombre AS empleado_nombre,
-                    tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre
+            $SQL = "SELECT 
+                    presupuestos.id AS id_presupuesto,
+                    presupuestos.id_estado,
+                    sucursales.nombre AS nombre_sucursal,
+                    DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                    presupuestos.cliente_nombre,
+                    presupuestos.numero_orden,
+                    objetos_a_enmarcar.nombre AS objecto_enmarcar,
+                    estados_orden_trabajo.nombre AS estado
                     FROM 
-                    orden_de_trabajo
+                        presupuestos
+                    LEFT JOIN sucursales
+                        ON presupuestos.id_sucursal = sucursales.id
                     LEFT JOIN
-                    clientes
-                    ON
-                    orden_de_trabajo.id_cliente=clientes.id
-                    LEFT JOIN 
-                    empleados 
-                    ON
-                    orden_de_trabajo.id_empleado=empleados.id
-                    LEFT JOIN 
-                    tipo_enmarcacion
-                    ON
-                    orden_de_trabajo.id_tipo_enmarcacion=tipo_enmarcacion.id";
+                        objetos_a_enmarcar
+                        ON
+                        presupuestos.id_objeto_a_enmarcar=objetos_a_enmarcar.id
+                        LEFT JOIN
+                        estados_orden_trabajo
+                        ON
+                        presupuestos.id_estado=estados_orden_trabajo.id
+                    WHERE
+                        presupuestos.id_estado=3";
+                        
 
             $paginator = new PaginatorHelper($connection, $SQL);
 

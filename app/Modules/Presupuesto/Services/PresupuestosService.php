@@ -9,18 +9,24 @@ use App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository;
 
 class PresupuestosService
 {
+
+    public function createOrUpdate($createRequest,$updateRequest): array 
+    {
+        if ($createRequest->getId() == 0) {
+            return $this->create($createRequest);
+        } else {
+            return $this->update($updateRequest);
+        }
+    }
+
     public function create(object $request): array
     {
         try {
-            if ($request->getId() == 0) {
                 $response = PresupuestosRepository::create($request);
                 PresupuestosRepository::calcularCantidades($request->getAlto(), $request->getAncho(), $response['id']);
                 PresupuestosRepository::calcularTotales($response['id']);
                 $item = PresupuestosRepository::findById($response['id']);
                 return ["datos" => $item];
-            } else {
-                return $this->update($request);
-            }
         } catch (PDOException $e) {
             //LogHelper::error($e->getMessage());
             throw new \Exception('Error al crear un presupuestos. Inténtalo más tarde.');

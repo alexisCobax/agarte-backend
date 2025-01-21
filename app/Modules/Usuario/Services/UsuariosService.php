@@ -50,6 +50,19 @@ class UsuariosService
         }
     }
 
+    public function updateSucursal($request): array
+    {
+        try {
+            $item = UsuariosRepository::updateSucursal($request);
+            if (!$item) {
+                throw new \Exception('Usuarios inexistente.');
+            }
+            return $item;
+        } catch (PDOException $e) {
+            throw new \Exception('Error al modificar unn usuarios. Inténtalo más tarde.');
+        }
+    }
+
     public function delete($request): bool
     {
         try {

@@ -55,6 +55,11 @@ class ClientesCreateRequest
         return $this->data['id_condicion_iva'] ?? null;
     }
 
+    public function getdescuento()
+    {
+        return !empty($this->data['descuento']) ? $this->data['descuento'] : "0.00";
+    }
+
     public function getFechaAlta()
     {
         return !empty($this->data['fecha_alta']) ? $this->data['fecha_alta'] : date('Y-m-d');

@@ -36,6 +36,7 @@ class LogService
                         'message' => strlen($line) > 100 ? substr($line, 0, 100) . '...' : $line, // Resumen del mensaje
                         'full_message' => $line // Guardar el mensaje completo como texto largo
                     ];
+
                 } else {
                     // Si no es una nueva entrada, agregamos la línea al log actual
                     if (!empty($currentLog)) {
@@ -105,21 +106,6 @@ class LogService
         return $log;
     }
     
-
-    // public function getLogDetail($index)
-    // {
-    //     if (!isset($this->logs[$index])) {
-    //         return null;
-    //     }
-
-    //     $log = $this->logs[$index];
-
-    //     // Desglosar el mensaje completo solo en el detalle
-    //     $log['full_message'] = $this->parseFullMessage($log['full_message']);
-
-    //     return $log;
-    // }
-
     private function parseFullMessage($fullMessage)
     {
         $parsedMessage = [
@@ -131,6 +117,7 @@ class LogService
             'linea' => null,
             'input_data' => null,
             'user_id' => null,
+            'url' => null,
         ];
     
         // Analizar el mensaje para extraer la información
@@ -161,6 +148,10 @@ class LogService
     
         if (preg_match('/User ID:\s*(.*)/', $fullMessage, $userIdMatch)) {
             $parsedMessage['user_id'] = $userIdMatch[1];
+        }
+
+        if (preg_match('/URL:\s*(http[s]?:\/\/[^\s]+)/', $fullMessage, $urlMatch)) {
+            $parsedMessage['url'] = $urlMatch[1];
         }
     
         return $parsedMessage;

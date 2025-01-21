@@ -16,27 +16,27 @@ class TipoEnmarcacionCreateRequest
 
     public function getNombre()
     {
-        return $this->data['nombre'] ?? null;
+        return $this->data['nombre'] ?? "";
     }
 
     public function getComisionFija()
     {
-        return $this->data['comisionFija'] ?? null;
+        return !empty($this->data['comisionFija']) ? $this->data['comisionFija'] : "0.00";
     }
 
     public function getComisionPorcentual()
     {
-        return $this->data['comisionPorcentual'] ?? null;
+        return !empty($this->data['comisionPorcentual']) ? $this->data['comisionPorcentual'] : "0.00";
     }
 
     public function getSuspendido()
     {
-        return $this->data['suspendido'] ?? null;
+        return $this->data['suspendido'] ?? "";
     }
 
     public function getIdSucursal()
     {
-        return $this->data['id_sucursal'] ?? null;
+        return $this->data['id_sucursal'] ?? 0;
     }
 
     protected function validate()

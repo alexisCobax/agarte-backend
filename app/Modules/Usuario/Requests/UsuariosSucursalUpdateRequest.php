@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\OrdenDeTrabajo\Requests;
+namespace App\Modules\Usuario\Requests;
 
 use App\Helpers\ValidatorHelper;
 
-class EstadosOrdenTrabajoDeleteRequest
+class UsuariosSucursalUpdateRequest
 {
     protected $data;
 
@@ -14,7 +14,7 @@ class EstadosOrdenTrabajoDeleteRequest
         $this->validate();
     }
 
-    // Métodos para obtener los campos
+
     public function getId()
     {
         return $this->data['id'] ?? null;

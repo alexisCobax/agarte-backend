@@ -5,7 +5,7 @@ namespace App\Modules\Presupuesto\Requests;
 use App\Helpers\UserDataHelper;
 use App\Helpers\ValidatorHelper;
 
-class PresupuestosCreateRequest
+class PresupuestosUpdateRequestCopy
 {
     protected $data;
 
@@ -24,12 +24,7 @@ class PresupuestosCreateRequest
 
     public function getIdSucursal()
     {
-        return !empty($this->data['id_sucursal']) ? $this->data['id_sucursal'] : 1;
-    }
-
-    public function setIdSucursal($idSucursal)
-    {
-        $this->data['id_sucursal'] = $idSucursal;
+        return !empty($this->data['id_sucursal']) ? $this->data['id_sucursal'] : 0;
     }
 
     public function getFecha()
@@ -49,7 +44,8 @@ class PresupuestosCreateRequest
 
     public function getIdEmpleado()
     {
-        return !empty($this->data['id_empleado']) ? $this->data['id_empleado'] : 0;
+        $user = UserDataHelper::getUserData();
+        return $user['user']['id'] ?? null;
     }
 
     public function getIdTipoEnmarcacion()
@@ -59,27 +55,27 @@ class PresupuestosCreateRequest
 
     public function getTotal()
     {
-        return !empty($this->data['total']) ? $this->data['total'] : '0.00';
+        return $this->data['total'] ?? 0;
     }
 
     public function getClienteNombre()
     {
-        return $this->data['cliente_nombre'] ?? '';
+        return $this->data['cliente_nombre'] ?? null;
     }
 
     public function getClienteTelefono()
     {
-        return $this->data['cliente_telefono'] ?? '';
+        return $this->data['cliente_telefono'] ?? null;
     }
 
     public function getClienteEmail()
     {
-        return $this->data['cliente_email'] ?? '';
+        return $this->data['cliente_email'] ?? null;
     }
 
     public function getClienteDomicilio()
     {
-        return $this->data['cliente_domicilio'] ?? '';
+        return $this->data['cliente_domicilio'] ?? null;
     }
 
     public function getAlto()
@@ -99,12 +95,12 @@ class PresupuestosCreateRequest
 
     public function getComentarios()
     {
-        return $this->data['comentarios'] ?? '';
+        return $this->data['comentarios'] ?? null;
     }
 
     public function getModelo()
     {
-        return $this->data['modelo'] ?? '';
+        return $this->data['modelo'] ?? null;
     }
 
     public function getPropio()
@@ -112,20 +108,15 @@ class PresupuestosCreateRequest
         return !empty($this->data['propio']) ? $this->data['propio'] : 0;
     }
 
-    public function getCreadoPor()
-    {
-        $user = UserDataHelper::getUserData();
-        return $user['usuario_id'] ?? null;
-    }
-
     public function getDescuento()
     {
         return !empty($this->data['descuento']) ? $this->data['descuento'] : 0;
     }
 
-    public function getCantidad()
+    public function getCreadoPor()
     {
-        return !empty($this->data['cantidad']) ? $this->data['cantidad'] : 1;
+        $user = UserDataHelper::getUserData();
+        return $user['user']['id'] ?? null;
     }
 
     protected function validate()

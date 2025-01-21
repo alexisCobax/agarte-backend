@@ -7,13 +7,13 @@ class FindFilter
     public static function getFilters(): array
     {
         $filters = [];
-
-        if (isset($_GET['id_sucursal'])) {
-            $filters[] = "id_sucursal = " . $_GET['id_sucursal'] . "";
-        }  
-
+    
+        if (isset($_GET['id_sucursal']) && $_GET['id_sucursal'] !== '') {
+            $filters[] = "id_sucursal = " . intval($_GET['id_sucursal']);
+        }
+    
         return $filters;
-    }
+    }    
     
 
     /* 

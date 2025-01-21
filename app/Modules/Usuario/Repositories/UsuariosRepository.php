@@ -5,6 +5,7 @@ namespace App\Modules\Usuario\Repositories;
 use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
+use App\Helpers\UserDataHelper;
 use App\Helpers\PaginatorHelper;
 
 class UsuariosRepository
@@ -57,6 +58,30 @@ class UsuariosRepository
             $connection = Database::getConnection();
             // Implementar la actualización en la tabla usuarios
             return true;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateSucursal(object $datos): array
+    {
+        $user = UserDataHelper::getUserData();
+        $userId = $user['usuario_id'];
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE 
+                    empleados 
+                    SET 
+                    id_sucursal = ?
+                    WHERE 
+                    id_usuario = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $datos->getId(),
+                $userId
+            ]);
+            return [true];
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

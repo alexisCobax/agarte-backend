@@ -61,6 +61,11 @@ class ClientesUpdateRequest
         return $this->data['id_condicion_iva'] ?? null;
     }
 
+    public function getdescuento()
+    {
+        return !empty($this->data['descuento']) ? $this->data['descuento'] : "0.00";
+    }
+
     public function getModificadoPor()
     {
         $user = UserDataHelper::getUserData();

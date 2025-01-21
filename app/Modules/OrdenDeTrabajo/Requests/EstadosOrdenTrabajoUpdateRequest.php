@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\EstadosOrdenTrabajo\Requests;
+namespace App\Modules\OrdenDeTrabajo\Requests;
 
 use App\Helpers\ValidatorHelper;
 

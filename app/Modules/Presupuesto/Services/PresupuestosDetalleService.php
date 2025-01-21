@@ -13,12 +13,13 @@ class PresupuestosDetalleService
     public function create($request): array
     {
         try {
-
             $idPresupuesto = $request->getIdPresupuesto();
 
             if ($idPresupuesto == 0) {
                 $presupuestoService = new PresupuestosService();
                 $createRequest = new PresupuestosCreateRequest;
+                $createRequest->setIdSucursal($request->getIdSucursal());
+
                 $presupuesto = $presupuestoService->create($createRequest);
                 $request->setIdPresupuesto($presupuesto['datos']['id']);
             }

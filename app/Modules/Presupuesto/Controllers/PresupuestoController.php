@@ -35,7 +35,22 @@ class PresupuestoController
             ResponseHelper::error($e->getMessage());
         }
     }
+    
+    public function createOrUpdate(
+        PresupuestosCreateRequest $createRequest,
+        PresupuestosUpdateRequest $updateRequest
+    ) {
 
+        $service = new PresupuestosService;
+    
+        try {
+            $response = $service->createOrUpdate($createRequest, $updateRequest);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+    
 
     public function create(PresupuestosCreateRequest $request)
     {

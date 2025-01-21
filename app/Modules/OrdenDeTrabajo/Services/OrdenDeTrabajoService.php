@@ -22,7 +22,7 @@ class OrdenDeTrabajoService
         $items = OrdenDeTrabajoRepository::find();
 
         if (!$items) {
-            throw new \Exception('No se encuentran ordendetrabajoes.');
+            throw new \Exception('No se encuentran ordenes de trabajos.');
         }
         return $items;
     }

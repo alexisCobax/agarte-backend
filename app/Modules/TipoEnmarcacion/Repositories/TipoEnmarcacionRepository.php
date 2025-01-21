@@ -94,7 +94,8 @@ class TipoEnmarcacionRepository
                     nombre = ?, 
                     comisionFija = ?, 
                     comisionPorcentual = ?, 
-                    suspendida = ?
+                    suspendida = ?,
+                    id_sucursal = ?
                     WHERE 
                     id = ?";
             $stmt = $connection->prepare($SQL);
@@ -103,6 +104,7 @@ class TipoEnmarcacionRepository
                 $datos->getComisionFija(),
                 $datos->getComisionPorcentual(),
                 $datos->getSuspendido(),
+                $datos->getIdSucursal(),
                 $datos->getId()
             ]);
 

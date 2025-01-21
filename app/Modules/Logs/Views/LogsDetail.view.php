@@ -35,6 +35,10 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
+                                        <th scope="row">URL</th>
+                                        <td><?= htmlspecialchars($logDetail['full_message']['url'] ?? '') ?></td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Código</th>
                                         <td><?= htmlspecialchars($logDetail['full_message']['codigo'] ?? '') ?></td>
                                     </tr>

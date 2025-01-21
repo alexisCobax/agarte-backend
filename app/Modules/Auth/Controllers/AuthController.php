@@ -71,7 +71,7 @@ class AuthController
 
         try {
             $user = $service->me($authHeader);
-            ResponseHelper::success(['token' => $user['token'], 'accesos'=>$user['accesos']]);
+            ResponseHelper::success(['user' => $user]);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

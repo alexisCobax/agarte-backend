@@ -6,8 +6,11 @@ use App\Modules\Presupuesto\Controllers\PresupuestoExtrasController;
 
 $router->get('/presupuestos', [PresupuestoController::class, 'index'], true);
 $router->get('/presupuestos/{id}', [PresupuestoController::class, 'show'], true);
-$router->post('/presupuestos', [PresupuestoController::class, 'create'], true); 
-$router->put('/presupuestos/{id}', [PresupuestoController::class, 'update'], true); 
+
+$router->post('/presupuestos', [PresupuestoController::class, 'createOrUpdate'], true); 
+// $router->post('/presupuestos', [PresupuestoController::class, 'create'], true); 
+// $router->put('/presupuestos/{id}', [PresupuestoController::class, 'update'], true); 
+
 $router->delete('/presupuestos/{id}', [PresupuestoController::class, 'delete'], true); 
 
 $router->get('/presupuestos_detalle', [PresupuestoDetalleController::class, 'index'], true);

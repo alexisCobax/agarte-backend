@@ -7,8 +7,9 @@ use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
 use App\Modules\Presupuesto\Filters\FindFilter;
+use App\Modules\Presupuesto\Repositories\BaseRepository;
 
-class PresupuestosRepository
+class PresupuestosRepository extends BaseRepository
 {
 
     public static function find()
@@ -71,10 +72,13 @@ class PresupuestosRepository
         }
     }
 
+
     public static function create(object $datos): array
     {
         try {
             $connection = Database::getConnection();
+            $numero_orden = 0;
+            //$numero_orden = self::findOrderNumber($datos->getIdSucursal());
 
             $SQL = "INSERT INTO 
                     presupuestos 
@@ -95,69 +99,11 @@ class PresupuestosRepository
                     id_objeto_a_enmarcar,
                     modelo, 
                     propio,
-                    creado_por) 
+                    creado_por,
+                    cantidad,
+                    numero_orden) 
                     VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                $datos->getIdSucursal(),
-                $datos->getFecha(),
-                $datos->getIdCliente(),
-                $datos->getIdEstado(),
-                $datos->getIdEmpleado(),
-                $datos->getIdTipoEnmarcacion(),
-                $datos->getComentarios(),
-                $datos->getTotal(),
-                $datos->getClienteNombre(),
-                $datos->getClienteTelefono(),
-                $datos->getClienteEmail(),
-                $datos->getClienteDomicilio(),
-                $datos->getAlto(),
-                $datos->getAncho(),
-                $datos->getIdObjetoaEnmarcar(),
-                $datos->getModelo(),
-                $datos->getpropio(),
-                $datos->getCreadoPor()
-            ]);
-
-            $id = $connection->lastInsertId();
-
-            return self::findById($id);
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-    }
-
-    public static function update(object $datos): array
-    {
-        try {
-            $connection = Database::getConnection();
-            $SQL = "UPDATE 
-            presupuestos 
-        SET 
-            id_sucursal = ?, 
-            fecha = ?, 
-            id_cliente = ?, 
-            id_estado = ?, 
-            id_empleado = ?, 
-            id_tipo_enmarcacion = ?, 
-            comentarios = ?, 
-            total = ?, 
-            cliente_nombre = ?, 
-            cliente_telefono = ?, 
-            cliente_email = ?, 
-            cliente_domicilio = ?, 
-            alto = ?, 
-            ancho = ?, 
-            id_objeto_a_enmarcar = ?, 
-            modelo = ?, 
-            propio = ?, 
-            creado_por = ?,
-            descuento = ? 
-        WHERE 
-            id = ?";
-
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getIdSucursal(),
@@ -178,9 +124,24 @@ class PresupuestosRepository
                 $datos->getModelo(),
                 $datos->getpropio(),
                 $datos->getCreadoPor(),
-                $datos->getDescuento(),
-                $datos->getId()
+                $datos->getCantidad(),
+                $numero_orden
             ]);
+
+            $id = $connection->lastInsertId();
+
+            return self::findById($id);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function update(object $datos)
+    {
+        try {
+            $repository = new self();
+            $repository->updateData('presupuestos', $datos->toArray(), 'id', $datos->getId());
             return self::findById($datos->getId());
         } catch (PDOException $e) {
             LogHelper::error($e);
@@ -264,31 +225,54 @@ class PresupuestosRepository
         try {
             $connection = Database::getConnection();
             $SQL = "UPDATE presupuestos
-                    JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
-                    JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
-                    JOIN 
+                    LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
+                    LEFT JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
+                    LEFT JOIN 
                     (SELECT presupuestos_detalle.id_presupuesto, 		
                             SUM(presupuestos_detalle.precio_unitario * presupuestos_detalle.cantidad) as total 
                     FROM presupuestos_detalle 
                     GROUP BY presupuestos_detalle.id_presupuesto) as totalMateriales 
                     ON totalMateriales.id_presupuesto = presupuestos.id
+                    LEFT JOIN (SELECT presupuestos_extras.id_presupuesto, 
+                          SUM(presupuestos_extras.precio_unitario * presupuestos_extras.cantidad) as total
+                          FROM   presupuestos_extras
+                          GROUP BY presupuestos_extras.id_presupuesto) as totalExtras 
+                      ON totalExtras.id_presupuesto = presupuestos.id
                     SET 
-                    presupuestos.sub_total = (totalMateriales.total * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
-                    (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0))
-                    WHERE presupuestos.id = ?;";
+                    presupuestos.sub_total = (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
+                    (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
+                    WHERE presupuestos.id = ?";
             $stmt1 = $connection->prepare($SQL);
             $stmt1->execute([
                 $id
             ]);
-
             $SQL2 = "UPDATE presupuestos
             SET 
-            presupuestos.total = (presupuestos.sub_total - presupuestos.descuento)
+            presupuestos.total = (IFNULL(presupuestos.sub_total,0) - ((IFNULL(presupuestos.descuento,0)/100)*IFNULL(presupuestos.sub_total,0)))
             WHERE presupuestos.id = ?;";
             $stmt2 = $connection->prepare($SQL2);
             $stmt2->execute([
                 $id
             ]);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function findOrderNumber($id_sucursal)
+    {
+        $SQL = "SELECT 
+                max(numero_orden) + 1 AS proximo_numero 
+                FROM 
+                presupuestos 
+                WHERE 
+                id_sucursal = ?";
+        try {
+            $connection = Database::getConnection();
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id_sucursal]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

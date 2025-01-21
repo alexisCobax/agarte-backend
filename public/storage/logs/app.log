@@ -1,116 +1,830 @@
-[2024-12-31 15:15:13] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
-Línea: 71
+[2025-01-15 21:34:45] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 321
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
 
 Stack Trace:
-#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(71): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(15): App\Modules\Sucursal\Repositories\SucursalRepository::create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(45): App\Modules\Sucursal\Services\SucursalService->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales', 'POST')
-#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#7 {main}
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(321): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#4 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#6 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#7 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#8 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#9 {main}
 
 Input Data:
-{
-    "nombre": "sucursal 3",
-    "logo": "",
-    "domicilio": "domicilio",
-    "telefono": "221212"
-}
-
-User ID: N/A
-IP Address: 192.168.32.1
-[2024-12-31 15:15:22] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
-Línea: 71
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(71): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(15): App\Modules\Sucursal\Repositories\SucursalRepository::create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(45): App\Modules\Sucursal\Services\SucursalService->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales', 'POST')
-#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#7 {main}
-
-Input Data:
-{
-    "nombre": "sucursal 2",
-    "logo": "",
-    "domicilio": "domicilio 2",
-    "telefono": "222222"
-}
-
-User ID: N/A
-IP Address: 192.168.32.1
-[2024-12-31 15:15:32] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
-Línea: 71
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(71): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(15): App\Modules\Sucursal\Repositories\SucursalRepository::create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(45): App\Modules\Sucursal\Services\SucursalService->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales', 'POST')
-#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#7 {main}
-
-Input Data:
-{
-    "nombre": "sucursal 1",
-    "logo": "",
-    "domicilio": "domicilio 1",
-    "telefono": "111111"
-}
-
-User ID: N/A
-IP Address: 192.168.32.1
-[2024-12-31 15:16:02] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
-Línea: 71
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(71): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(15): App\Modules\Sucursal\Repositories\SucursalRepository::create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(45): App\Modules\Sucursal\Services\SucursalService->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->create(Object(App\Modules\Sucursal\Requests\SucursalCreateRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales', 'POST')
-#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#7 {main}
-
-Input Data:
-{
-    "nombre": "sucursal 4",
-    "logo": "",
-    "domicilio": "domicilio 4",
-    "telefono": "44444"
-}
+{"id_presupuesto":"0","id_material":10,"posicion":1,"precio":0,"observaciones":""}
 
 User ID: 1
 IP Address: 192.168.32.1
-[2025-01-08 21:55:23] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuestos_detalle.id_sucursal' in 'where clause'
-Código: 42
+[2025-01-15 21:34:45] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 325
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":10,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-15 21:34:52] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 321
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(321): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#4 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#6 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#7 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#8 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#9 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":1,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-15 21:34:52] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 325
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":1,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-15 21:35:56] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 321
+
+URL: http://127.0.0.1:8080/presupuestos
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(321): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoController.php(45): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":1,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-01-15 21:35:56] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 6
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 325
+
+URL: http://127.0.0.1:8080/presupuestos
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(82): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findOrderNumber(0)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoController.php(45): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":1,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-01-15 21:36:42] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: 'Array' for column 'numero_orden' at row 1
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 108
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(108): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":10,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-15 21:36:54] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: 'Array' for column 'numero_orden' at row 1
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 108
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(108): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(16): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(22): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":""}
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-15 21:53:39] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'creado_por' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php
+Línea: 70
+
+URL: http://127.0.0.1:8080/clientes
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php(70): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Cliente/Services/ClientesService.php(13): App\Modules\Cliente\Repositories\ClientesRepository::create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#2 /var/www/html/app/Modules/Cliente/Controllers/ClienteController.php(44): App\Modules\Cliente\Services\ClientesService->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#3 [internal function]: App\Modules\Cliente\Controllers\ClienteController->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/clientes', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"nombre":"sucursal 1","domicilio":"calle 12","telefono":"03512035942","email":"alexissaucedo@gmail.com","id_localidad":"1","id_tipo_documento":"1","documento":"2123213","id_condicion_iva":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-15 22:13:49] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'creado_por' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php
+Línea: 70
+
+URL: http://127.0.0.1:8080/clientes
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php(70): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Cliente/Services/ClientesService.php(13): App\Modules\Cliente\Repositories\ClientesRepository::create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#2 /var/www/html/app/Modules/Cliente/Controllers/ClienteController.php(44): App\Modules\Cliente\Services\ClientesService->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#3 [internal function]: App\Modules\Cliente\Controllers\ClienteController->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/clientes', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"nombre":"sucursal 1","domicilio":"calle 12","telefono":"03512035942","email":"alexissaucedo@gmail.com","id_localidad":"1","id_tipo_documento":"1","documento":"2123213","id_condicion_iva":"1"}
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-01-16 12:23:11] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.id_estado,
+            presupuestos.total,
+            empleados.nombre AS nomb' at line 7
+Código: 42000
 Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
 Línea: 60
 
+URL: http://127.0.0.1:8080/orden
+
 Stack Trace:
 #0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
-#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(54): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(32): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(55): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(23): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
+#3 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(20): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->getAll()
+#4 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 00:18:10] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 298
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(298): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(21)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":10,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 00:19:25] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 298
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(298): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(22)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 00:24:50] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 322
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(322): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(23)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":9,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 00:25:57] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 322
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(322): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(24)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 13:04:59] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 322
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(322): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(25)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 13:08:28] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 322
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(322): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(26)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-17 13:13:20] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 321
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(321): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Repositories\PresupuestosRepository::calcularTotales(28)
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":6,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"1"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-18 18:51:39] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_empleado' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 168
+
+URL: http://127.0.0.1:8080/presupuestos
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(168): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(60): App\Modules\Presupuesto\Repositories\PresupuestosRepository::update(Object(App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(18): App\Modules\Presupuesto\Services\PresupuestosService->update(Object(App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest))
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoController.php(47): App\Modules\Presupuesto\Services\PresupuestosService->createOrUpdate(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest), Object(App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest))
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->createOrUpdate(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest), Object(App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest))
 #5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+{"id":"1","id_cliente":"","id_tipo_enmarcacion":"1","comentarios":"esto es una prueba","cliente_nombre":"alexis","cliente_telefono":"+543512035942","cliente_email":"alexissaucedo@gmail.com","cliente_domicilio":"calle 12","alto":"12","ancho":"12","id_objeto_a_enmarcar":"1","modelo":"nuevo modelo","propio":0,"descuento":"0"}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-20 10:43:49] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'nombre' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/ObjetosEnmarcar/Repositories/ObjetosEnmarcarRepository.php
+Línea: 68
+
+URL: http://127.0.0.1:8080/objetos_enmarcar?paginate=false
+
+Stack Trace:
+#0 /var/www/html/app/Modules/ObjetosEnmarcar/Repositories/ObjetosEnmarcarRepository.php(68): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/ObjetosEnmarcar/Services/ObjetosEnmarcarService.php(13): App\Modules\ObjetosEnmarcar\Repositories\ObjetosEnmarcarRepository::create(Object(App\Modules\ObjetosEnmarcar\Requests\ObjetosEnmarcarCreateRequest))
+#2 /var/www/html/app/Modules/ObjetosEnmarcar/Controllers/ObjetosEnmarcarController.php(37): App\Modules\ObjetosEnmarcar\Services\ObjetosEnmarcarService->create(Object(App\Modules\ObjetosEnmarcar\Requests\ObjetosEnmarcarCreateRequest))
+#3 [internal function]: App\Modules\ObjetosEnmarcar\Controllers\ObjetosEnmarcarController->create(Object(App\Modules\ObjetosEnmarcar\Requests\ObjetosEnmarcarCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\ObjetosEnmarcar\Controllers\ObjetosEnmarcarController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/objetos_enmarc...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{
+  "id": "1",
+  "id_cliente": "",
+  "id_tipo_enmarcacion": "1",
+  "comentarios": "esto es una prueba",
+  "cliente_nombre": "alexis",
+  "cliente_telefono": "1212133322",
+  "cliente_email": "alexissaucedo@gmail.com",
+  "cliente_domicilio": "calle 12",
+  "alto": "12",
+  "ancho": "12",
+  "id_objeto_a_enmarcar": "1",
+  "modelo": "nuevo modelo",
+  "propio": 0,
+  "descuento": "0"
+}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:25:13] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737469513072
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:25:39] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737469539107
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:26:14] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737469574250
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:26:26] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737469586343
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:26:39] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737469598952
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 14:59:06] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737471546006
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:12:15] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472335397
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:15:07] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472507024
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:15:17] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472517491
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:15:34] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472534425
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:16:25] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472585053
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:16:34] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472594317
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 15:16:53] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737472613832
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 16:54:56] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737478496734
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:01:20] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489680056
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
 #7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
 #8 {main}
 
@@ -119,73 +833,387 @@ Input Data:
 
 User ID: 1
 IP Address: 192.168.32.1
-[2025-01-09 19:45:02] [ERROR] [INFO] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'agarte.accesos' doesn't exist
-Código: 42
-Archivo: /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php
-Línea: 165
+[2025-01-21 20:01:53] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489713258
 
 Stack Trace:
-#0 /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php(165): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Auth/Services/AuthService.php(45): App\Modules\Auth\Repositories\AuthRepository::findUserByName('admin@admin.com')
-#2 /var/www/html/app/Modules/Auth/Controllers/AuthController.php(42): App\Modules\Auth\Services\AuthService->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#3 [internal function]: App\Modules\Auth\Controllers\AuthController->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Auth\Controllers\AuthController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/auth/login', 'POST')
-#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#7 {main}
-
-Input Data:
-{
-    "usuario":"admin@admin.com",
-    "clave":123456
-}
-
-User ID: N/A
-IP Address: 192.168.32.1
-[2025-01-09 19:46:04] [ERROR] [INFO] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'agarte.accesos' doesn't exist
-Código: 42
-Archivo: /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php
-Línea: 192
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php(192): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php(165): App\Modules\Auth\Repositories\AuthRepository::findAccesosByRol('1')
-#2 /var/www/html/app/Modules/Auth/Services/AuthService.php(45): App\Modules\Auth\Repositories\AuthRepository::findUserByName('admin@admin.com')
-#3 /var/www/html/app/Modules/Auth/Controllers/AuthController.php(42): App\Modules\Auth\Services\AuthService->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#4 [internal function]: App\Modules\Auth\Controllers\AuthController->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Auth\Controllers\AuthController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/auth/login', 'POST')
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
 #7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
 #8 {main}
 
 Input Data:
-{
-    "usuario":"admin@admin.com",
-    "clave":123456
-}
 
-User ID: N/A
+
+User ID: 1
 IP Address: 192.168.32.1
-[2025-01-09 19:46:04] [ERROR] [INFO] Error: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'agarte.accesos' doesn't exist
+[2025-01-21 20:02:03] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/presupuestosABM.php</b> on line <b>117</b><br />
+' for column 'id_presupuesto' at row 1
 Código: 0
-Archivo: /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php
-Línea: 201
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php
+Línea: 76
+
+URL: http://127.0.0.1:8080/presupuestos_extras
 
 Stack Trace:
-#0 /var/www/html/app/Modules/Auth/Repositories/AuthRepository.php(165): App\Modules\Auth\Repositories\AuthRepository::findAccesosByRol('1')
-#1 /var/www/html/app/Modules/Auth/Services/AuthService.php(45): App\Modules\Auth\Repositories\AuthRepository::findUserByName('admin@admin.com')
-#2 /var/www/html/app/Modules/Auth/Controllers/AuthController.php(42): App\Modules\Auth\Services\AuthService->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#3 [internal function]: App\Modules\Auth\Controllers\AuthController->login(Object(App\Modules\Auth\Requests\AuthRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Auth\Controllers\AuthController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/auth/login', 'POST')
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(76): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(33): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(45): App\Modules\Presupuesto\Services\PresupuestosExtrasService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'POST')
 #6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
 #7 {main}
 
 Input Data:
-{
-    "usuario":"admin@admin.com",
-    "clave":123456
-}
+{"id_presupuesto":"<br />\n<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/presupuestosABM.php</b> on line <b>117</b><br />\n","observaciones":"","precio":0,"cantidad":1}
 
-User ID: N/A
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-21 20:02:33] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489753277
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-21 20:02:38] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489758405
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 1
+IP Address: 192.168.32.1
+[2025-01-21 20:05:11] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489911396
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:05:36] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737489935862
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:11:07] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490267145
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:11:19] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490279122
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:13:01] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490381053
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:13:12] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490392156
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:13:17] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490397025
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:14:13] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/presupuestosABM.php</b> on line <b>117</b><br />
+' for column 'id_presupuesto' at row 1
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php
+Línea: 76
+
+URL: http://127.0.0.1:8080/presupuestos_extras
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(76): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(33): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(45): App\Modules\Presupuesto\Services\PresupuestosExtrasService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosExtrasCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"<br />\n<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/presupuestosABM.php</b> on line <b>117</b><br />\n","observaciones":"","precio":0,"cantidad":1}
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:14:24] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490464701
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:14:42] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490481996
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:17:51] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490671540
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
+IP Address: 192.168.32.1
+[2025-01-21 20:19:33] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<br />
+<b>Warning</b>:  Undefined variable $idPreusupuesto in <b>/var/www/html/' at line 8
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%3Cbr%20%2F%3E%0A%3Cb%3EWarning%3C%2Fb%3E%3A%20%20Undefined%20variable%20%24idPreusupuesto%20in%20%3Cb%3E%2Fvar%2Fwww%2Fhtml%2FpresupuestosABM.php%3C%2Fb%3E%20on%20line%20%3Cb%3E117%3C%2Fb%3E%3Cbr%20%2F%3E%0A&_=1737490772783
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 2
 IP Address: 192.168.32.1
