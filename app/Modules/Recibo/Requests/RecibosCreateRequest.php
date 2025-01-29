@@ -2,6 +2,7 @@
 
 namespace App\Modules\Recibo\Requests;
 
+use App\Helpers\UserDataHelper;
 use App\Helpers\ValidatorHelper;
 
 class RecibosCreateRequest
@@ -17,42 +18,71 @@ class RecibosCreateRequest
     // Métodos para obtener los campos
     public function getId()
     {
-        return $this->data['id'] ?? null;
+        return $this->data['id'] ?? 0;
     }
 
     public function getIdCliente()
     {
-        return $this->data['id_cliente'] ?? null;
+        return $this->data['id_cliente'] ?? 0;
+    }
+
+    public function getClienteNombre()
+    {
+        return $this->data['cliente_nombre'] ?? '';
+    }
+    public function getClienteEmail()
+    {
+        return $this->data['cliente_email'] ?? '';
+    }
+    public function getClienteDomicilio()
+    {
+        return $this->data['cliente_domicilio'] ?? '';
+    }
+    public function getClienteTelefono()
+    {
+        return $this->data['cliente_telefono'] ?? '';
     }
 
     public function getFecha()
     {
-        return $this->data['fecha'] ?? null;
+        return $this->data['fecha'] ?? date('Y-m-d');
     }
 
     public function getTotal()
     {
-        return $this->data['total'] ?? null;
+        return $this->data['total'] ?? 0;
     }
 
     public function getIdOrdenDeTrabajo()
     {
-        return $this->data['id_orden_de_trabajo'] ?? null;
+        return $this->data['id_orden_de_trabajo'] ?? 0;
     }
 
     public function getIdFormaDePago()
     {
-        return $this->data['id_forma_de_pago'] ?? null;
+        return $this->data['id_forma_de_pago'] ?? 0;
     }
 
     public function getSuspendido()
     {
-        return $this->data['suspendido'] ?? null;
+        return $this->data['suspendido'] ?? 0;
     }
 
     public function getCargadoPor()
     {
-        return $this->data['cargado_por'] ?? null;
+        $user = UserDataHelper::getUserData();
+        return $user['usuario_id'] ?? 0;
+    }
+    public function getIdSucursal()
+    {
+        $user = UserDataHelper::getUserData();
+        return $user['id_sucursal'] ?? 0;
+    }
+
+    public function getDetalle()
+    {
+        return $this->data['detalle'] ?? [];
+        
     }
 
     protected function validate()

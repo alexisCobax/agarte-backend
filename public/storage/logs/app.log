@@ -1217,3 +1217,248 @@ Input Data:
 
 User ID: 2
 IP Address: 192.168.32.1
+[2025-01-27 16:03:14] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'nombre' cannot be null
+Código: 23000
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Cliente\Repositories\ClientesRepository.php
+Línea: 83
+
+URL: http://agarte:8080/clientes
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Repositories\ClientesRepository.php(83): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Services\ClientesService.php(13): App\Modules\Cliente\Repositories\ClientesRepository::create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Controllers\ClienteController.php(44): App\Modules\Cliente\Services\ClientesService->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#3 [internal function]: App\Modules\Cliente\Controllers\ClienteController->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/clientes', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"idOrden":"26","total":"0","detalle":[]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-28 15:24:26] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'nombre' cannot be null
+Código: 23000
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Cliente\Repositories\ClientesRepository.php
+Línea: 83
+
+URL: http://agarte:8080/clientes
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Repositories\ClientesRepository.php(83): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Services\ClientesService.php(13): App\Modules\Cliente\Repositories\ClientesRepository::create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Cliente\Controllers\ClienteController.php(44): App\Modules\Cliente\Services\ClientesService->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#3 [internal function]: App\Modules\Cliente\Controllers\ClienteController->create(Object(App\Modules\Cliente\Requests\ClientesCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/clientes', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"idOrden":"26","total":"137.00","detalle":[{"id":"1","formaDePago":"Efectivo","observaciones":"","monto":"123"},{"id":"2","formaDePago":"Trajeta","observaciones":"","monto":"12"},{"id":"3","formaDePago":"Transferencia","observaciones":"","monto":"2"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-28 22:37:12] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 77
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(77): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(45): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-28 22:38:20] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 77
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(77): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(45): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-28 22:39:05] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 77
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(77): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(45): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-28 22:40:10] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 77
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(77): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(45): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-29 00:28:45] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 95
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(95): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(46): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-29 00:29:07] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 95
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(95): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(46): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-29 00:29:37] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 95
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(95): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(46): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"30.00","detalle":[{"id":"1","id_forma_de_pago":"Efectivo","observaciones":"","monto":"10"},{"id":"3","id_forma_de_pago":"Transferencia","observaciones":"","monto":"20"}]}
+
+User ID: 14
+IP Address: ::1
+[2025-01-29 11:39:55] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+                        `total`, 
+                        `id_orden_de_traba' at line 7
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/recibos?page=1&perPage=10&_=1738150795166
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT   `id`, ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(34): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(25): App\Modules\Recibo\Repositories\RecibosRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(21): App\Modules\Recibo\Services\RecibosService->getAll()
+#4 [internal function]: App\Modules\Recibo\Controllers\ReciboController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-29 11:53:46] [ERROR] [INFO] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+Código: 21
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php
+Línea: 92
+
+URL: http://agarte:8080/recibos
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Repositories\RecibosRepository.php(92): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Services\RecibosService.php(13): App\Modules\Recibo\Repositories\RecibosRepository::create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#2 C:\wamp64\www\agarte-backend\app\Modules\Recibo\Controllers\ReciboController.php(46): App\Modules\Recibo\Services\RecibosService->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->create(Object(App\Modules\Recibo\Requests\RecibosCreateRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/recibos', 'POST')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+{"id_orden_de_trabajo":"26","total":"90.00","cliente_nombre":"mauro","cliente_email":"pepe@pepe.com","cliente_domicilio":"domi","cliente_telefono":"4646464","detalle":[{"id_forma_de_pago":"1","forma_de_pago":"Efectivo","observaciones":"1","monto":"23"},{"id_forma_de_pago":"3","forma_de_pago":"Transferencia","observaciones":"22222","monto":"67"}]}
+
+User ID: 14
+IP Address: ::1

@@ -11,6 +11,9 @@ class RecibosService
     {
         try {
             $item = RecibosRepository::create($request);
+
+            //$item = recibosDetalleRepository::create($request);
+
             return ["datos" => $item];
         } catch (PDOException $e) {
             throw new \Exception('Error al crear un recibos. Inténtalo más tarde.');

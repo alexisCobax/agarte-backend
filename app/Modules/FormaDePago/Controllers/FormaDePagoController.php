@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Modules\Recibo\Controllers;
+namespace App\Modules\FormaDePago\Controllers;
 
-use App\Modules\Recibo\Requests\RecibosShowRequest;
-use App\Modules\Recibo\Requests\RecibosCreateRequest;
-use App\Modules\ReciboDetalle\Requests\RecibosDetalleCreateRequest;
-use App\Modules\Recibo\Requests\RecibosDeleteRequest;
-use App\Modules\Recibo\Requests\RecibosUpdateRequest;
+use App\Modules\FormaDePago\Requests\FormaDePagoShowRequest;
+use App\Modules\FormaDePago\Requests\FormaDePagoCreateRequest;
+use App\Modules\FormaDePago\Requests\FormaDePagoDeleteRequest;
+use App\Modules\FormaDePago\Requests\FormaDePagoUpdateRequest;
 use App\Helpers\ResponseHelper;
-use App\Modules\Recibo\Services\RecibosService;
+use App\Modules\FormaDePago\Services\FormaDePagoService;
 
-class ReciboController
+class FormaDePagoController
 {
 
     public function index()
     {
-        $service = new RecibosService;
+        $service = new FormaDePagoService;
 
         try {
             $response = $service->getAll();
@@ -25,9 +24,9 @@ class ReciboController
         }
     }
 
-    public function show(RecibosShowRequest $request)
+    public function show(FormaDePagoShowRequest $request)
     {
-        $service = new RecibosService;
+        $service = new FormaDePagoService;
 
         try {
             $response = $service->get($request);
@@ -38,9 +37,9 @@ class ReciboController
     }
 
 
-    public function create(RecibosCreateRequest $request)
+    public function create(FormaDePagoCreateRequest $request)
     {
-        $service = new RecibosService;
+        $service = new FormaDePagoService;
 
         try {
             $response = $service->create($request);
@@ -50,9 +49,9 @@ class ReciboController
         }
     }
 
-    public function update(RecibosUpdateRequest $request)
+    public function update(FormaDePagoUpdateRequest $request)
     {
-        $service = new RecibosService;
+        $service = new FormaDePagoService;
 
         try {
             $response = $service->update($request);
@@ -62,13 +61,13 @@ class ReciboController
         }
     }
 
-    public function delete(RecibosDeleteRequest $request)
+    public function delete(FormaDePagoDeleteRequest $request)
     {
-        $service = new RecibosService;
+        $service = new FormaDePagoService;
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Recibo borrado con éxito');
+            ResponseHelper::success('Forma de Pago borrada con éxito');
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

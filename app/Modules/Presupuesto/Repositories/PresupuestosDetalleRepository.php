@@ -100,12 +100,10 @@ class PresupuestosDetalleRepository
             $id = $connection->lastInsertId();
 
             $SQL = "UPDATE 
-            presupuestos_detalle LEFT JOIN 
-            materiales ON presupuestos_detalle.id_material=materiales.id
-            SET 
-            presupuestos_detalle.precio_unitario = materiales.precio 
-            WHERE 
-            presupuestos_detalle.id= ? ";
+                        presupuestos_detalle 
+                            LEFT JOIN materiales ON presupuestos_detalle.id_material=materiales.id
+                    SET presupuestos_detalle.precio_unitario = materiales.precio 
+                    WHERE presupuestos_detalle.id= ? ";
 
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
@@ -134,11 +132,9 @@ class PresupuestosDetalleRepository
         try {
             $connection = Database::getConnection();
             $SQL = "UPDATE 
-            presupuestos_detalle 
-            SET 
-            observaciones = ? 
-            WHERE 
-            id = ?";
+                        presupuestos_detalle 
+                    SET  observaciones = ? 
+                    WHERE  id = ?";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getObservaciones(),
@@ -161,11 +157,9 @@ class PresupuestosDetalleRepository
                 $posicion = $index + 1;
                 $connection = Database::getConnection();
                 $SQL = "UPDATE 
-                        presupuestos_detalle 
-                        SET 
-                        posicion = ? 
-                        WHERE 
-                        id = ?";
+                            presupuestos_detalle 
+                        SET posicion = ? 
+                        WHERE id = ?";
                 $stmt = $connection->prepare($SQL);
                 $stmt->execute([
                     $posicion,
@@ -188,12 +182,12 @@ class PresupuestosDetalleRepository
             $connection = Database::getConnection();
 
             $SQL = "SELECT 
-                id, 
-                posicion 
-                FROM 
-                presupuestos_detalle 
-                WHERE 
-                id IN ($placeholders) ORDER BY posicion ASC";
+                        id, 
+                        posicion 
+                    FROM 
+                        presupuestos_detalle 
+                    WHERE 
+                        id IN ($placeholders) ORDER BY posicion ASC";
             $stmt = $connection->prepare($SQL);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
