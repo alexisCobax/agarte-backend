@@ -21,7 +21,7 @@ class PresupuestosExtrasRepository
                     presupuestos_extras.cantidad, 
                     presupuestos_extras.precio_unitario
                     FROM 
-                    presupuestos_extras";
+                        presupuestos_extras ";
 
             $SQL .= " WHERE presupuestos_extras.id_presupuesto=".$_GET['id_presupuesto']."";
 

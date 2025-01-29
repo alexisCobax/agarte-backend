@@ -17,31 +17,25 @@ class PresupuestosRepository extends BaseRepository
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 
-            presupuestos.id,
-            sucursales.nombre AS nombre_sucursal,
-            DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
-            clientes.nombre AS nombre_cliente,
-            presupuestos.id_estado,
-            presupuestos.total,
-            empleados.nombre AS nombre_empleado,
-            tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
-            presupuestos.comentarios,
-            usuario_creador.usuario AS creado_por,
-            usuario_modificador.usuario AS modificado_por
+                    presupuestos.id,
+                    sucursales.nombre AS nombre_sucursal,
+                    DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                    clientes.nombre AS nombre_cliente,
+                    presupuestos.id_estado,
+                    presupuestos.total,
+                    empleados.nombre AS nombre_empleado,
+                    tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
+                    presupuestos.comentarios,
+                    usuario_creador.usuario AS creado_por,
+                    usuario_modificador.usuario AS modificado_por
             FROM 
                 presupuestos
-            LEFT JOIN sucursales
-                ON presupuestos.id_sucursal = sucursales.id
-            LEFT JOIN clientes
-                ON presupuestos.id_cliente = clientes.id
-            LEFT JOIN empleados
-                ON presupuestos.id_empleado = empleados.id
-            LEFT JOIN tipo_enmarcacion
-                ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
-            LEFT JOIN usuarios AS usuario_creador
-                ON usuario_creador.id = presupuestos.creado_por
-            LEFT JOIN usuarios AS usuario_modificador
-                ON usuario_modificador.id = presupuestos.modificado_por";
+                    LEFT JOIN sucursales ON presupuestos.id_sucursal = sucursales.id
+                    LEFT JOIN clientes ON presupuestos.id_cliente = clientes.id
+                    LEFT JOIN empleados ON presupuestos.id_empleado = empleados.id
+                    LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
+                    LEFT JOIN usuarios AS usuario_creador ON usuario_creador.id = presupuestos.creado_por
+                    LEFT JOIN usuarios AS usuario_modificador ON usuario_modificador.id = presupuestos.modificado_por";
 
             $filters = FindFilter::getFilters();
             if ($filters) {
@@ -49,7 +43,7 @@ class PresupuestosRepository extends BaseRepository
             }
 
             $SQL .= " ORDER BY presupuestos.id DESC";
-
+//echo $SQL;
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();

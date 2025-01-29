@@ -16,20 +16,18 @@ class PresupuestosDetalleRepository
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 
-                    presupuestos_detalle.id,
-                    presupuestos_detalle.id_presupuesto, 
-                    materiales.nombre as nombre_material,
-                    presupuestos_detalle.cantidad, 
-                    presupuestos_detalle.posicion, 
-                    presupuestos_detalle.observaciones,
-                    presupuestos_detalle.precio_unitario, 
-                    materiales.id_tipo_material
+                        presupuestos_detalle.id,
+                        presupuestos_detalle.id_presupuesto, 
+                        materiales.nombre as nombre_material,
+                        presupuestos_detalle.cantidad, 
+                        presupuestos_detalle.posicion, 
+                        presupuestos_detalle.observaciones,
+                        presupuestos_detalle.precio_unitario, 
+                        materiales.id_tipo_material
                     FROM 
-                    presupuestos_detalle
-                    LEFT JOIN  
-                    materiales
-                    ON
-                    presupuestos_detalle.id_material=materiales.id";
+                        presupuestos_detalle
+                            LEFT JOIN  materiales ON presupuestos_detalle.id_material=materiales.id
+                            LEFT JOIN presupuestos ON presupuestos_detalle.id_presupuesto=presupuestos.id";
 
             $filters = FindFilter::getFilters();
             if ($filters) {

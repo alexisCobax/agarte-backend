@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Presupuesto\Filters;
+use App\Helpers\UserDataHelper;
 
 class FindFilter
 {
@@ -16,10 +17,33 @@ class FindFilter
             $filters[] = "presupuestos_detalle.id_presupuesto = " . self::SQLformat($_GET['id_presupuesto']);
         }
 
-        if (isset($_GET['id_sucursal'])) {
-            $filters[] = "presupuestos.id_sucursal = " . self::SQLformat($_GET['id_sucursal']);
+
+
+        if (isset($_GET['desde'])&&isset($_GET['hasta'])&&$_GET['desde']!=""&&$_GET['hasta']!="") {
+            $filters[] = " presupuestos.fecha between " . self::SQLformat( $_GET['desde']) . " and " . self::SQLformat( $_GET['hasta']);
+        }else{
+            if (isset($_GET['desde'])&&$_GET['desde']!="") {
+                $filters[] = " presupuestos.fecha >= " . self::SQLformat( $_GET['desde']);
+            }
+            if (isset($_GET['hasta'])&&$_GET['hasta']!="") {
+                $filters[] = " presupuestos.fecha <= " . self::SQLformat( $_GET['hasta']);
+            }
         }
-        
+
+
+        if (isset($_GET['cliente'])) {
+            $filters[] = " presupuestos.cliente_nombre LIKE " . self::SQLformat('%' . $_GET['cliente'] . '%');
+        }
+
+        if (isset($_GET['numero'])) {
+            $filters[] = " presupuestos.id = " . self::SQLformat( $_GET['numero'] );
+        }
+
+        $user = UserDataHelper::getUserData();
+        $idSucursal=  $user['id_sucursal'] ?? 0;
+        if($idSucursal){
+            $filters[] = " presupuestos.id_sucursal = " . $idSucursal;
+        }
         return $filters;
     }
     

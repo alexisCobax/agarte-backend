@@ -1462,3 +1462,26 @@ Input Data:
 
 User ID: 14
 IP Address: ::1
+[2025-01-29 13:49:19] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuestos.numero' in 'where clause'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos?page=1&perPage=10&numero=1&_=1738158553672
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(49): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(38): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
