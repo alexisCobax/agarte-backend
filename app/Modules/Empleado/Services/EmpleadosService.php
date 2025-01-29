@@ -12,8 +12,9 @@ class EmpleadosService
     {
         try {
             $auth = new AuthService();
+            
             $usuario = $auth->register($authRequest);
-
+            
             $requestEmpleados->setIdUsuario($usuario['id']);
 
             $item = EmpleadosRepository::create($requestEmpleados);

@@ -9,17 +9,17 @@ use App\Helpers\LogHelper;
 class AuthRepository
 {
 
-    public static function create($username, $hashedPassword)
+    public static function create($username, $hashedPassword,$rol)
     {
         try {
             $connection = Database::getConnection();
 
             $SQL = "SELECT 
-            COUNT(*) 
+                COUNT(*) 
             FROM 
-            usuarios
+                usuarios
             WHERE 
-            usuario = ?";
+                usuario = ?";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$username]);
 
@@ -29,18 +29,18 @@ class AuthRepository
 
             $SQL = "INSERT INTO 
             usuarios 
-            (usuario, clave) 
+            (usuario, clave, rol) 
             VALUES 
-            (?, ?)";
+            (?, ?, ?)";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$username, $hashedPassword]);
+            $stmt->execute([$username, $hashedPassword, $rol]);
             return ["id" => $connection->lastInsertId()];
         } catch (PDOException $e) {
             throw new \Exception('Error en la base de datos: ' . $e->getMessage());
         }
     }
 
-    public static function update($username, $hashedPassword, $id)
+    public static function update($username, $hashedPassword, $id, $rol)
     {
 
         try {
@@ -48,11 +48,12 @@ class AuthRepository
             $SQL = "UPDATE usuarios
             SET 
             usuario = ?,
-            clave = ?
+            clave = ?,
+            rol = ?
             WHERE 
             id = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$username, $hashedPassword, $id]);
+            $stmt->execute([$username, $hashedPassword, $rol, $id]);
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             throw new \Exception('Error: ' . $e->getMessage());
@@ -60,18 +61,19 @@ class AuthRepository
     }
 
 
-    public static function updateUser($username, $id)
+    public static function updateUser($username, $id, $rol)
     {
 
         try {
             $connection = Database::getConnection();
             $SQL = "UPDATE usuarios
             SET 
-            usuario = ?
+                usuario = ?,
+                rol = ?
             WHERE 
             id = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$username, $id]);
+            $stmt->execute([$username, $rol, $id]);
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             throw new \Exception('Error: ' . $e->getMessage());

@@ -14,7 +14,7 @@ class AuthService
     {
         try {
             $hashedClave = password_hash($request->getClave(), PASSWORD_BCRYPT);
-            return AuthRepository::create($request->getUsuario(), $hashedClave);
+            return AuthRepository::create($request->getUsuario(), $hashedClave, $request->getRol());
         } catch (PDOException $e) {
             throw new \Exception('Error al registrar el usuario. Inténtalo más tarde.');
         }
@@ -24,7 +24,7 @@ class AuthService
     {
         try {
             $hashedClave = password_hash($request->getClave(), PASSWORD_BCRYPT);
-            return AuthRepository::update($request->getUsuario(), $hashedClave, $request->getId());
+            return AuthRepository::update($request->getUsuario(), $hashedClave, $request->getId(), $request->getRol());
         } catch (PDOException $e) {
             throw new \Exception('Error al actualizar el usuario. Inténtalo más tarde.');
         }
@@ -33,7 +33,7 @@ class AuthService
     public function updateUser($request): bool
     {
         try {
-            return AuthRepository::updateUser($request->getUsuario(), $request->getId());
+            return AuthRepository::updateUser($request->getUsuario(), $request->getId(), $request->getRol());
         } catch (PDOException $e) {
             throw new \Exception('Error al actualizar el usuario. Inténtalo más tarde.');
         }

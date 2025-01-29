@@ -27,8 +27,8 @@ class EmpleadosRepository
                     sucursales.nombre AS nombre_sucursal
                     FROM 
                     empleados 
-                    INNER JOIN 
-                    sucursales 
+                     INNER JOIN 
+                        sucursales 
                     ON 
                     empleados.id_sucursal=sucursales.id";
 
@@ -57,7 +57,8 @@ class EmpleadosRepository
                     empleados.telefono,
                     empleados.id_sucursal,
                     empleados.id_usuario,
-                    usuarios.usuario
+                    usuarios.usuario,
+                    usuarios.rol
                     FROM
                     empleados
                     LEFT JOIN
@@ -104,7 +105,7 @@ class EmpleadosRepository
                 $datos->getFechaAlta(),
                 $datos->getCreadoPor(),
                 $datos->getModificadoPor(),
-                $datos->getFechaBaja()
+                date('Y-m-d H:i:s')
             ]);
 
             $id = $connection->lastInsertId();

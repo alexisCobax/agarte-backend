@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Auth\Requests;
+namespace App\Modules\Rol\Requests;
 
 use App\Helpers\ValidatorHelper;
 
-class AuthRequest
+class RolUpdateRequest
 {
     protected $data;
 
@@ -16,35 +16,25 @@ class AuthRequest
 
     public function getId()
     {
-        return $this->data['id'] ?? null;
+        return $this->data['id'] ?? 0;
     }
 
-    public function setId($id)
+    public function getNombre()
     {
-        $this->data['id'] = $id;
+        return $this->data['nombre'] ?? '';
     }
 
-    public function getUsuario()
+    public function suspendido()
     {
-        return $this->data['usuario'] ?? null;
-    }
-
-    public function getClave()
-    {
-        return $this->data['clave'] ?? null;
-    }
-
-    public function getRol()
-    {
-        return $this->data['rol'] ?? 0;
+        return $this->data['suspendido'] ?? 0;
     }
 
     protected function validate()
     {
-
         $rules = [
-            'usuario' => 'required|email',
-            'clave' => 'required'
+            'id' => 'required',
+            'nombre' => 'required',
+            'suspendido' => 'required'
         ];
 
         // Validar los datos

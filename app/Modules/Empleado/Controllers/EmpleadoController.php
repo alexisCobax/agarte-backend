@@ -40,6 +40,7 @@ class EmpleadoController
 
     public function create(EmpleadosCreateRequest $requestEmpleados, AuthRequest $requestAuth)
     {
+        
         $service = new EmpleadosService;
 
         try {
@@ -53,6 +54,7 @@ class EmpleadoController
     public function update(EmpleadosUpdateRequest $requestEmpleados, AuthRequest $requestAuth)
     {
         $service = new EmpleadosService;
+        
 
         try {
             $response = $service->update($requestEmpleados,$requestAuth);
