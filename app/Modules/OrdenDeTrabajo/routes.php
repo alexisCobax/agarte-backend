@@ -5,6 +5,7 @@ use App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoEstadosController;
 
 $router->get('/orden', [OrdenDeTrabajoController::class, 'index'], true);
 $router->get('/orden/{id}', [OrdenDeTrabajoController::class, 'show'], true);
+$router->get('/orden/pdf/{id}', [OrdenDeTrabajoController::class, 'pdf'], false);
 $router->post('/orden', [OrdenDeTrabajoController::class, 'create'], true); 
 $router->put('/orden/{id}', [OrdenDeTrabajoController::class, 'update'], true); 
 $router->delete('/orden/{id}', [OrdenDeTrabajoController::class, 'delete'], true); 

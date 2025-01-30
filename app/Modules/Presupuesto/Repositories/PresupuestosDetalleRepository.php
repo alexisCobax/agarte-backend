@@ -58,11 +58,37 @@ class PresupuestosDetalleRepository
         }
     }
 
+    // public static function findByPresupuestoId(int $id)
+    // {
+    //     try {
+    //         $connection = Database::getConnection();
+    //         $stmt = $connection->prepare("SELECT * FROM presupuestos_detalle WHERE id_presupuesto = ?");
+    //         $stmt->execute([$id]);
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
+    // }
+
+
     public static function findByPresupuestoId(int $id)
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM presupuestos_detalle WHERE id_presupuesto = ?");
+            $SQL = "SELECT 
+                        *,
+                        materiales.nombre AS nombre_materiales
+                    FROM 
+                        presupuestos_detalle 
+                        LEFT JOIN  materiales  ON presupuestos_detalle.id_material=materiales.id 
+                        LEFT JOIN tipo_material ON materiales.id_tipo_material=tipo_material.id
+                    WHERE 
+                        presupuestos_detalle.id_presupuesto = ?
+                    ORDER BY 
+                            tipo_material.nombre,
+                            presupuestos_detalle.posicion ASC";
+            $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -70,6 +96,7 @@ class PresupuestosDetalleRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
+
 
     public static function create(object $datos): array
     {

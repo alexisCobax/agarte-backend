@@ -21,14 +21,15 @@ class PresupuestosRepository extends BaseRepository
                     sucursales.nombre AS nombre_sucursal,
                     sucursales.id AS id_sucursal,
                     DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
-                    clientes.nombre AS nombre_cliente,
+                    presupuestos.cliente_nombre as nombre_cliente,
                     presupuestos.id_estado,
                     presupuestos.total,
                     empleados.nombre AS nombre_empleado,
                     tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
                     presupuestos.comentarios,
                     usuario_creador.usuario AS creado_por,
-                    usuario_modificador.usuario AS modificado_por
+                    usuario_modificador.usuario AS modificado_por,
+                    recibos.total AS pagos
             FROM 
                 presupuestos
                     LEFT JOIN sucursales ON presupuestos.id_sucursal = sucursales.id
@@ -36,7 +37,10 @@ class PresupuestosRepository extends BaseRepository
                     LEFT JOIN empleados ON presupuestos.id_empleado = empleados.id
                     LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
                     LEFT JOIN usuarios AS usuario_creador ON usuario_creador.id = presupuestos.creado_por
-                    LEFT JOIN usuarios AS usuario_modificador ON usuario_modificador.id = presupuestos.modificado_por";
+                    LEFT JOIN usuarios AS usuario_modificador ON usuario_modificador.id = presupuestos.modificado_por
+                    LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
+                    
+                    ";
 
             $filters = FindFilter::getFilters();
             if ($filters) {
@@ -54,11 +58,66 @@ class PresupuestosRepository extends BaseRepository
         }
     }
 
+    public static function saldo(int $id)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT 
+                        presupuestos.id,
+                        presupuestos.total,
+                        recibos.total AS pagos,
+                        presupuestos.total - recibos.total AS saldo
+                    FROM 
+                        presupuestos
+                    LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
+                    WHERE presupuestos.id = ?";
+
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id]);
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $result['saldo'] ?? 0;
+
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function pagos(int $id)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT 
+                        presupuestos.id,
+                        presupuestos.total,
+                        recibos.total AS pagos,
+                        presupuestos.total - recibos.total AS saldo
+                    FROM 
+                        presupuestos
+                    LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
+                    WHERE presupuestos.id = ?";
+
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id]);
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $result['pagos'] ?? 0;
+
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
     public static function findById(int $id)
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
+            $stmt = $connection->prepare("SELECT presupuestos.* ,
+                                                COALESCE(recibos.total,0) as pagos,
+                                                COALESCE(presupuestos.total,0) - COALESCE(recibos.total,0) as saldo
+                                            FROM presupuestos 
+                                                LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
+                                            WHERE presupuestos.id = ?");
             $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -143,8 +202,10 @@ class PresupuestosRepository extends BaseRepository
         try {
             $repository = new self();
             $repository->updateData('presupuestos', $datos->toArray(), 'id', $datos->getId());
+            
             return self::findById($datos->getId());
         } catch (PDOException $e) {
+
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
         }
@@ -273,6 +334,54 @@ class PresupuestosRepository extends BaseRepository
             $connection = Database::getConnection();
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$id_sucursal]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function findByIdToPDF(int $id)
+    {
+        try {
+            $connection = Database::getConnection();
+
+            $SQL = "SELECT 
+                    presupuestos.cliente_nombre,
+                    presupuestos.cliente_email,
+                    presupuestos.cliente_domicilio,
+                    presupuestos.cliente_telefono,
+                    presupuestos.numero_orden,
+                    presupuestos.modelo,
+                    presupuestos.alto,
+                    presupuestos.ancho,
+                    tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
+                    CASE 
+					WHEN presupuestos.propio = 1 THEN 'propio' 
+					ELSE '' 
+					END AS propio,
+                    presupuestos.comentarios,
+                    objetos_a_enmarcar.nombre AS nombre_objeto_enmarcar,
+                    sucursales.nombre AS sucursal_nombre
+                    FROM 
+                    presupuestos 
+                    LEFT JOIN 
+                    sucursales
+                    ON
+                    presupuestos.id_sucursal=sucursales.id
+                    LEFT JOIN 
+                    objetos_a_enmarcar
+                    ON
+                    presupuestos.id_objeto_a_enmarcar=objetos_a_enmarcar.id
+                    LEFT JOIN 
+                    tipo_enmarcacion
+                    ON
+                    presupuestos.id_tipo_enmarcacion=tipo_enmarcacion.id
+                    WHERE 
+                    presupuestos.id = ?";
+                    //echo $SQL;
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             LogHelper::error($e);

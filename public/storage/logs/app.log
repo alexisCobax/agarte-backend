@@ -182,3 +182,235 @@ Input Data:
 
 User ID: 14
 IP Address: 192.168.32.1
+[2025-01-30 12:17:37] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuestos.nombre_cliente' in 'field list'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos?page=1&perPage=10&_=1738239457196
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(50): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(38): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 13:00:50] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM 
+                presupuestos
+                    LEFT JOIN sucursales ON' at line 15
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos?page=1&perPage=10&_=1738242049587
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(54): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(38): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 13:04:28] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION agarte.COLLASE does not exist
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/orden?page=1&perPage=10&_=1738242266509
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository.php(42): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService.php(48): App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController.php(22): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->getAll()
+#4 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/orden', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 13:20:01] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM presupuestos 
+                                                LEFT JOIN (S' at line 4
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php
+Línea: 121
+
+URL: http://agarte:8080/presupuestos/83
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(121): PDOStatement->execute(Array)
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(48): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findById(83)
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(32): App\Modules\Presupuesto\Services\PresupuestosService->get(Object(App\Modules\Presupuesto\Requests\PresupuestosShowRequest))
+#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->show(Object(App\Modules\Presupuesto\Requests\PresupuestosShowRequest))
+#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos/8...', 'GET')
+#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 15:41:23] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE  presupuestos.id_sucursal = 1 LIMIT 10 OFFSET 0' at line 20
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/orden?page=1&perPage=10&_=1738251683185
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository.php(47): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService.php(48): App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController.php(22): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->getAll()
+#4 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/orden', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 16:19:30] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738253969648
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 16:19:40] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738253979515
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 16:20:13] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254012930
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 16:24:06] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254245156
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-01-30 16:26:36] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254395713
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
+#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
+#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1

@@ -86,4 +86,15 @@ class OrdenDeTrabajoController
             ResponseHelper::error($e->getMessage());
         }
     }
+    public function pdf($id)
+    {
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $service->pdf($id);
+            ResponseHelper::success(['Orden borrado con éxito']);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
 }

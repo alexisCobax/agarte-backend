@@ -8,7 +8,8 @@
         "firebase/php-jwt": "^6.10",
         "phpmailer/phpmailer": "^6.9",
         "vlucas/phpdotenv": "^5.6",
-        "cynchro/module-generator": "dev-main"
+        "cynchro/module-generator": "dev-main",
+        "dompdf/dompdf": "^3.1"
     },
     "scripts": {
         "monolito:generate": "php vendor/bin/monolito generate:module"

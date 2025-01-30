@@ -7,7 +7,7 @@ if ($argc < 3 || $argv[1] !== 'generate:module') {
 }
 
 $moduleName = ucfirst($argv[2]); // Convertir la primera letra a mayúscula
-$basePath = dirname(__DIR__, 4). '/app/Modules/';
+$basePath = __DIR__ . '/../../app/Modules/';
 $modulePath = $basePath . $moduleName . '/';
 
 // Crear estructura de carpetas
