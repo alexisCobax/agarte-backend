@@ -2,12 +2,14 @@
 
 namespace App\Modules\OrdenDeTrabajo\Controllers;
 
+use App\Support\Request;
+use App\Helpers\ResponseHelper;
+use App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService;
+use App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest;
 use App\Modules\OrdenDeTrabajo\Requests\OrdenDeTrabajoShowRequest;
 use App\Modules\OrdenDeTrabajo\Requests\OrdenDeTrabajoCreateRequest;
 use App\Modules\OrdenDeTrabajo\Requests\OrdenDeTrabajoDeleteRequest;
 use App\Modules\OrdenDeTrabajo\Requests\OrdenDeTrabajoUpdateRequest;
-use App\Helpers\ResponseHelper;
-use App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService;
 
 class OrdenDeTrabajoController
 {
@@ -31,13 +33,25 @@ class OrdenDeTrabajoController
         try {
             $response = $service->get($request);
             ResponseHelper::success($response);
-        } catch (\Exception $e) {
+        } catch (\Exception $e) {   
             ResponseHelper::error($e->getMessage());
         }
     }
 
 
-    public function create(OrdenDeTrabajoCreateRequest $request)
+    public function create(PresupuestosUpdateRequest $request)
+    {
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $response = $service->create($request);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function generate(Request $request)
     {
         $service = new OrdenDeTrabajoService;
 
@@ -67,7 +81,7 @@ class OrdenDeTrabajoController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Orden borrado con éxito');
+            ResponseHelper::success(['Orden borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

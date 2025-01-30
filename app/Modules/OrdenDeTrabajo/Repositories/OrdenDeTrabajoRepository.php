@@ -6,6 +6,7 @@ use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
+use App\Modules\Recibo\Repositories\RecibosRepository;
 
 class OrdenDeTrabajoRepository
 {
@@ -62,16 +63,31 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function create(array $datos): bool
+    public static function create($request): int
     {
-        try {
-            $connection = Database::getConnection();
-            // Implementar la inserción en la tabla orden_de_trabajo
-            return true;
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error en la base de datos: ' . $e->getMessage());
-        }
+                $repository = new RecibosRepository();
+                $numero_orden = $repository->findLastNumber($request->getIdSucursal());
+        
+            try {
+                $connection = Database::getConnection();
+                $SQL = "UPDATE presupuestos 
+                SET 
+                id_estado = ?,
+                numero_orden = ?
+                WHERE 
+                id = ?";
+                $stmt = $connection->prepare($SQL);
+                $stmt->execute([
+                    3,
+                    $numero_orden+1,
+                    $request->getId()
+                ]);
+                return $request->getId();
+            } catch (PDOException $e) {
+                LogHelper::error($e);
+                throw new PDOException('Error: ' . $e->getMessage());
+            }
+        
     }
 
     public static function update(array $datos): bool

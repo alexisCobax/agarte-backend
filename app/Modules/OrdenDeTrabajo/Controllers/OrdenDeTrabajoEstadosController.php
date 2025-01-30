@@ -67,7 +67,7 @@ class OrdenDeTrabajoEstadosController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Orden borrado con éxito');
+            ResponseHelper::success(['Orden borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

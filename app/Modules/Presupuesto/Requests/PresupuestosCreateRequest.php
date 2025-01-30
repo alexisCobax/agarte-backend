@@ -62,6 +62,11 @@ class PresupuestosCreateRequest
         return !empty($this->data['total']) ? $this->data['total'] : '0.00';
     }
 
+    public function getSubTotal()
+    {
+        return !empty($this->data['sub_total']) ? $this->data['sub_total'] : '0.00';
+    }
+
     public function getClienteNombre()
     {
         return $this->data['cliente_nombre'] ?? '';
@@ -126,6 +131,11 @@ class PresupuestosCreateRequest
     public function getCantidad()
     {
         return !empty($this->data['cantidad']) ? $this->data['cantidad'] : 1;
+    }
+
+    public function getEstadoOrdenTrabajo()
+    {
+        return !empty($this->data['estado_orden_trabajo']) ? $this->data['estado_orden_trabajo'] : 0;
     }
 
     protected function validate()

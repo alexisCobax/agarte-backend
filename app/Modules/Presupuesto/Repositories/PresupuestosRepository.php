@@ -19,6 +19,7 @@ class PresupuestosRepository extends BaseRepository
             $SQL = "SELECT 
                     presupuestos.id,
                     sucursales.nombre AS nombre_sucursal,
+                    sucursales.id AS id_sucursal,
                     DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
                     clientes.nombre AS nombre_cliente,
                     presupuestos.id_estado,
@@ -43,7 +44,7 @@ class PresupuestosRepository extends BaseRepository
             }
 
             $SQL .= " ORDER BY presupuestos.id DESC";
-//echo $SQL;
+
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();
@@ -84,6 +85,8 @@ class PresupuestosRepository extends BaseRepository
                     id_tipo_enmarcacion,
                     comentarios,
                     total,
+                    sub_total,
+                    descuento,
                     cliente_nombre,
                     cliente_telefono,
                     cliente_email,
@@ -95,9 +98,10 @@ class PresupuestosRepository extends BaseRepository
                     propio,
                     creado_por,
                     cantidad,
+                    estado_orden_trabajo,
                     numero_orden) 
                     VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getIdSucursal(),
@@ -108,6 +112,8 @@ class PresupuestosRepository extends BaseRepository
                 $datos->getIdTipoEnmarcacion(),
                 $datos->getComentarios(),
                 $datos->getTotal(),
+                $datos->getSubTotal(),
+                $datos->getDescuento(),
                 $datos->getClienteNombre(),
                 $datos->getClienteTelefono(),
                 $datos->getClienteEmail(),
@@ -119,6 +125,7 @@ class PresupuestosRepository extends BaseRepository
                 $datos->getpropio(),
                 $datos->getCreadoPor(),
                 $datos->getCantidad(),
+                $datos->getEstadoOrdenTrabajo(),
                 $numero_orden
             ]);
 
