@@ -21,6 +21,8 @@ class PresupuestosDetalleRepository
                         materiales.nombre as nombre_material,
                         presupuestos_detalle.cantidad, 
                         presupuestos_detalle.posicion, 
+                        presupuestos_detalle.cm, 
+                        presupuestos_detalle.cs, 
                         presupuestos_detalle.observaciones,
                         presupuestos_detalle.precio_unitario, 
                         materiales.id_tipo_material
@@ -57,19 +59,6 @@ class PresupuestosDetalleRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
-
-    // public static function findByPresupuestoId(int $id)
-    // {
-    //     try {
-    //         $connection = Database::getConnection();
-    //         $stmt = $connection->prepare("SELECT * FROM presupuestos_detalle WHERE id_presupuesto = ?");
-    //         $stmt->execute([$id]);
-    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //     } catch (PDOException $e) {
-    //         LogHelper::error($e);
-    //         throw new PDOException('Error: ' . $e->getMessage());
-    //     }
-    // }
 
 
     public static function findByPresupuestoId(int $id)
@@ -108,16 +97,20 @@ class PresupuestosDetalleRepository
                     id_material,
                     cantidad, 
                     posicion,
+                    cm,
+                    cs,
                     precio_unitario,
                     observaciones) 
                     VALUES 
-                    (?, ?, ?, ?, ?, ?)";
+                    (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getIdPresupuesto(),
                 $datos->getIdMaterial(),
                 $datos->getCantidad(),
                 $datos->getPosicion(),
+                $datos->getCm(),
+                $datos->getCs(),
                 $datos->getPrecioUnitario(),
                 $datos->getObservaciones()
             ]);
@@ -166,6 +159,46 @@ class PresupuestosDetalleRepository
                 $datos->getId()
             ]);
             return self::findById($datos->getId());
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateCm(object $request): array
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE 
+                        presupuestos_detalle 
+                    SET  cm = ? 
+                    WHERE  id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $request->cm,
+                $request->id,
+            ]);
+            return self::findById($request->id);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateCs(object $request): array
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE 
+                        presupuestos_detalle 
+                    SET  cs = ? 
+                    WHERE  id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $request->cs,
+                $request->id
+            ]);
+            return self::findById($request->id);
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

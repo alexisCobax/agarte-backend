@@ -21,7 +21,8 @@ $router->delete('/presupuestos_detalle/{id}', [PresupuestoDetalleController::cla
 
 $router->post('/presupuestos_detalle/observaciones', [PresupuestoDetalleController::class, 'updateObservaciones'], true); 
 $router->post('/presupuestos_detalle/posiciones', [PresupuestoDetalleController::class, 'updatePosiciones'], true); 
-
+$router->post('/presupuestos_detalle/cm', [PresupuestoDetalleController::class, 'updateCm'], true); 
+$router->post('/presupuestos_detalle/cs', [PresupuestoDetalleController::class, 'updateCs'], true); 
 
 $router->get('/presupuestos_extras', [PresupuestoExtrasController::class, 'index'], true);
 $router->get('/presupuestos_extras/{id}', [PresupuestoExtrasController::class, 'show'], true);

@@ -10,6 +10,7 @@ use App\Modules\Presupuesto\Requests\PresupuestosDetalleDeleteRequest;
 use App\Modules\Presupuesto\Requests\PresupuestosDetalleUpdateRequest;
 use App\Modules\Presupuesto\Requests\PresupuestosDetalleUpdatePosiciones;
 use App\Modules\Presupuesto\Requests\PresupuestosDetalleUpdateObservaciones;
+use App\Support\Request;
 
 class PresupuestoDetalleController
 {
@@ -94,6 +95,30 @@ class PresupuestoDetalleController
 
         try {
             $response = $service->updatePosiciones($request);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function updateCm(Request $request)
+    {
+        $service = new PresupuestosDetalleService;
+
+        try {
+            $response = $service->updateCm($request);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function updateCs(Request $request)
+    {
+        $service = new PresupuestosDetalleService;
+
+        try {
+            $response = $service->updateCs($request);
             ResponseHelper::success($response);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());

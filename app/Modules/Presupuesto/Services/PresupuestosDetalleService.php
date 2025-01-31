@@ -104,4 +104,30 @@ class PresupuestosDetalleService
         }
     }
 
+    public function updateCm($request)
+    {
+        try {
+            $item = PresupuestosDetalleRepository::updateCm($request);
+            if (!$item) {
+                throw new \Exception('PresupuestosDetalle inexistente.');
+            }
+            return $item;
+        } catch (PDOException $e) {
+            throw new \Exception('Error al modificar un presupuestosdetalle. Inténtalo más tarde.');
+        }
+    }
+
+    public function updateCs($request)
+    {
+        try {
+            $item = PresupuestosDetalleRepository::updateCs($request);
+            if (!$item) {
+                throw new \Exception('PresupuestosDetalle inexistente.');
+            }
+            return $item;
+        } catch (PDOException $e) {
+            throw new \Exception('Error al modificar un presupuestosdetalle. Inténtalo más tarde.');
+        }
+    }
+
 }

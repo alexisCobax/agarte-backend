@@ -414,3 +414,25 @@ Input Data:
 
 User ID: 14
 IP Address: ::1
+[2025-01-31 20:18:05] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'cm' doesn't have a default value
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php
+Línea: 116
+
+URL: http://127.0.0.1:8080/presupuestos_detalle
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(116): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(27): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#2 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"0","id_material":8,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
+
+User ID: 14
+IP Address: 192.168.32.1
