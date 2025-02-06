@@ -127,6 +127,8 @@ class OrdenDeTrabajoService
         foreach ($presupuestoDetalle as $item) {
             $tablaMaterialesHtml .= "<tr style='border: 1px solid black;'>
                 <td style='text-align:left; border: 1px solid black; width: 200px;'>{$item['nombre_materiales']}</td>
+                <td style='text-align:center; width:10px; border: 1px solid black;'>{$item['cm']}</td>
+                <td style='text-align:center; width:10px; border: 1px solid black;'>{$item['cs']}</td>
                 <td style='text-align:left; border: 1px solid black;'>{$item['descripcion']}</td>
             </tr>";
         }

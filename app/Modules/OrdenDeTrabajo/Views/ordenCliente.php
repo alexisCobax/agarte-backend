@@ -65,6 +65,8 @@
             <thead>
                 <tr>
                     <th style='text-align:left;'>Material</th>
+                    <th style='text-align:center;'>Cm</th>
+                    <th style='text-align:center;'>CS</th>
                     <th style='text-align:left;'>Observaciones</th>
                 </tr>
             </thead>
@@ -73,17 +75,17 @@
             </tbody>
             <tfoot>
         <tr style="border-top: 2px solid black;">
-            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
                 <b>Total:</b> ${{total}}
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
                 <b>Seña:</b> ${{reserva}}
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
                 <b>Saldo:</b> ${{saldo}}
             </td>
         </tr>
