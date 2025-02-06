@@ -114,12 +114,14 @@ class OrdenDeTrabajoRepository
                 $connection = Database::getConnection();
                 $SQL = "UPDATE presupuestos 
                 SET 
+                id_estado = ?,
                 fecha_entrega = ?,
                 reserva = ?
                 WHERE 
                 id = ?";
                 $stmt = $connection->prepare($SQL);
                 $stmt->execute([
+                    3, // TIPO ORDEN
                     $request->fecha_entrega,
                     $request->reserva,
                     $request->id_presupuesto
@@ -143,6 +145,7 @@ class OrdenDeTrabajoRepository
 
             $connection = Database::getConnection();
 
+            $numeroRecibo = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']);
 
             $SQL = "INSERT INTO 
                     recibos 
@@ -170,11 +173,11 @@ class OrdenDeTrabajoRepository
                 $datosPresupuesto['cliente_telefono'],
                 $datosPresupuesto['fecha'],
                 $datosPresupuesto['total'],
-                1,
-                1,
-                0,
+                $request->id_presupuesto,
+                0, // ID FORMA DE PAGO 0 POR DEFAULT
+                0, // SUSPENDIO 0 POR DEFAULT
                 $datosPresupuesto['creado_por'],
-                rand(5, 15),
+                $numeroRecibo,
                 $datosPresupuesto['id_sucursal']
             ]);
 
@@ -193,12 +196,12 @@ class OrdenDeTrabajoRepository
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $id,
-                1,
+                $request->forma_pago,
                 $request->monto,
                 ''
             ]);
 
-            return $id;
+            return $datosPresupuesto;
     }
 
     public static function update(array $datos): bool

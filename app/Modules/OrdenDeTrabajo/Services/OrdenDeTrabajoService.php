@@ -36,7 +36,7 @@ class OrdenDeTrabajoService
     public function generar($request): array
     {
         try {
-            PresupuestosRepository::calcularTotales($request->id_presupuesto);
+            //PresupuestosRepository::calcularTotales($request->id_presupuesto);
             $item = OrdenDeTrabajoRepository::generar($request);
             return ["datos" => $item];
         } catch (Exception $e) {
