@@ -174,7 +174,7 @@ class OrdenDeTrabajoRepository
                 $datosPresupuesto['cliente_domicilio'],
                 $datosPresupuesto['cliente_telefono'],
                 $datosPresupuesto['fecha'],
-                $datosPresupuesto['total'],
+                $request->reserva,
                 $request->id_presupuesto,
                 0, // ID FORMA DE PAGO 0 POR DEFAULT
                 0, // SUSPENDIDO 0 POR DEFAULT
