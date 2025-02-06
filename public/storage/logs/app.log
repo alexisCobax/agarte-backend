@@ -1,438 +1,113 @@
-[2025-01-29 21:25:45] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'sub_total' doesn't have a default value
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 102
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(102): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":19,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-29 21:26:00] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'sub_total' doesn't have a default value
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 102
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(102): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":15,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-29 21:29:33] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 104
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(104): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":14,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-29 21:34:25] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 104
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(104): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":16,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-29 21:37:00] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'estado_orden_trabajo' doesn't have a default value
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 104
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(104): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":19,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-30 10:10:31] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'estado_orden_trabajo' doesn't have a default value
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 104
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(104): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":19,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-30 10:12:18] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'estado_orden_trabajo' doesn't have a default value
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 104
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(104): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":14,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-30 10:21:42] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
-Código: 0
-Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
-Línea: 105
-
-URL: http://127.0.0.1:8080/presupuestos_detalle
-
-Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(105): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosService.php(25): App\Modules\Presupuesto\Repositories\PresupuestosRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(23): App\Modules\Presupuesto\Services\PresupuestosService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosCreateRequest))
-#3 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
-#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
-#8 {main}
-
-Input Data:
-{"id_presupuesto":"0","id_material":15,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
-
-User ID: 14
-IP Address: 192.168.32.1
-[2025-01-30 12:17:37] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuestos.nombre_cliente' in 'field list'
-Código: 42
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos?page=1&perPage=10&_=1738239457196
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(50): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(38): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 13:00:50] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM 
-                presupuestos
-                    LEFT JOIN sucursales ON' at line 15
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos?page=1&perPage=10&_=1738242049587
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(54): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(38): App\Modules\Presupuesto\Repositories\PresupuestosRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(20): App\Modules\Presupuesto\Services\PresupuestosService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 13:04:28] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION agarte.COLLASE does not exist
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/orden?page=1&perPage=10&_=1738242266509
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository.php(42): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService.php(48): App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController.php(22): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->getAll()
-#4 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/orden', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 13:20:01] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM presupuestos 
-                                                LEFT JOIN (S' at line 4
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php
-Línea: 121
-
-URL: http://agarte:8080/presupuestos/83
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosRepository.php(121): PDOStatement->execute(Array)
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosService.php(48): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findById(83)
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoController.php(32): App\Modules\Presupuesto\Services\PresupuestosService->get(Object(App\Modules\Presupuesto\Requests\PresupuestosShowRequest))
-#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoController->show(Object(App\Modules\Presupuesto\Requests\PresupuestosShowRequest))
-#4 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoController), Array)
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos/8...', 'GET')
-#6 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#7 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 15:41:23] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE  presupuestos.id_sucursal = 1 LIMIT 10 OFFSET 0' at line 20
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/orden?page=1&perPage=10&_=1738251683185
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository.php(47): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService.php(48): App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController.php(22): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->getAll()
-#4 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/orden', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 16:19:30] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738253969648
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 16:19:40] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738253979515
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 16:20:13] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254012930
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 16:24:06] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254245156
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-30 16:26:36] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object] LIMIT 10 OFFSET 0' at line 8
-Código: 42000
-Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
-Línea: 60
-
-URL: http://agarte:8080/presupuestos_extras?page=1&perPage=10&id_presupuesto=%5Bobject%20Object%5D&_=1738254395713
-
-Stack Trace:
-#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
-#1 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository.php(30): App\Helpers\PaginatorHelper->getPaginatedResults()
-#2 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Services\PresupuestosExtrasService.php(43): App\Modules\Presupuesto\Repositories\PresupuestosExtrasRepository::find()
-#3 C:\wamp64\www\agarte-backend\app\Modules\Presupuesto\Controllers\PresupuestoExtrasController.php(20): App\Modules\Presupuesto\Services\PresupuestosExtrasService->getAll()
-#4 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoExtrasController->index()
-#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoExtrasController), Array)
-#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/presupuestos_e...', 'GET')
-#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
-#8 {main}
-
-Input Data:
-
-
-User ID: 14
-IP Address: ::1
-[2025-01-31 20:18:05] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'cm' doesn't have a default value
+[2025-02-05 23:59:47] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 Código: 0
 Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php
-Línea: 116
+Línea: 106
 
-URL: http://127.0.0.1:8080/presupuestos_detalle
+URL: http://127.0.0.1:8080/orden/pdf/taller/1
 
 Stack Trace:
-#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(116): PDOStatement->execute(Array)
-#1 /var/www/html/app/Modules/Presupuesto/Services/PresupuestosDetalleService.php(27): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#2 /var/www/html/app/Modules/Presupuesto/Controllers/PresupuestoDetalleController.php(47): App\Modules\Presupuesto\Services\PresupuestosDetalleService->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#3 [internal function]: App\Modules\Presupuesto\Controllers\PresupuestoDetalleController->create(Object(App\Modules\Presupuesto\Requests\PresupuestosDetalleCreateRequest))
-#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Presupuesto\Controllers\PresupuestoDetalleController), Array)
-#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/presupuestos_d...', 'POST')
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(106): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(219): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::findByPresupuestoId(1)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(120): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('1')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
 #6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
 #7 {main}
 
 Input Data:
-{"id_presupuesto":"0","id_material":8,"posicion":1,"precio":0,"observaciones":"","id_sucursal":"2"}
 
-User ID: 14
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-06 00:00:00] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php
+Línea: 106
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(106): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(219): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::findByPresupuestoId(1)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(120): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('1')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-06 00:17:12] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '10000 AS id_tipo_material
+            FROM 
+                presupuestos_extras
+' at line 29
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php
+Línea: 106
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(106): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(219): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::findByPresupuestoId(1)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(120): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('1')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-06 00:17:58] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php
+Línea: 106
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosDetalleRepository.php(106): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(219): App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository::findByPresupuestoId(1)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(120): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('1')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-06 00:21:04] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuesto.cantidad' in 'field list'
+Código: 42
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 388
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(388): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(218): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findByIdToPDF(1)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(120): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('1')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
 IP Address: 192.168.32.1

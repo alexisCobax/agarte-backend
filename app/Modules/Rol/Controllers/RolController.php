@@ -67,7 +67,7 @@ class RolController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Rol borrado con éxito');
+            ResponseHelper::success(['Rol borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

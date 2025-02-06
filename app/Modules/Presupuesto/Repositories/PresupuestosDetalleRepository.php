@@ -66,19 +66,44 @@ class PresupuestosDetalleRepository
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 
-                        *,
-                        materiales.nombre AS nombre_materiales
-                    FROM 
-                        presupuestos_detalle 
-                        LEFT JOIN  materiales  ON presupuestos_detalle.id_material=materiales.id 
-                        LEFT JOIN tipo_material ON materiales.id_tipo_material=tipo_material.id
-                    WHERE 
-                        presupuestos_detalle.id_presupuesto = ?
-                    ORDER BY 
-                            tipo_material.nombre,
-                            presupuestos_detalle.posicion ASC";
+                id_presupuesto,
+                id_material,
+                cantidad,
+                posicion,
+                cm,
+                cs,
+                precio_unitario,
+                observaciones COLLATE utf8mb4_general_ci AS descripcion,
+                materiales.nombre COLLATE utf8mb4_general_ci AS nombre_materiales,
+                tipo_material.id AS id_tipo_material
+            FROM 
+                presupuestos_detalle
+                LEFT JOIN materiales ON presupuestos_detalle.id_material = materiales.id
+                LEFT JOIN tipo_material ON materiales.id_tipo_material = tipo_material.id
+            WHERE 
+                presupuestos_detalle.id_presupuesto = ?
+            UNION
+            SELECT 
+                id_presupuesto,
+                NULL AS id_material,
+                cantidad,
+                NULL AS posicion,
+                NULL AS cm,
+                NULL AS cs,
+                precio_unitario,
+                CONCAT('Cant ',cantidad,' ') AS descripcion,
+                descripcion AS nombre_materiales,
+                10000 AS id_tipo_material
+            FROM 
+                presupuestos_extras
+            WHERE 
+                presupuestos_extras.id_presupuesto = ?
+
+            ORDER BY 
+                id_tipo_material, posicion, nombre_materiales;
+            ";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$id]);
+            $stmt->execute([$id, $id]);
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             LogHelper::error($e);

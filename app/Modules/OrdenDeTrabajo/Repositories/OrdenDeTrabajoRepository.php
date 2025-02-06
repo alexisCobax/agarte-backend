@@ -6,7 +6,6 @@ use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
-//use App\Modules\Recibo\Repositories\RecibosRepository;
 use App\Modules\OrdenDeTrabajo\Filters\FindFilter;
 
 
@@ -70,7 +69,7 @@ class OrdenDeTrabajoRepository
 
     public static function findLastNumber(int $id_sucursal): int
     {
-        //echo "sucursal:".$id_sucursal; die();
+
         try {
             $connection = Database::getConnection();
             $stmt = $connection->prepare("SELECT numero_orden FROM presupuestos WHERE id_sucursal = ? ORDER BY numero_orden DESC LIMIT 1");
@@ -82,10 +81,9 @@ class OrdenDeTrabajoRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
+
     public static function create($request): int
     {
-               
-        
             try {
                 $connection = Database::getConnection();
                 $SQL = "UPDATE presupuestos 
@@ -105,7 +103,103 @@ class OrdenDeTrabajoRepository
                 LogHelper::error($e);
                 throw new PDOException('Error: ' . $e->getMessage());
             }
+    }
+
+    public static function generar($request)
+    {   
+
+        //SOLO PARA PROBAR
+
         
+            // try {
+                $connection = Database::getConnection();
+                $SQL = "UPDATE presupuestos 
+                SET 
+                fecha_entrega = ?,
+                reserva = ?
+                WHERE 
+                id = ?";
+                $stmt = $connection->prepare($SQL);
+                $stmt->execute([
+                    $request->fecha_entrega,
+                    $request->reserva,
+                    $request->id_presupuesto
+                ]);
+            //     return $request->id_presupuesto;
+            // } catch (PDOException $e) {
+            //     LogHelper::error($e);
+            //     throw new PDOException('Error: ' . $e->getMessage());
+            // }
+
+            // try {
+                $connection = Database::getConnection();
+                $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
+                $stmt->execute([$request->id_presupuesto]);
+                $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
+            // } catch (PDOException $e) {
+            //     LogHelper::error($e);
+            //     throw new PDOException('Error: ' . $e->getMessage());
+            // }
+
+
+            $connection = Database::getConnection();
+
+
+            $SQL = "INSERT INTO 
+                    recibos 
+                    (id_cliente, 
+                    cliente_nombre,
+                    cliente_email, 
+                    cliente_domicilio,
+                    cliente_telefono,
+                    fecha,
+                    total,
+                    id_orden_de_trabajo,
+                    id_forma_de_pago,
+                    suspendido,
+                    cargado_por,
+                    numero,
+                    id_sucursal) 
+                    VALUES 
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $datosPresupuesto['id_cliente'],
+                $datosPresupuesto['cliente_nombre'],
+                $datosPresupuesto['cliente_email'],
+                $datosPresupuesto['cliente_domicilio'],
+                $datosPresupuesto['cliente_telefono'],
+                $datosPresupuesto['fecha'],
+                $datosPresupuesto['total'],
+                1,
+                1,
+                0,
+                $datosPresupuesto['creado_por'],
+                rand(5, 15),
+                $datosPresupuesto['id_sucursal']
+            ]);
+
+            $connection = Database::getConnection();
+
+            $id = $connection->lastInsertId();
+
+            $SQL = "INSERT INTO 
+                    recibos_detalle 
+                    (idRecibo, 
+                    idFormaDePago,
+                    monto,
+                    observaciones) 
+                    VALUES 
+                    (?, ?, ?, ?)";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $id,
+                1,
+                $request->monto,
+                ''
+            ]);
+
+            return $id;
     }
 
     public static function update(array $datos): bool

@@ -51,12 +51,12 @@ class OrdenDeTrabajoController
         }
     }
 
-    public function generate(Request $request)
+    public function generar(Request $request)
     {
         $service = new OrdenDeTrabajoService;
 
         try {
-            $response = $service->create($request);
+            $response = $service->generar($request);
             ResponseHelper::success($response);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
@@ -86,12 +86,26 @@ class OrdenDeTrabajoController
             ResponseHelper::error($e->getMessage());
         }
     }
-    public function pdf($id)
+
+    public function pdfOrdenCliente($id)
     {
         $service = new OrdenDeTrabajoService;
 
         try {
-            $service->pdf($id);
+            $service->pdfOrdenCliente($id);
+            ResponseHelper::success(['Orden borrado con éxito']);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function pdfOrdenTaller($id)
+    {
+
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $service->pdfOrdenTaller($id);
             ResponseHelper::success(['Orden borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());

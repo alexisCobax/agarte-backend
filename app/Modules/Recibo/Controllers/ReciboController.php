@@ -68,7 +68,19 @@ class ReciboController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Recibo borrado con éxito');
+            ResponseHelper::success(['Recibo borrado con éxito']);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function pdfRecibo($id)
+    {
+        $service = new RecibosService;
+
+        try {
+            $service->pdfRecibo($id);
+            ResponseHelper::success(['Orden borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

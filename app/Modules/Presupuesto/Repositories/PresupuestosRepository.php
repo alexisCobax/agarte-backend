@@ -196,7 +196,7 @@ class PresupuestosRepository extends BaseRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
-
+    
     public static function update(object $datos)
     {
         try {
@@ -347,14 +347,19 @@ class PresupuestosRepository extends BaseRepository
             $connection = Database::getConnection();
 
             $SQL = "SELECT 
+                    DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                    DATE_FORMAT(presupuestos.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
                     presupuestos.cliente_nombre,
                     presupuestos.cliente_email,
                     presupuestos.cliente_domicilio,
                     presupuestos.cliente_telefono,
                     presupuestos.numero_orden,
+                    presupuestos.reserva,
+                    presupuestos.total,
                     presupuestos.modelo,
                     presupuestos.alto,
                     presupuestos.ancho,
+                    presupuestos.cantidad,
                     tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
                     CASE 
 					WHEN presupuestos.propio = 1 THEN 'propio' 
@@ -379,7 +384,6 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.id_tipo_enmarcacion=tipo_enmarcacion.id
                     WHERE 
                     presupuestos.id = ?";
-                    //echo $SQL;
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);

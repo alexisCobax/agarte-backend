@@ -5,92 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orden</title>
-    <style>
-        @page {
-            margin: 100px 50px 50px 50px;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            color: #333;
-        }
-
-        header {
-            position: fixed;
-            top: -100px;
-            left: 0;
-            right: 0;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #333;
-            padding: 10px 20px;
-            background-color: #fff;
-        }
-
-        .header-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            flex-grow: 1;
-        }
-
-        footer {
-            position: fixed;
-            bottom: -30px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            text-align: center;
-            font-size: 12px;
-            color: #333;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0px, 0px, 0px, 0px;
-            padding: 0px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            width: 50%;
-        }
-
-        th {
-            background: #e0e0e0;
-            font-weight: bold;
-        }
-
-        .info p {
-            margin: 20px 0;
-        }
-
-        hr {
-            border: 1px dashed grey;
-
-        }
-    </style>
 </head>
 
 <body>
@@ -106,13 +20,6 @@
             </tr>
         </table>
     </header>
-
-
-
-
-    <footer>
-        Página <span class="pagenum"></span>
-    </footer>
 
     <div class="container">
         <table>
@@ -146,22 +53,42 @@
                 <td><strong>Entrega:</strong> {{fecha_entrega}}</td>
             </tr>
             <tr>
+                <td><strong>Cantidad:</strong> {{cantidad}}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
                 <td colspan="2"><strong>Comentario:</strong> {{objeto_comentario}}</td>
             </tr>
         </table>
-        <br/>
+        <br />
         <table>
             <thead>
                 <tr>
-                    <th style='text-align:center;'>Material</th>
-                    <th style='text-align:center;'>Cantidad</th>
-                    <th style='text-align:center;'>Posición</th>
-                    <th style='text-align:center;'>Observaciones</th>
+                    <th style='text-align:left;'>Material</th>
+                    <th style='text-align:left;'>Observaciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="border: 1px solid black;">
                 {{tabla_materiales}}
             </tbody>
+            <tfoot>
+        <tr style="border-top: 2px solid black;">
+            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                <b>Total:</b> ${{total}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                <b>Seña:</b> ${{reserva}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                <b>Saldo:</b> ${{saldo}}
+            </td>
+        </tr>
+    </tfoot>
+
         </table>
     </div>
 

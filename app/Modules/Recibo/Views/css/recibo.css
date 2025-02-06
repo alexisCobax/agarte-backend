@@ -1,0 +1,85 @@
+@page {
+    margin: 100px 50px 50px 50px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #333;
+}
+
+header {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    padding: 10px 20px;
+    background-color: #fff;
+}
+
+.header-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0px, 0px, 0px, 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+th,
+td {
+    padding: 4px;
+    text-align: left;
+    width: 50%;
+}
+
+th {
+    background: #e0e0e0;
+    font-weight: bold;
+}
+
+.info p {
+    margin: 20px 0;
+}
+
+hr {
+    border: 1px dashed grey;
+
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.table-container table {
+    margin: auto;
+    width: auto;
+}
