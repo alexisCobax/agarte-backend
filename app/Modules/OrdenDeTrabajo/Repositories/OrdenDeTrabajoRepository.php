@@ -197,7 +197,7 @@ class OrdenDeTrabajoRepository
             $stmt->execute([
                 $id,
                 $request->forma_pago,
-                $request->monto,
+                $request->reserva,
                 ''
             ]);
 
