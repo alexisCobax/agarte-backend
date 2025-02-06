@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\ReciboDetalle\Repositories;
+namespace App\Modules\Recibo\Repositories;
 
 use PDOException;
 use App\Config\Database;
@@ -31,6 +31,34 @@ class RecibosDetalleRepository
         try {
             $connection = Database::getConnection();
             $stmt = $connection->prepare("SELECT * FROM recibos_detalle WHERE id = ?");
+            $stmt->execute([$id]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function findByReciboId(int $id)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT 
+                    recibos_detalle.idRecibo,
+                    recibos_detalle.idFormaDePago,
+                    recibos_detalle.monto,
+                    recibos_detalle.observaciones,
+                    forma_de_pago.id,
+                    forma_de_pago.nombre AS formaPagoNombre
+                    FROM 
+                    recibos_detalle 
+                    INNER JOIN
+                    forma_de_pago
+                    ON 
+                    recibos_detalle.idFormaDePago=forma_de_pago.id
+                    WHERE 
+                    recibos_detalle.idRecibo = ?";
+            $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

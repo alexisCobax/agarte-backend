@@ -12,7 +12,7 @@
     <header style="width: 100%; border-bottom: 2px solid #333; padding: 10px 0;">
         <table style="width: 100%; border-collapse: collapse;">
             <tr>
-                <td style="width: 33%; text-align: left;">{{sucursal_nombre}}</td>
+                <td style="width: 33%; text-align: left;">{{nombre_sucursal}}</td>
                 <td style="width: 33%; text-align: center; font-weight: bold;">
                     <h1>Recibo</h1>
                 </td>
@@ -45,15 +45,15 @@
                 <tbody>
                     <tr>
                         <td>Pago con Tarjeta de Crédito</td>
-                        <td style="text-align: center;">$500.00</td>
+                        <td style="text-align: center;">${{monto}}</td>
                     </tr>
                     <tr>
                         <td>Descuento</td>
-                        <td style="text-align: center;">-$50.00</td>
+                        <td style="text-align: center;">$00.00</td>
                     </tr>
                     <tr>
                         <td><strong>Total</strong></td>
-                        <td><strong>$450.00</strong></td>
+                        <td><strong>${{total}}</strong></td>
                     </tr>
                 </tbody>
             </table>

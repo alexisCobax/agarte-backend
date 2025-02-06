@@ -7,7 +7,7 @@ use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
 use App\Modules\OrdenDeTrabajo\Filters\FindFilter;
-
+use App\Modules\Recibo\Repositories\RecibosRepository;
 
 class OrdenDeTrabajoRepository
 {
@@ -36,18 +36,17 @@ class OrdenDeTrabajoRepository
                             LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
                     WHERE
                         presupuestos.id_estado=3";
-                        
+
             $filters = FindFilter::getFilters();
-                        if ($filters) {
-                            $SQL .= " AND " . implode(" AND ", $filters);
-                        }
-            
+            if ($filters) {
+                $SQL .= " AND " . implode(" AND ", $filters);
+            }
+
             $SQL .= " ORDER BY presupuestos.numero_orden DESC";
 
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();
-
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error en la paginación: ' . $e->getMessage());
@@ -84,69 +83,72 @@ class OrdenDeTrabajoRepository
 
     public static function create($request): int
     {
-            try {
-                $connection = Database::getConnection();
-                $SQL = "UPDATE presupuestos 
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE presupuestos 
                 SET 
                 id_estado = ?,
                 numero_orden = ?
                 WHERE 
                 id = ?";
-                $stmt = $connection->prepare($SQL);
-                $stmt->execute([
-                    3,
-                    self::findLastNumber($request->getIdSucursal()) + 1,
-                    $request->getId()
-                ]);
-                return $request->getId();
-            } catch (PDOException $e) {
-                LogHelper::error($e);
-                throw new PDOException('Error: ' . $e->getMessage());
-            }
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                3,
+                self::findLastNumber($request->getIdSucursal()) + 1,
+                $request->getId()
+            ]);
+            return $request->getId();
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
     }
 
     public static function generar($request)
-    {   
+    {
 
-        //SOLO PARA PROBAR
-        
-            // try {
-                $connection = Database::getConnection();
-                $SQL = "UPDATE presupuestos 
-                SET 
-                id_estado = ?,
-                fecha_entrega = ?,
-                reserva = ?
-                WHERE 
-                id = ?";
-                $stmt = $connection->prepare($SQL);
-                $stmt->execute([
-                    3, // TIPO ORDEN
-                    $request->fecha_entrega,
-                    $request->reserva,
-                    $request->id_presupuesto
-                ]);
-            //     return $request->id_presupuesto;
-            // } catch (PDOException $e) {
-            //     LogHelper::error($e);
-            //     throw new PDOException('Error: ' . $e->getMessage());
-            // }
-
-            // try {
-                $connection = Database::getConnection();
-                $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
-                $stmt->execute([$request->id_presupuesto]);
-                $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
-            // } catch (PDOException $e) {
-            //     LogHelper::error($e);
-            //     throw new PDOException('Error: ' . $e->getMessage());
-            // }
-
-
+        try {
             $connection = Database::getConnection();
+            $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
+            $stmt->execute([$request->id_presupuesto]);
+            $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
 
-            $numeroRecibo = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']);
 
+        $connection = Database::getConnection();
+
+
+        $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE presupuestos 
+                            SET 
+                            id_estado = ?,
+                            fecha_entrega = ?,
+                            reserva = ?,
+                            numero_orden = ?
+                            WHERE 
+                            id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                3, // TIPO ORDEN
+                $request->fecha_entrega,
+                $request->reserva,
+                $numeroOrden,
+                $request->id_presupuesto
+            ]);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+
+        $numeroRecibo = RecibosRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+
+        try {
             $SQL = "INSERT INTO 
                     recibos 
                     (id_cliente, 
@@ -177,14 +179,19 @@ class OrdenDeTrabajoRepository
                 0, // ID FORMA DE PAGO 0 POR DEFAULT
                 0, // SUSPENDIDO 0 POR DEFAULT
                 $datosPresupuesto['creado_por'],
-                $numeroRecibo+1,
+                $numeroRecibo,
                 $datosPresupuesto['id_sucursal']
             ]);
 
             $connection = Database::getConnection();
 
             $id = $connection->lastInsertId();
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
 
+        try {
             $SQL = "INSERT INTO 
                     recibos_detalle 
                     (idRecibo, 
@@ -202,6 +209,10 @@ class OrdenDeTrabajoRepository
             ]);
 
             return $datosPresupuesto;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
     }
 
     public static function update(array $datos): bool

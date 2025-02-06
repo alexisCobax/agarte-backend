@@ -60,7 +60,29 @@ class RecibosRepository
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM recibos WHERE id = ?");
+            $SQL = "SELECT 
+                    recibos.cliente_nombre,
+                    recibos.cliente_email,
+                    recibos.cliente_domicilio,
+                    recibos.cliente_telefono,
+                    recibos.fecha,
+                    recibos.total,
+                    recibos.id_orden_de_trabajo,
+                    recibos.id_forma_de_pago,
+                    recibos.suspendido,
+                    recibos.cargado_por,
+                    recibos.numero,
+                    recibos.id_sucursal,
+                    sucursales.nombre AS nombreSucursal
+                    FROM 
+                    recibos 
+                    INNER JOIN
+                    sucursales
+                    ON
+                    recibos.id_sucursal=sucursales.id
+                    WHERE 
+                    recibos.id = ?";
+            $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

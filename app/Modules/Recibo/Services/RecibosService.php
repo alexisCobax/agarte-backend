@@ -6,8 +6,7 @@ use PDOException;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Modules\Recibo\Repositories\RecibosRepository;
-use App\Modules\Presupuesto\Repositories\PresupuestosRepository;
-use App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository;
+use App\Modules\Recibo\Repositories\RecibosDetalleRepository;;
 
 class RecibosService
 {
@@ -74,29 +73,19 @@ class RecibosService
     {
         ob_start(); // Iniciar buffer de salida para evitar problemas con headers
     
-        $presupuesto = PresupuestosRepository::findByIdToPDF($id);
-        $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
+        $recibo = RecibosRepository::findById($id);
+        $reciboDetalle = RecibosDetalleRepository::findByReciboId($id);
     
         // Evitar errores si algún dato es null
         $datos = [
-            'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',
-            'cliente_email' => $presupuesto['cliente_email'] ?? '',
-            'cliente_domicilio' => $presupuesto['cliente_domicilio'] ?? '',
-            'cliente_telefono' => $presupuesto['cliente_telefono'] ?? ''
-            // 'objeto_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
-            // 'objeto_modelo' => $presupuesto['modelo'] ?? '',
-            // 'objeto_propiedad' => $presupuesto['propio'] ?? '',
-            // 'objeto_comentario' => $presupuesto['comentarios'] ?? '',
-            // 'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
-            // 'detalle_alto' => $presupuesto['alto'] ?? '',
-            // 'detalle_ancho' => $presupuesto['ancho'] ?? '',
-            // 'numero_orden' => $presupuesto['numero_orden'] ?? '',
-            // 'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
-            // 'fecha_recepcion' => $presupuesto['fecha'] ?? '',
-            // 'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
-            // 'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
-            // 'total' => $presupuesto['total'] ?? '',
-            // 'reserva' => $presupuesto['reserva'] ?? '',
+            'cliente_nombre' => $recibo['cliente_nombre'] ?? '',
+            'cliente_email' => $recibo['cliente_email'] ?? '',
+            'cliente_domicilio' => $recibo['cliente_domicilio'] ?? '',
+            'cliente_telefono' => $recibo['cliente_telefono'] ?? '',
+            'nombre_sucursal' => $recibo['nombreSucursal'] ?? '',
+            'forma_pago' => $reciboDetalle['formaPagoNombre'] ?? '',
+            'total' => $recibo['total'] ?? '',
+            'monto' => $reciboDetalle['monto'] ?? ''
         ];
         
         // Cargar la plantilla HTML y reemplazar variables
