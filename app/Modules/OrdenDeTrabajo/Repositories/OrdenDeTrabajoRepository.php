@@ -175,9 +175,9 @@ class OrdenDeTrabajoRepository
                 $datosPresupuesto['total'],
                 $request->id_presupuesto,
                 0, // ID FORMA DE PAGO 0 POR DEFAULT
-                0, // SUSPENDIO 0 POR DEFAULT
+                0, // SUSPENDIDO 0 POR DEFAULT
                 $datosPresupuesto['creado_por'],
-                $numeroRecibo,
+                $numeroRecibo+1,
                 $datosPresupuesto['id_sucursal']
             ]);
 
