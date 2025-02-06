@@ -287,22 +287,23 @@ class PresupuestosRepository extends BaseRepository
         try {
             $connection = Database::getConnection();
             $SQL = "UPDATE presupuestos
-                    LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
-                    LEFT JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
-                    LEFT JOIN 
-                    (SELECT presupuestos_detalle.id_presupuesto, 		
-                            SUM(presupuestos_detalle.precio_unitario * presupuestos_detalle.cantidad) as total 
-                    FROM presupuestos_detalle 
-                    GROUP BY presupuestos_detalle.id_presupuesto) as totalMateriales 
-                    ON totalMateriales.id_presupuesto = presupuestos.id
-                    LEFT JOIN (SELECT presupuestos_extras.id_presupuesto, 
-                          SUM(presupuestos_extras.precio_unitario * presupuestos_extras.cantidad) as total
-                          FROM   presupuestos_extras
-                          GROUP BY presupuestos_extras.id_presupuesto) as totalExtras 
-                      ON totalExtras.id_presupuesto = presupuestos.id
+                            LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
+                            LEFT JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
+                            LEFT JOIN 
+                            (SELECT presupuestos_detalle.id_presupuesto, 		
+                                    SUM(presupuestos_detalle.precio_unitario * presupuestos_detalle.cantidad) as total 
+                            FROM presupuestos_detalle 
+                            GROUP BY presupuestos_detalle.id_presupuesto) as totalMateriales 
+                            ON totalMateriales.id_presupuesto = presupuestos.id
+                            LEFT JOIN (SELECT presupuestos_extras.id_presupuesto, 
+                                SUM(presupuestos_extras.precio_unitario * presupuestos_extras.cantidad) as total
+                                FROM   presupuestos_extras
+                                GROUP BY presupuestos_extras.id_presupuesto) as totalExtras ON totalExtras.id_presupuesto = presupuestos.id
                     SET 
-                    presupuestos.sub_total = (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
-                    (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
+                        presupuestos.sub_total = ROUND(
+                                            (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
+                                            (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
+                                            /500) * 500
                     WHERE presupuestos.id = ?";
             $stmt1 = $connection->prepare($SQL);
             $stmt1->execute([
@@ -321,6 +322,46 @@ class PresupuestosRepository extends BaseRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
+    
+    // public static function calcularTotales($id)
+    // {
+    //     try {
+    //         $connection = Database::getConnection();
+    //         $SQL = "UPDATE presupuestos
+    //                 LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
+    //                 LEFT JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
+    //                 LEFT JOIN 
+    //                 (SELECT presupuestos_detalle.id_presupuesto, 		
+    //                         SUM(presupuestos_detalle.precio_unitario * presupuestos_detalle.cantidad) as total 
+    //                 FROM presupuestos_detalle 
+    //                 GROUP BY presupuestos_detalle.id_presupuesto) as totalMateriales 
+    //                 ON totalMateriales.id_presupuesto = presupuestos.id
+    //                 LEFT JOIN (SELECT presupuestos_extras.id_presupuesto, 
+    //                       SUM(presupuestos_extras.precio_unitario * presupuestos_extras.cantidad) as total
+    //                       FROM   presupuestos_extras
+    //                       GROUP BY presupuestos_extras.id_presupuesto) as totalExtras 
+    //                   ON totalExtras.id_presupuesto = presupuestos.id
+    //                 SET 
+    //                 presupuestos.sub_total = (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
+    //                 (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
+    //                 WHERE presupuestos.id = ?";
+    //         $stmt1 = $connection->prepare($SQL);
+    //         $stmt1->execute([
+    //             $id
+    //         ]);
+    //         $SQL2 = "UPDATE presupuestos
+    //         SET 
+    //         presupuestos.total = (IFNULL(presupuestos.sub_total,0) - ((IFNULL(presupuestos.descuento,0)/100)*IFNULL(presupuestos.sub_total,0)))
+    //         WHERE presupuestos.id = ?;";
+    //         $stmt2 = $connection->prepare($SQL2);
+    //         $stmt2->execute([
+    //             $id
+    //         ]);
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
+    // }
 
     public static function findOrderNumber($id_sucursal)
     {

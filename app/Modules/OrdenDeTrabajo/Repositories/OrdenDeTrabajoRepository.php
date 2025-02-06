@@ -109,7 +109,6 @@ class OrdenDeTrabajoRepository
     {   
 
         //SOLO PARA PROBAR
-
         
             // try {
                 $connection = Database::getConnection();
