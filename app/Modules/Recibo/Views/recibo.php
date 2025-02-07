@@ -16,7 +16,7 @@
                 <td style="width: 33%; text-align: center; font-weight: bold;">
                     <h1>Recibo</h1>
                 </td>
-                <td style="width: 33%; text-align: right;">N°: 1</td>
+                <td style="width: 33%; text-align: right;">N°: {{recibo_id}}</td>
             </tr>
         </table>
     </header>
@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pago con Tarjeta de Crédito</td>
+                        <td>Forma de pago {{forma_pago}}</td>
                         <td style="text-align: center;">${{monto}}</td>
                     </tr>
                     <tr>

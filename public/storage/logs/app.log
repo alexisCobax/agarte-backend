@@ -155,3 +155,95 @@ Input Data:
 
 User ID: N/A
 IP Address: 192.168.32.1
+[2025-02-07 14:27:14] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS recibo_id
+                    recibos.cliente_nombre,
+                    rec' at line 2
+Código: 42000
+Archivo: /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php
+Línea: 87
+
+URL: http://127.0.0.1:8080/recibos/pdf/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Recibo/Services/RecibosService.php(76): App\Modules\Recibo\Repositories\RecibosRepository::findById(1)
+#2 /var/www/html/app/Modules/Recibo/Controllers/ReciboController.php(82): App\Modules\Recibo\Services\RecibosService->pdfRecibo('1')
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->pdfRecibo('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/recibos/pdf/1', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-07 14:27:28] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS recibo_id,
+                    recibos.cliente_nombre,
+                    re' at line 2
+Código: 42000
+Archivo: /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php
+Línea: 87
+
+URL: http://127.0.0.1:8080/recibos/pdf/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php(87): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Recibo/Services/RecibosService.php(76): App\Modules\Recibo\Repositories\RecibosRepository::findById(1)
+#2 /var/www/html/app/Modules/Recibo/Controllers/ReciboController.php(82): App\Modules\Recibo\Services\RecibosService->pdfRecibo('1')
+#3 [internal function]: App\Modules\Recibo\Controllers\ReciboController->pdfRecibo('1')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/recibos/pdf/1', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-07 14:55:36] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'apellido' doesn't have a default value
+Código: 0
+Archivo: /var/www/html/app/Modules/Empleado/Repositories/EmpleadosRepository.php
+Línea: 98
+
+URL: http://127.0.0.1:8080/empleados
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Empleado/Repositories/EmpleadosRepository.php(98): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Empleado/Services/EmpleadosService.php(20): App\Modules\Empleado\Repositories\EmpleadosRepository::create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest))
+#2 /var/www/html/app/Modules/Empleado/Controllers/EmpleadoController.php(47): App\Modules\Empleado\Services\EmpleadosService->create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest), Object(App\Modules\Auth\Requests\AuthRequest))
+#3 [internal function]: App\Modules\Empleado\Controllers\EmpleadoController->create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest), Object(App\Modules\Auth\Requests\AuthRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Empleado\Controllers\EmpleadoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/empleados', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"nombre":"juan perez","telefono":"3516756555","email":"juan@perez.com","id_sucursal":"2","usuario":"juan@perez.com","clave":"123456","rol":"2"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 14:56:06] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1364 Field 'apellido' doesn't have a default value
+Código: 0
+Archivo: /var/www/html/app/Modules/Empleado/Repositories/EmpleadosRepository.php
+Línea: 98
+
+URL: http://127.0.0.1:8080/empleados
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Empleado/Repositories/EmpleadosRepository.php(98): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Empleado/Services/EmpleadosService.php(20): App\Modules\Empleado\Repositories\EmpleadosRepository::create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest))
+#2 /var/www/html/app/Modules/Empleado/Controllers/EmpleadoController.php(47): App\Modules\Empleado\Services\EmpleadosService->create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest), Object(App\Modules\Auth\Requests\AuthRequest))
+#3 [internal function]: App\Modules\Empleado\Controllers\EmpleadoController->create(Object(App\Modules\Empleado\Requests\EmpleadosCreateRequest), Object(App\Modules\Auth\Requests\AuthRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Empleado\Controllers\EmpleadoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/empleados', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"nombre":"juan perez","telefono":"3516756555","email":"juan@perez.com","id_sucursal":"2","usuario":"juan2@perez2.com","clave":"123456","rol":"2"}
+
+User ID: 14
+IP Address: 192.168.32.1

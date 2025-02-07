@@ -82,7 +82,20 @@ class PresupuestoController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Presupuesto borrado con éxito');
+            ResponseHelper::success(['Presupuesto borrado con éxito']);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function pdfPresupuesto($id)
+    {
+
+        $service = new PresupuestosService;
+
+        try {
+            $service->pdfPresupuesto($id);
+            ResponseHelper::success(['Presupuesto generado con exito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

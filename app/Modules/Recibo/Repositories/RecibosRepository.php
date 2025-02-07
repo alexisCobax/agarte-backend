@@ -61,6 +61,7 @@ class RecibosRepository
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 
+                    recibos.id AS recibo_id,
                     recibos.cliente_nombre,
                     recibos.cliente_email,
                     recibos.cliente_domicilio,

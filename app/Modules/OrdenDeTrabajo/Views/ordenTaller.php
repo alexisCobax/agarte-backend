@@ -40,7 +40,7 @@
                 <td><strong>Alto:</strong> {{detalle_alto}} cm</td>
             </tr>
             <tr>
-                <td><strong>Propiedad:</strong> {{objeto_propiedad}}</td>
+                <td><strong>¿Es Propio?:</strong> {{objeto_propiedad}}</td>
                 <td><strong>Ancho:</strong> {{detalle_ancho}} cm</td>
             </tr>
             <tr>

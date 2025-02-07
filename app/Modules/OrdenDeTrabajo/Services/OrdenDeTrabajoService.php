@@ -112,13 +112,13 @@ class OrdenDeTrabajoService
             'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
             'detalle_alto' => $presupuesto['alto'] ?? '',
             'detalle_ancho' => $presupuesto['ancho'] ?? '',
-            'numero_orden' => $presupuesto['numero_orden'] ?? '',
+            'numero_orden' => str_pad($presupuesto['numero_orden'], 4, "0", STR_PAD_LEFT) ?? 0000,
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
             'fecha_recepcion' => $presupuesto['fecha'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
             'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
-            'reserva' => $presupuesto['reserva'] ?? '',
+            'reserva' => $presupuesto['reserva'] ?? '0.00',
             'cantidad' => $presupuesto['cantidad']
         ];
     
@@ -174,13 +174,13 @@ class OrdenDeTrabajoService
             'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
             'detalle_alto' => $presupuesto['alto'] ?? '',
             'detalle_ancho' => $presupuesto['ancho'] ?? '',
-            'numero_orden' => $presupuesto['numero_orden'] ?? '',
+            'numero_orden' => str_pad($presupuesto['numero_orden'], 4, "0", STR_PAD_LEFT) ?? 0000,
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
             'fecha_recepcion' => $presupuesto['fecha'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
             'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
-            'reserva' => $presupuesto['reserva'] ?? '',
+            'reserva' => $presupuesto['reserva'] ?? '0.00',
             'posicion' => $presupuesto['posicion'] ?? '',
             'cantidad' => $presupuesto['cantidad'] ?? '',
             'nombre_objeto_enmarcar' => $presupuesto['nombre_objeto_enmarcar'] ?? ''

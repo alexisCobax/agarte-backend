@@ -107,6 +107,8 @@ class OrdenDeTrabajoRepository
     public static function generar($request)
     {
 
+        //MODIFICAR!!!!
+
         try {
             $connection = Database::getConnection();
             $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");

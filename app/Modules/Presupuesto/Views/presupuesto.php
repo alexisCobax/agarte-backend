@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orden</title>
+    <title>Presupuesto</title>
 </head>
 
 <body>
@@ -14,9 +14,9 @@
             <tr>
                 <td style="width: 33%; text-align: left;">{{sucursal_nombre}}</td>
                 <td style="width: 33%; text-align: center; font-weight: bold;">
-                    <h1>Orden de trabajo</h1>
+                    <h1>Presupuesto</h1>
                 </td>
-                <td style="width: 33%; text-align: right;">N°: {{numero_orden}}</td>
+                <td style="width: 33%; text-align: right;">N°: {{numero_presupuesto}}</td>
             </tr>
         </table>
     </header>
@@ -49,10 +49,6 @@
                 <td><strong>Ancho:</strong> {{detalle_ancho}} cm</td>
             </tr>
             <tr>
-                <td><strong>Recepción:</strong> {{fecha_recepcion}}</td>
-                <td><strong>Entrega:</strong> {{fecha_entrega}}</td>
-            </tr>
-            <tr>
                 <td><strong>Cantidad:</strong> {{cantidad}}</td>
                 <td>&nbsp;</td>
             </tr>
@@ -79,27 +75,10 @@
                 <b>Total:</b> ${{total}}
             </td>
         </tr>
-        <tr>
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Seña:</b> ${{reserva}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Saldo:</b> ${{saldo}}
-            </td>
-        </tr>
     </tfoot>
 
         </table>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".pagenum").textContent = "1";
-        });
-    </script>
-
 </body>
 
 </html>

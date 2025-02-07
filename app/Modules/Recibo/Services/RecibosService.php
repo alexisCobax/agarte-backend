@@ -78,6 +78,7 @@ class RecibosService
     
         // Evitar errores si algún dato es null
         $datos = [
+            'recibo_id' => str_pad($recibo['recibo_id'], 4, "0", STR_PAD_LEFT) ?? 0000,
             'cliente_nombre' => $recibo['cliente_nombre'] ?? '',
             'cliente_email' => $recibo['cliente_email'] ?? '',
             'cliente_domicilio' => $recibo['cliente_domicilio'] ?? '',

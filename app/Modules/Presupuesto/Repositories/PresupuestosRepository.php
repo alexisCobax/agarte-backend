@@ -390,6 +390,7 @@ class PresupuestosRepository extends BaseRepository
             $SQL = "SELECT 
                     DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
                     DATE_FORMAT(presupuestos.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
+                    presupuestos.id AS id_presupuesto,
                     presupuestos.cliente_nombre,
                     presupuestos.cliente_email,
                     presupuestos.cliente_domicilio,
@@ -403,8 +404,8 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.cantidad,
                     tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
                     CASE 
-					WHEN presupuestos.propio = 1 THEN 'propio' 
-					ELSE '' 
+					WHEN presupuestos.propio = 1 THEN 'Si' 
+					ELSE 'No' 
 					END AS propio,
                     presupuestos.comentarios,
                     objetos_a_enmarcar.nombre AS nombre_objeto_enmarcar,
