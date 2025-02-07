@@ -90,9 +90,6 @@ class PresupuestosService
     
         $presupuesto = PresupuestosRepository::findByIdToPDF($id);
         $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
-        
-        // Actualizo el id de estado a 2 que es en proceso
-        $presupuesto = PresupuestosRepository::enProceso($id);
 
         // Evitar errores si algún dato es null
         $datos = [
@@ -146,6 +143,9 @@ class PresupuestosService
         ob_end_clean(); // Limpiar cualquier salida antes de enviar el PDF
         $dompdf->stream('presupuesto.pdf', ['Attachment' => false]);
     
+        // Actualizo el id de estado a 2 que es en proceso
+        $presupuesto = PresupuestosRepository::enProceso($id);
+
         exit; // Finalizar script para evitar cualquier salida extra
     }
 
