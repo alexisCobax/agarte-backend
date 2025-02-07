@@ -76,7 +76,6 @@ class PresupuestosRepository extends BaseRepository
             $stmt->execute([$id]);
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
             return $result['saldo'] ?? 0;
-
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
@@ -101,7 +100,6 @@ class PresupuestosRepository extends BaseRepository
             $stmt->execute([$id]);
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
             return $result['pagos'] ?? 0;
-
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
@@ -196,13 +194,13 @@ class PresupuestosRepository extends BaseRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
-    
+
     public static function update(object $datos)
     {
         try {
             $repository = new self();
             $repository->updateData('presupuestos', $datos->toArray(), 'id', $datos->getId());
-            
+
             return self::findById($datos->getId());
         } catch (PDOException $e) {
 
@@ -322,7 +320,7 @@ class PresupuestosRepository extends BaseRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
-    
+
     // public static function calcularTotales($id)
     // {
     //     try {
@@ -433,5 +431,29 @@ class PresupuestosRepository extends BaseRepository
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
         }
+    }
+
+    public function findByPresupuestoId($id)
+    {
+        $connection = Database::getConnection();
+
+        $SQL = "SELECT * FROM presupuestos WHERE id = ?";
+        $stmt = $connection->prepare($SQL);
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function actualizarEstado($id, $fechaEntrega, $reserva, $numeroOrden)
+    {
+
+        $connection = Database::getConnection();
+
+        $SQL = "UPDATE 
+                presupuestos 
+                SET id_estado = ?, fecha_entrega = ?, reserva = ?, numero_orden = ?
+                WHERE id = ?";
+        $stmt = $connection->prepare($SQL);
+        $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $id]);
     }
 }

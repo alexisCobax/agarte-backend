@@ -8,6 +8,7 @@ use Dompdf\Dompdf;
 
 use Dompdf\Options;
 use App\Helpers\LogHelper;
+use App\Modules\Recibo\Repositories\RecibosRepository;
 use App\Modules\Presupuesto\Requests\PresupuestosUpdateRequest;
 use App\Modules\Presupuesto\Repositories\PresupuestosRepository;
 use App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository;
@@ -15,7 +16,7 @@ use App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository;
 
 class OrdenDeTrabajoService
 {
-    
+
     public function create(PresupuestosUpdateRequest $request): array
     {
 
@@ -27,24 +28,47 @@ class OrdenDeTrabajoService
             OrdenDeTrabajoRepository::create($request);
             return ["datos" => $item];
         } catch (PDOException $e) {
-            //LogHelper::error($e->getMessage());
+            LogHelper::error($e);
             throw new \Exception('Error al crear una orden de trabajo. Inténtalo más tarde.');
         }
-
     }
 
-    public function generar($request): array
+    public function generar($request)
     {
+
         try {
-            //PresupuestosRepository::calcularTotales($request->id_presupuesto);
-            $item = OrdenDeTrabajoRepository::generar($request);
-            return ["datos" => $item];
-        } catch (Exception $e) {
-            //LogHelper::error($e->getMessage());
-            echo $e->getMessage();die;
-            throw new \Exception('Error al crear unn orden de trabajo. Inténtalo más tarde.');
+            $presupuestoRepository = new PresupuestosRepository();
+            $reciboRepository = new RecibosRepository();
+
+            $datosPresupuesto = $presupuestoRepository->findByPresupuestoId($request->id_presupuesto);
+
+            if (!$datosPresupuesto) {
+                throw new Exception("Presupuesto no encontrado.");
+            }
+
+            $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+            $presupuestoRepository->actualizarEstado($request->id_presupuesto, $request->fecha_entrega, $request->reserva, $numeroOrden);
+
+            $numeroRecibo = $reciboRepository->findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+            $idRecibo = $reciboRepository->crearRecibo($datosPresupuesto, $request->reserva, $request->id_presupuesto, $numeroRecibo);
+            $reciboRepository->crearReciboDetalle($idRecibo, $request->forma_pago, $request->reserva);
+
+            return $datosPresupuesto;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new \Exception('Error al crear una orden de trabajo. Inténtalo más tarde.');
         }
     }
+    // public function generar($request): array
+    // {
+    //     try {
+    //         $item = OrdenDeTrabajoRepository::generar($request);
+    //         return ["datos" => $item];
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new \Exception('Error al crear unn orden de trabajo. Inténtalo más tarde.');
+    //     }
+    // }
 
     public function getAll(): array
     {
@@ -95,10 +119,10 @@ class OrdenDeTrabajoService
     public function pdfOrdenCliente($id)
     {
         ob_start(); // Iniciar buffer de salida para evitar problemas con headers
-    
+
         $presupuesto = PresupuestosRepository::findByIdToPDF($id);
         $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
-    
+
         // Evitar errores si algún dato es null
         $datos = [
             'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',
@@ -116,12 +140,12 @@ class OrdenDeTrabajoService
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
             'fecha_recepcion' => $presupuesto['fecha'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
-            'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
+            'saldo' => $presupuesto['total'] - $presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
             'reserva' => $presupuesto['reserva'] ?? '0.00',
             'cantidad' => $presupuesto['cantidad']
         ];
-    
+
         // Construcción de la tabla en HTML
         $tablaMaterialesHtml = "";
         foreach ($presupuestoDetalle as $item) {
@@ -132,35 +156,35 @@ class OrdenDeTrabajoService
                 <td style='text-align:left; border: 1px solid black;'>{$item['descripcion']}</td>
             </tr>";
         }
-    
+
         // Cargar la plantilla HTML y reemplazar variables
         $html = $this->cargarHtml(__DIR__ . '/../Views/ordenCliente.php', array_merge($datos, ['tabla_materiales' => $tablaMaterialesHtml]));
-    
+
         // Configurar Dompdf
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
         $options->set('isRemoteEnabled', true);
-    
+
         $dompdf = new Dompdf($options);
-        $css = file_get_contents(dirname(__DIR__,1).'/Views/css/ordenCliente.css');
+        $css = file_get_contents(dirname(__DIR__, 1) . '/Views/css/ordenCliente.css');
         $html = "<style>$css</style>" . $html;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-    
+
         ob_end_clean(); // Limpiar cualquier salida antes de enviar el PDF
         $dompdf->stream('ordenCliente.pdf', ['Attachment' => false]);
-    
+
         exit; // Finalizar script para evitar cualquier salida extra
     }
 
     public function pdfOrdenTaller($id)
     {
         ob_start(); // Iniciar buffer de salida para evitar problemas con headers
-    
+
         $presupuesto = PresupuestosRepository::findByIdToPDF($id);
         $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
-    
+
         // Evitar errores si algún dato es null
         $datos = [
             'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',
@@ -178,14 +202,14 @@ class OrdenDeTrabajoService
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
             'fecha_recepcion' => $presupuesto['fecha'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
-            'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
+            'saldo' => $presupuesto['total'] - $presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
             'reserva' => $presupuesto['reserva'] ?? '0.00',
             'posicion' => $presupuesto['posicion'] ?? '',
             'cantidad' => $presupuesto['cantidad'] ?? '',
             'nombre_objeto_enmarcar' => $presupuesto['nombre_objeto_enmarcar'] ?? ''
         ];
-    
+
         // Construcción de la tabla en HTML
         $tablaMaterialesHtml = "";
         foreach ($presupuestoDetalle as $item) {
@@ -197,45 +221,44 @@ class OrdenDeTrabajoService
                 <td style='text-align:left;'>{$item['descripcion']}</td>
             </tr>";
         }
-    
+
         // Cargar la plantilla HTML y reemplazar variables
         $html = $this->cargarHtml(__DIR__ . '/../Views/ordenTaller.php', array_merge($datos, ['tabla_materiales' => $tablaMaterialesHtml]));
-    
+
         // Configurar Dompdf
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
         $options->set('isRemoteEnabled', true);
-    
+
         $dompdf = new Dompdf($options);
-        $css = file_get_contents(dirname(__DIR__,1).'/Views/css/ordenTaller.css');
+        $css = file_get_contents(dirname(__DIR__, 1) . '/Views/css/ordenTaller.css');
         $html = "<style>$css</style>" . $html;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-    
+
         ob_end_clean(); // Limpiar cualquier salida antes de enviar el PDF
         $dompdf->stream('ordenTaller.pdf', ['Attachment' => false]);
-    
+
         exit; // Finalizar script para evitar cualquier salida extra
     }
-    
+
 
     // Función para cargar la plantilla HTML y reemplazar variables
     function cargarHtml($ruta, $variables = [])
     {
         $rutaCompleta = __DIR__ . '/../Views/' . basename($ruta);
-    
+
         if (!file_exists($rutaCompleta)) {
             die("Error: No se encontró la plantilla HTML en $rutaCompleta.");
         }
-    
+
         $html = file_get_contents($rutaCompleta);
-    
+
         foreach ($variables as $key => $value) {
             $html = str_replace("{{{$key}}}", $value ?? '', $html); // Convertir null en cadena vacía
         }
-    
+
         return $html;
     }
-    
 }

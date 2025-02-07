@@ -104,118 +104,115 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function generar($request)
-    {
+    // public static function generar($request)
+    // {
 
-        //MODIFICAR!!!!
+    //     try {
+    //         $connection = Database::getConnection();
+    //         $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
+    //         $stmt->execute([$request->id_presupuesto]);
+    //         $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
 
-        try {
-            $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
-            $stmt->execute([$request->id_presupuesto]);
-            $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-
-
-        $connection = Database::getConnection();
+    //     $connection = Database::getConnection();
 
 
-        $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+    //     $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
 
-        try {
-            $connection = Database::getConnection();
-            $SQL = "UPDATE presupuestos 
-                            SET 
-                            id_estado = ?,
-                            fecha_entrega = ?,
-                            reserva = ?,
-                            numero_orden = ?
-                            WHERE 
-                            id = ?";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                3, // TIPO ORDEN
-                $request->fecha_entrega,
-                $request->reserva,
-                $numeroOrden,
-                $request->id_presupuesto
-            ]);
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
+    //     try {
+    //         $connection = Database::getConnection();
+    //         $SQL = "UPDATE presupuestos 
+    //                         SET 
+    //                         id_estado = ?,
+    //                         fecha_entrega = ?,
+    //                         reserva = ?,
+    //                         numero_orden = ?
+    //                         WHERE 
+    //                         id = ?";
+    //         $stmt = $connection->prepare($SQL);
+    //         $stmt->execute([
+    //             3, // TIPO ORDEN
+    //             $request->fecha_entrega,
+    //             $request->reserva,
+    //             $numeroOrden,
+    //             $request->id_presupuesto
+    //         ]);
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
 
-        $numeroRecibo = RecibosRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
+    //     $numeroRecibo = RecibosRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
 
-        try {
-            $SQL = "INSERT INTO 
-                    recibos 
-                    (id_cliente, 
-                    cliente_nombre,
-                    cliente_email, 
-                    cliente_domicilio,
-                    cliente_telefono,
-                    fecha,
-                    total,
-                    id_orden_de_trabajo,
-                    id_forma_de_pago,
-                    suspendido,
-                    cargado_por,
-                    numero,
-                    id_sucursal) 
-                    VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                $datosPresupuesto['id_cliente'],
-                $datosPresupuesto['cliente_nombre'],
-                $datosPresupuesto['cliente_email'],
-                $datosPresupuesto['cliente_domicilio'],
-                $datosPresupuesto['cliente_telefono'],
-                $datosPresupuesto['fecha'],
-                $request->reserva,
-                $request->id_presupuesto,
-                0, // ID FORMA DE PAGO 0 POR DEFAULT
-                0, // SUSPENDIDO 0 POR DEFAULT
-                $datosPresupuesto['creado_por'],
-                $numeroRecibo,
-                $datosPresupuesto['id_sucursal']
-            ]);
+    //     try {
+    //         $SQL = "INSERT INTO 
+    //                 recibos 
+    //                 (id_cliente, 
+    //                 cliente_nombre,
+    //                 cliente_email, 
+    //                 cliente_domicilio,
+    //                 cliente_telefono,
+    //                 fecha,
+    //                 total,
+    //                 id_orden_de_trabajo,
+    //                 id_forma_de_pago,
+    //                 suspendido,
+    //                 cargado_por,
+    //                 numero,
+    //                 id_sucursal) 
+    //                 VALUES 
+    //                 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    //         $stmt = $connection->prepare($SQL);
+    //         $stmt->execute([
+    //             $datosPresupuesto['id_cliente'],
+    //             $datosPresupuesto['cliente_nombre'],
+    //             $datosPresupuesto['cliente_email'],
+    //             $datosPresupuesto['cliente_domicilio'],
+    //             $datosPresupuesto['cliente_telefono'],
+    //             $datosPresupuesto['fecha'],
+    //             $request->reserva,
+    //             $request->id_presupuesto,
+    //             0, // ID FORMA DE PAGO 0 POR DEFAULT
+    //             0, // SUSPENDIDO 0 POR DEFAULT
+    //             $datosPresupuesto['creado_por'],
+    //             $numeroRecibo,
+    //             $datosPresupuesto['id_sucursal']
+    //         ]);
 
-            $connection = Database::getConnection();
+    //         $connection = Database::getConnection();
 
-            $id = $connection->lastInsertId();
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
+    //         $id = $connection->lastInsertId();
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
 
-        try {
-            $SQL = "INSERT INTO 
-                    recibos_detalle 
-                    (idRecibo, 
-                    idFormaDePago,
-                    monto,
-                    observaciones) 
-                    VALUES 
-                    (?, ?, ?, ?)";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                $id,
-                $request->forma_pago,
-                $request->reserva,
-                ''
-            ]);
+    //     try {
+    //         $SQL = "INSERT INTO 
+    //                 recibos_detalle 
+    //                 (idRecibo, 
+    //                 idFormaDePago,
+    //                 monto,
+    //                 observaciones) 
+    //                 VALUES 
+    //                 (?, ?, ?, ?)";
+    //         $stmt = $connection->prepare($SQL);
+    //         $stmt->execute([
+    //             $id,
+    //             $request->forma_pago,
+    //             $request->reserva,
+    //             ''
+    //         ]);
 
-            return $datosPresupuesto;
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-    }
+    //         return $datosPresupuesto;
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
+    // }
 
     public static function update(array $datos): bool
     {

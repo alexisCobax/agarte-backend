@@ -55,7 +55,7 @@ class PresupuestosService
         }
         return ["presupuesto" => $presupuesto, "detalle" => $presupuestoDetalle];
     }
-
+    
     public function update($request): array
     {
         try {
