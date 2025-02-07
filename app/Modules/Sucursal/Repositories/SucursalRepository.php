@@ -114,25 +114,4 @@ class SucursalRepository
             throw new PDOException('Error en la base de datos: ' . $e->getMessage());
         }
     }
-
-
-    public static function delete(object $datos): bool
-    {
-        try {
-            $connection = Database::getConnection();
-            $SQL = "DELETE 
-                    FROM 
-                    sucursales 
-                    WHERE 
-                    id = ?";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([$datos->getId()]);
-            if (!$stmt->rowCount() > 0) {
-                return false;
-            }
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error en la base de datos: ' . $e->getMessage());
-        }
-    }
 }

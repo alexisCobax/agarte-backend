@@ -67,7 +67,7 @@ class MaterialesController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Materiale borrado con éxito');
+            ResponseHelper::success(['Materiales borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

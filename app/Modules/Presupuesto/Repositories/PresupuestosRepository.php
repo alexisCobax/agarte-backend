@@ -321,46 +321,6 @@ class PresupuestosRepository extends BaseRepository
         }
     }
 
-    // public static function calcularTotales($id)
-    // {
-    //     try {
-    //         $connection = Database::getConnection();
-    //         $SQL = "UPDATE presupuestos
-    //                 LEFT JOIN tipo_enmarcacion ON tipo_enmarcacion.id = presupuestos.id_tipo_enmarcacion
-    //                 LEFT JOIN objetos_a_enmarcar ON objetos_a_enmarcar.id = presupuestos.id_objeto_a_enmarcar
-    //                 LEFT JOIN 
-    //                 (SELECT presupuestos_detalle.id_presupuesto, 		
-    //                         SUM(presupuestos_detalle.precio_unitario * presupuestos_detalle.cantidad) as total 
-    //                 FROM presupuestos_detalle 
-    //                 GROUP BY presupuestos_detalle.id_presupuesto) as totalMateriales 
-    //                 ON totalMateriales.id_presupuesto = presupuestos.id
-    //                 LEFT JOIN (SELECT presupuestos_extras.id_presupuesto, 
-    //                       SUM(presupuestos_extras.precio_unitario * presupuestos_extras.cantidad) as total
-    //                       FROM   presupuestos_extras
-    //                       GROUP BY presupuestos_extras.id_presupuesto) as totalExtras 
-    //                   ON totalExtras.id_presupuesto = presupuestos.id
-    //                 SET 
-    //                 presupuestos.sub_total = (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
-    //                 (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
-    //                 WHERE presupuestos.id = ?";
-    //         $stmt1 = $connection->prepare($SQL);
-    //         $stmt1->execute([
-    //             $id
-    //         ]);
-    //         $SQL2 = "UPDATE presupuestos
-    //         SET 
-    //         presupuestos.total = (IFNULL(presupuestos.sub_total,0) - ((IFNULL(presupuestos.descuento,0)/100)*IFNULL(presupuestos.sub_total,0)))
-    //         WHERE presupuestos.id = ?;";
-    //         $stmt2 = $connection->prepare($SQL2);
-    //         $stmt2->execute([
-    //             $id
-    //         ]);
-    //     } catch (PDOException $e) {
-    //         LogHelper::error($e);
-    //         throw new PDOException('Error: ' . $e->getMessage());
-    //     }
-    // }
-
     public static function findOrderNumber($id_sucursal)
     {
         $SQL = "SELECT 
@@ -435,25 +395,52 @@ class PresupuestosRepository extends BaseRepository
 
     public function findByPresupuestoId($id)
     {
-        $connection = Database::getConnection();
 
-        $SQL = "SELECT * FROM presupuestos WHERE id = ?";
-        $stmt = $connection->prepare($SQL);
-        $stmt->execute([$id]);
+        try {
+            $connection = Database::getConnection();
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+            $SQL = "SELECT * FROM presupuestos WHERE id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id]);
+
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
     }
 
     public function actualizarEstado($id, $fechaEntrega, $reserva, $numeroOrden)
     {
+        try {
+            $connection = Database::getConnection();
 
-        $connection = Database::getConnection();
-
-        $SQL = "UPDATE 
+            $SQL = "UPDATE 
                 presupuestos 
                 SET id_estado = ?, fecha_entrega = ?, reserva = ?, numero_orden = ?
                 WHERE id = ?";
-        $stmt = $connection->prepare($SQL);
-        $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $id]);
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $id]);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function enProceso($id)
+    {
+        try {
+            $connection = Database::getConnection();
+
+            $SQL = "UPDATE 
+                presupuestos 
+                SET id_estado = ?
+                WHERE id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([2, $id]);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
     }
 }

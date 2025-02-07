@@ -118,9 +118,10 @@ class ObjetosEnmarcarRepository
     {
         try {
             $connection = Database::getConnection();
-            $SQL = "DELETE 
-                    FROM 
+            $SQL = "UPDATE 
                     objetos_a_enmarcar 
+                    SET 
+                    borrado=1
                     WHERE 
                     id = ?";
             $stmt = $connection->prepare($SQL);

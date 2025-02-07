@@ -136,7 +136,7 @@ class ClientesRepository
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("DELETE FROM clientes WHERE id = ?");
+            $stmt = $connection->prepare("UPDATE clientes SET borrado=1 WHERE id = ?");
             $stmt->execute([$datos->getId()]);
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {

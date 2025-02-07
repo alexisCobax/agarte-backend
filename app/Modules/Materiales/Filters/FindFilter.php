@@ -20,6 +20,8 @@ class FindFilter
             $filters[] = "tipo_material.nombre LIKE " . self::SQLformat('%' . $_GET['tipo'] . '%');
         }
 
+        $filters[] = "materiales.borrado IS NULL OR materiales.borrado != 1";
+
         return $filters;
     }
     

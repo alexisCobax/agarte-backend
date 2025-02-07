@@ -247,3 +247,323 @@ Input Data:
 
 User ID: 14
 IP Address: 192.168.32.1
+[2025-02-07 18:18:05] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while there are pending result sets. Consider unsetting the previous PDOStatement or calling PDOStatement::closeCursor()
+Código: 0
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 47
+
+URL: http://127.0.0.1:8080/clientes?page=1&perPage=10&_=1738952285101
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(47): PDO->query('SELECT COUNT(*)...')
+#1 /var/www/html/app/Helpers/PaginatorHelper.php(74): App\Helpers\PaginatorHelper->getTotalItems()
+#2 /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php(27): App\Helpers\PaginatorHelper->getPaginatedResults()
+#3 /var/www/html/app/Modules/Cliente/Services/ClientesService.php(22): App\Modules\Cliente\Repositories\ClientesRepository::find()
+#4 /var/www/html/app/Modules/Cliente/Controllers/ClienteController.php(19): App\Modules\Cliente\Services\ClientesService->getAll()
+#5 [internal function]: App\Modules\Cliente\Controllers\ClienteController->index()
+#6 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#7 /var/www/html/config/bootstrap.php(171): Router->dispatch('/clientes', 'GET')
+#8 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#9 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 18:18:09] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while there are pending result sets. Consider unsetting the previous PDOStatement or calling PDOStatement::closeCursor()
+Código: 0
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 47
+
+URL: http://127.0.0.1:8080/clientes?page=1&perPage=10&_=1738952289549
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(47): PDO->query('SELECT COUNT(*)...')
+#1 /var/www/html/app/Helpers/PaginatorHelper.php(74): App\Helpers\PaginatorHelper->getTotalItems()
+#2 /var/www/html/app/Modules/Cliente/Repositories/ClientesRepository.php(27): App\Helpers\PaginatorHelper->getPaginatedResults()
+#3 /var/www/html/app/Modules/Cliente/Services/ClientesService.php(22): App\Modules\Cliente\Repositories\ClientesRepository::find()
+#4 /var/www/html/app/Modules/Cliente/Controllers/ClienteController.php(19): App\Modules\Cliente\Services\ClientesService->getAll()
+#5 [internal function]: App\Modules\Cliente\Controllers\ClienteController->index()
+#6 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Cliente\Controllers\ClienteController), Array)
+#7 /var/www/html/config/bootstrap.php(171): Router->dispatch('/clientes', 'GET')
+#8 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#9 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 18:21:21] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id_sucursal = 1 AND borrado IS NULL OR borrado != 1 LIMIT 10 OFFSET 0' at line 1
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/tipo_enmarcacion?page=1&perPage=10&id_sucursal=1&_=1738952481622
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT * FROM t...')
+#1 /var/www/html/app/Modules/TipoEnmarcacion/Repositories/TipoEnmarcacionRepository.php(26): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/TipoEnmarcacion/Services/TipoEnmarcacionService.php(24): App\Modules\TipoEnmarcacion\Repositories\TipoEnmarcacionRepository::find()
+#3 /var/www/html/app/Modules/TipoEnmarcacion/Controllers/TipoEnmarcacionController.php(19): App\Modules\TipoEnmarcacion\Services\TipoEnmarcacionService->getAll()
+#4 [internal function]: App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/tipo_enmarcaci...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:36:10] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id_sucursal = 1 AND borrado IS NULL OR borrado != 1 LIMIT 10 OFFSET 0' at line 1
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/tipo_enmarcacion?page=1&perPage=10&id_sucursal=1&_=1738956970721
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT * FROM t...')
+#1 /var/www/html/app/Modules/TipoEnmarcacion/Repositories/TipoEnmarcacionRepository.php(26): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/TipoEnmarcacion/Services/TipoEnmarcacionService.php(24): App\Modules\TipoEnmarcacion\Repositories\TipoEnmarcacionRepository::find()
+#3 /var/www/html/app/Modules/TipoEnmarcacion/Controllers/TipoEnmarcacionController.php(19): App\Modules\TipoEnmarcacion\Services\TipoEnmarcacionService->getAll()
+#4 [internal function]: App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/tipo_enmarcaci...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:36:38] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id_sucursal = 1 AND borrado IS NULL OR borrado != 1 LIMIT 10 OFFSET 0' at line 1
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/tipo_enmarcacion?page=1&perPage=10&id_sucursal=1&_=1738956997976
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT * FROM t...')
+#1 /var/www/html/app/Modules/TipoEnmarcacion/Repositories/TipoEnmarcacionRepository.php(26): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/TipoEnmarcacion/Services/TipoEnmarcacionService.php(24): App\Modules\TipoEnmarcacion\Repositories\TipoEnmarcacionRepository::find()
+#3 /var/www/html/app/Modules/TipoEnmarcacion/Controllers/TipoEnmarcacionController.php(19): App\Modules\TipoEnmarcacion\Services\TipoEnmarcacionService->getAll()
+#4 [internal function]: App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/tipo_enmarcaci...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:36:45] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id_sucursal = 1 AND borrado IS NULL OR borrado != 1 LIMIT 10 OFFSET 0' at line 1
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/tipo_enmarcacion?page=1&perPage=10&id_sucursal=1&_=1738957005697
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT * FROM t...')
+#1 /var/www/html/app/Modules/TipoEnmarcacion/Repositories/TipoEnmarcacionRepository.php(26): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/TipoEnmarcacion/Services/TipoEnmarcacionService.php(24): App\Modules\TipoEnmarcacion\Repositories\TipoEnmarcacionRepository::find()
+#3 /var/www/html/app/Modules/TipoEnmarcacion/Controllers/TipoEnmarcacionController.php(19): App\Modules\TipoEnmarcacion\Services\TipoEnmarcacionService->getAll()
+#4 [internal function]: App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\TipoEnmarcacion\Controllers\TipoEnmarcacionController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/tipo_enmarcaci...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:41:36] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'field list'
+Código: 42
+Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
+Línea: 130
+
+URL: http://127.0.0.1:8080/sucursales/30
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(130): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(60): App\Modules\Sucursal\Repositories\SucursalRepository::delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(69): App\Modules\Sucursal\Services\SucursalService->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales/30', 'DELETE')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:41:46] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'field list'
+Código: 42
+Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
+Línea: 130
+
+URL: http://127.0.0.1:8080/sucursales/30
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(130): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(60): App\Modules\Sucursal\Repositories\SucursalRepository::delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(69): App\Modules\Sucursal\Services\SucursalService->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales/30', 'DELETE')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:42:16] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'field list'
+Código: 42
+Archivo: /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php
+Línea: 130
+
+URL: http://127.0.0.1:8080/sucursales/30
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Sucursal/Repositories/SucursalRepository.php(130): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Sucursal/Services/SucursalService.php(60): App\Modules\Sucursal\Repositories\SucursalRepository::delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#2 /var/www/html/app/Modules/Sucursal/Controllers/SucursalController.php(69): App\Modules\Sucursal\Services\SucursalService->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#3 [internal function]: App\Modules\Sucursal\Controllers\SucursalController->delete(Object(App\Modules\Sucursal\Requests\SucursalDeleteRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Sucursal\Controllers\SucursalController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/sucursales/30', 'DELETE')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 19:53:38] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Materiales/Repositories/MaterialesRepository.php
+Línea: 121
+
+URL: http://127.0.0.1:8080/materiales/11
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Materiales/Repositories/MaterialesRepository.php(121): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Materiales/Services/MaterialesService.php(56): App\Modules\Materiales\Repositories\MaterialesRepository::delete(Object(App\Modules\Materiales\Requests\MaterialesDeleteRequest))
+#2 /var/www/html/app/Modules/Materiales/Controllers/MaterialesController.php(69): App\Modules\Materiales\Services\MaterialesService->delete(Object(App\Modules\Materiales\Requests\MaterialesDeleteRequest))
+#3 [internal function]: App\Modules\Materiales\Controllers\MaterialesController->delete(Object(App\Modules\Materiales\Requests\MaterialesDeleteRequest))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Materiales\Controllers\MaterialesController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/materiales/11', 'DELETE')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 20:15:43] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'where clause'
+Código: 42
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/recibos?page=1&perPage=10&_=1738959343840
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT  recibos...')
+#1 /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php(51): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Recibo/Services/RecibosService.php(28): App\Modules\Recibo\Repositories\RecibosRepository::find()
+#3 /var/www/html/app/Modules/Recibo/Controllers/ReciboController.php(21): App\Modules\Recibo\Services\RecibosService->getAll()
+#4 [internal function]: App\Modules\Recibo\Controllers\ReciboController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/recibos', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 20:15:51] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'where clause'
+Código: 42
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/recibos?page=1&perPage=10&_=1738959351230
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT  recibos...')
+#1 /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php(51): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Recibo/Services/RecibosService.php(28): App\Modules\Recibo\Repositories\RecibosRepository::find()
+#3 /var/www/html/app/Modules/Recibo/Controllers/ReciboController.php(21): App\Modules\Recibo\Services\RecibosService->getAll()
+#4 [internal function]: App\Modules\Recibo\Controllers\ReciboController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Recibo\Controllers\ReciboController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/recibos', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 21:11:15] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE materiales.id_tipo_material = 1 ORDER BY materiales.nombre ASC LIMIT 10 OF' at line 13
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/materiales?page=1&perPage=10&id_tipo_material=1&_=1738962675505
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Materiales/Repositories/MaterialesRepository.php(41): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Materiales/Services/MaterialesService.php(22): App\Modules\Materiales\Repositories\MaterialesRepository::find()
+#3 /var/www/html/app/Modules/Materiales/Controllers/MaterialesController.php(20): App\Modules\Materiales\Services\MaterialesService->getAll()
+#4 [internal function]: App\Modules\Materiales\Controllers\MaterialesController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Materiales\Controllers\MaterialesController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/materiales', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-07 21:11:23] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE materiales.id_tipo_material = 1 ORDER BY materiales.nombre ASC LIMIT 10 OF' at line 13
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/materiales?page=1&perPage=10&id_tipo_material=1&_=1738962683112
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT \n       ...')
+#1 /var/www/html/app/Modules/Materiales/Repositories/MaterialesRepository.php(41): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/Materiales/Services/MaterialesService.php(22): App\Modules\Materiales\Repositories\MaterialesRepository::find()
+#3 /var/www/html/app/Modules/Materiales/Controllers/MaterialesController.php(20): App\Modules\Materiales\Services\MaterialesService->getAll()
+#4 [internal function]: App\Modules\Materiales\Controllers\MaterialesController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Materiales\Controllers\MaterialesController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/materiales', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1

@@ -121,9 +121,10 @@ class TipoEnmarcacionRepository
     {
         try {
             $connection = Database::getConnection();
-            $SQL = "DELETE 
-                    FROM 
-                    tipo_enmarcacion 
+            $SQL = "UPDATE 
+                    tipo_enmarcacion
+                    SET
+                    borrado=1 
                     WHERE 
                     id = ?";
             $stmt = $connection->prepare($SQL);

@@ -15,7 +15,7 @@ class RecibosRepository
     public static function find()
     {
         try {
-            $filtro = " WHERE recibos.`suspendido` = 0 ";
+            $filtro = " WHERE recibos.suspendido = 0 AND borrado IS NULL OR borrado != 1";
             $filters = FindFilter::getFilters();
             if ($filters) {
                 $filtro .= " AND " . implode(" AND ", $filters);
@@ -184,12 +184,12 @@ class RecibosRepository
         }
     }
 
-    public static function delete(int $id): bool
+    public static function delete($request): bool
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("DELETE FROM recibos WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $connection->prepare("UPDATE recibos SET borrado=1 WHERE id = ?");
+            $stmt->execute([$request->getId()]);
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             LogHelper::error($e);

@@ -154,12 +154,12 @@ class EmpleadosRepository
         }
     }
 
-    public static function delete(int $id): bool
+    public static function delete($request): bool
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("DELETE FROM empleados WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $connection->prepare("UPDATE empleados SET borrado=1 WHERE id = ?");
+            $stmt->execute([$request->getId()]);
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             LogHelper::error($e);

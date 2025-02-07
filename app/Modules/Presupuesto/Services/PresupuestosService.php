@@ -90,7 +90,10 @@ class PresupuestosService
     
         $presupuesto = PresupuestosRepository::findByIdToPDF($id);
         $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
-    
+        
+        // Actualizo el id de estado a 2 que es en proceso
+        $presupuesto = PresupuestosRepository::enProceso($id);
+
         // Evitar errores si algún dato es null
         $datos = [
             'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',

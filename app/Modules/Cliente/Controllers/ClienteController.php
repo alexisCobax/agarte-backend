@@ -66,7 +66,7 @@ class ClienteController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Cliente borrado con éxito');
+            ResponseHelper::success(['Cliente borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

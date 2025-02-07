@@ -53,22 +53,13 @@ class OrdenDeTrabajoService
             $idRecibo = $reciboRepository->crearRecibo($datosPresupuesto, $request->reserva, $request->id_presupuesto, $numeroRecibo);
             $reciboRepository->crearReciboDetalle($idRecibo, $request->forma_pago, $request->reserva);
 
-            return $datosPresupuesto;
+            return $presupuestoRepository->findByPresupuestoId($request->id_presupuesto);
+
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new \Exception('Error al crear una orden de trabajo. Inténtalo más tarde.');
         }
     }
-    // public function generar($request): array
-    // {
-    //     try {
-    //         $item = OrdenDeTrabajoRepository::generar($request);
-    //         return ["datos" => $item];
-    //     } catch (PDOException $e) {
-    //         LogHelper::error($e);
-    //         throw new \Exception('Error al crear unn orden de trabajo. Inténtalo más tarde.');
-    //     }
-    // }
 
     public function getAll(): array
     {
