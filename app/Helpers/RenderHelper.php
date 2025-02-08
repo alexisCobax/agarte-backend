@@ -31,4 +31,19 @@ class RenderHelper
         include $viewFile;
         echo ob_get_clean();
     }
+
+    public static function pdf($ruta, $variables = [])
+    {
+        if (!file_exists($ruta)) {
+            die("Error: No se encontró la plantilla HTML en $ruta.");
+        }
+    
+        $html = file_get_contents($ruta);
+    
+        foreach ($variables as $key => $value) {
+            $html = str_replace("{{{$key}}}", $value ?? '', $html); // Convertir null en cadena vacía
+        }
+    
+        return $html;
+    }
 }

@@ -8,7 +8,7 @@ $router->get('/presupuestos', [PresupuestoController::class, 'index'], true);
 $router->get('/presupuestos/{id}', [PresupuestoController::class, 'show'], true);
 
 $router->post('/presupuestos', [PresupuestoController::class, 'createOrUpdate'], true); 
-$router->get('/presupuestos/pdf/{id}', [PresupuestoController::class, 'pdfPresupuesto'], false);
+$router->get('/presupuestos/pdf/{id}', [PresupuestoController::class, 'pdfPresupuesto'], true);
 
 $router->delete('/presupuestos/{id}', [PresupuestoController::class, 'delete'], true); 
 

@@ -5,10 +5,10 @@ use App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoEstadosController;
 
 $router->get('/orden', [OrdenDeTrabajoController::class, 'index'], true);
 $router->get('/orden/{id}', [OrdenDeTrabajoController::class, 'show'], true);
-$router->get('/orden/pdf/cliente/{id}', [OrdenDeTrabajoController::class, 'pdfOrdenCliente'], false);
-$router->get('/orden/pdf/taller/{id}', [OrdenDeTrabajoController::class, 'pdfOrdenTaller'], false);
+$router->get('/orden/pdf/cliente/{id}', [OrdenDeTrabajoController::class, 'pdfOrdenCliente'], true);
+$router->get('/orden/pdf/taller/{id}', [OrdenDeTrabajoController::class, 'pdfOrdenTaller'], true);
 $router->post('/orden', [OrdenDeTrabajoController::class, 'create'], true); 
-$router->post('/orden/generar', [OrdenDeTrabajoController::class, 'generar'], false); 
+$router->post('/orden/generar', [OrdenDeTrabajoController::class, 'generar'], true); 
 $router->put('/orden/{id}', [OrdenDeTrabajoController::class, 'update'], true); 
 $router->delete('/orden/{id}', [OrdenDeTrabajoController::class, 'delete'], true); 
 
