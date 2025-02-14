@@ -360,6 +360,7 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.alto,
                     presupuestos.ancho,
                     presupuestos.cantidad,
+                    presupuestos.comentarios_taller,
                     tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
                     CASE 
 					WHEN presupuestos.propio = 1 THEN 'Si' 
@@ -410,17 +411,35 @@ class PresupuestosRepository extends BaseRepository
         }
     }
 
-    public function actualizarEstado($id, $fechaEntrega, $reserva, $numeroOrden)
+    public function actualizarEstado(
+        $fechaEntrega, 
+        $reserva, 
+        $numeroOrden,
+        $nombre,
+        $telefono,
+        $email,
+        $domicilio,
+        $comentarios,
+        $id)
     {
         try {
             $connection = Database::getConnection();
 
             $SQL = "UPDATE 
-                presupuestos 
-                SET id_estado = ?, fecha_entrega = ?, reserva = ?, numero_orden = ?
-                WHERE id = ?";
+            presupuestos 
+            SET 
+            id_estado = ?, 
+            fecha_entrega = ?, 
+            reserva = ?, 
+            numero_orden = ?,
+            cliente_nombre = ?,
+            cliente_telefono = ?,
+            cliente_email = ?,
+            cliente_domicilio = ?,
+            comentarios = ?
+            WHERE id = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $id]);
+            $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $nombre, $telefono, $email, $domicilio, $comentarios, $id]);
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

@@ -18,7 +18,7 @@ class FindFilter
             $filters[] = "domicilio LIKE " . self::SQLformat('%' . $_GET['domicilio'] . '%');
         }
 
-        $filters[] = "borrado IS NULL OR borrado != 1";
+        $filters[] = "(borrado IS NULL OR borrado != 1)";
 
         return $filters;
     }

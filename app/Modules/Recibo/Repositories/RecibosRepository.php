@@ -15,7 +15,7 @@ class RecibosRepository
     public static function find()
     {
         try {
-            $filtro = " WHERE recibos.suspendido = 0 AND borrado IS NULL OR borrado != 1";
+            $filtro = " WHERE recibos.suspendido = 0 AND (borrado IS NULL OR borrado != 1)";
             $filters = FindFilter::getFilters();
             if ($filters) {
                 $filtro .= " AND " . implode(" AND ", $filters);

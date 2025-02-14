@@ -47,7 +47,16 @@ class OrdenDeTrabajoService
             }
 
             $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
-            $presupuestoRepository->actualizarEstado($request->id_presupuesto, $request->fecha_entrega, $request->reserva, $numeroOrden);
+            $presupuestoRepository->actualizarEstado( 
+                $request->fecha_entrega, 
+                $request->reserva, 
+                $numeroOrden,
+                $request->nombre,
+                $request->telefono,
+                $request->email,
+                $request->domicilio,
+                $request->comentarios,
+                $request->id_presupuesto);
 
             $numeroRecibo = $reciboRepository->findLastNumber($datosPresupuesto['id_sucursal']) + 1;
             $idRecibo = $reciboRepository->crearRecibo($datosPresupuesto, $request->reserva, $request->id_presupuesto, $numeroRecibo);
@@ -71,6 +80,16 @@ class OrdenDeTrabajoService
         return $items;
     }
 
+    public function getAllOrders(): array
+    {
+        $items = OrdenDeTrabajoRepository::findAll();
+
+        if (!$items) {
+            throw new \Exception('No se encuentran ordenes de trabajos.');
+        }
+        return $items;
+    }
+
     public function get($request): array
     {
         $item = OrdenDeTrabajoRepository::findById($request->getId());
@@ -85,6 +104,19 @@ class OrdenDeTrabajoService
     {
         try {
             $item = OrdenDeTrabajoRepository::update($request);
+            if (!$item) {
+                throw new \Exception('OrdenDeTrabajo inexistente.');
+            }
+            return [$item];
+        } catch (PDOException $e) {
+            throw new \Exception('Error al modificar unn ordendetrabajo. Inténtalo más tarde.');
+        }
+    }
+
+    public function updateStatus($request): array
+    {
+        try {
+            $item = OrdenDeTrabajoRepository::updateStatus($request);
             if (!$item) {
                 throw new \Exception('OrdenDeTrabajo inexistente.');
             }
@@ -188,6 +220,7 @@ class OrdenDeTrabajoService
             'objeto_modelo' => $presupuesto['modelo'] ?? '',
             'objeto_propiedad' => $presupuesto['propio'] ?? '',
             'objeto_comentario' => $presupuesto['comentarios'] ?? '',
+            'objeto_comentarios_taller' => $presupuesto['comentarios_taller'] ?? '',
             'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
             'detalle_alto' => $presupuesto['alto'] ?? '',
             'detalle_ancho' => $presupuesto['ancho'] ?? '',

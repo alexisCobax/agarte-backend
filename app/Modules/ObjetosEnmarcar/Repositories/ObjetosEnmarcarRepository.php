@@ -21,6 +21,8 @@ class ObjetosEnmarcarRepository
                 $SQL .= " WHERE " . implode(" AND ", $filters);
             }
 
+            $SQL .= " ORDER BY nombre ASC";
+
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();

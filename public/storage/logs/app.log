@@ -567,3 +567,698 @@ Input Data:
 
 User ID: 14
 IP Address: 192.168.32.1
+[2025-02-11 15:36:45] [ERROR] [INFO] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 23000
+Archivo: /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php
+Línea: 225
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php(225): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(53): App\Modules\Recibo\Repositories\RecibosRepository->crearRecibo(Array, NULL, '2', 8)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(59): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"2","fecha_entrega":"2025-02-07"}
+
+User ID: 12
+IP Address: 192.168.32.1
+[2025-02-11 15:36:45] [ERROR] [INFO] Error: Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'total' cannot be null
+Código: 0
+Archivo: /var/www/html/app/Modules/Recibo/Repositories/RecibosRepository.php
+Línea: 244
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(53): App\Modules\Recibo\Repositories\RecibosRepository->crearRecibo(Array, NULL, '2', 8)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(59): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"2","fecha_entrega":"2025-02-07"}
+
+User ID: 12
+IP Address: 192.168.32.1
+[2025-02-11 19:13:15] [ERROR] [INFO] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'agarte.presupuesto' doesn't exist
+Código: 42
+Archivo: /var/www/html/app/Modules/OrdenDeTrabajo/Repositories/OrdenDeTrabajoRepository.php
+Línea: 241
+
+URL: http://127.0.0.1:8080/orden/status/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Repositories/OrdenDeTrabajoRepository.php(241): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(100): App\Modules\OrdenDeTrabajo\Repositories\OrdenDeTrabajoRepository::updateStatus(Object(App\Support\Request))
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(83): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->updateStatus(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->updateStatus(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/status/2', 'PUT')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id":"2","comentarios":"aaaaaaaaa","id_estado":"1"}
+
+User ID: 20
+IP Address: 192.168.32.1
+[2025-02-12 15:49:47] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 44
+
+URL: http://127.0.0.1:8080/admin/roles/edit/1
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(44): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(35): App\Modules\Admin\Repositories\PermisosRepository::findById(1)
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(32): App\Modules\Admin\Services\PermisosService->get(Object(App\Support\Request))
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->rolesABM(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles/ed...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-12 21:10:00] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?
+                    WHERE roles_permisos.permiso IS NULL' at line 6
+Código: 42000
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 31
+
+URL: http://127.0.0.1:8080/admin/roles/edit/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(31): PDOStatement->execute()
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(25): App\Modules\Admin\Repositories\PermisosRepository::find('2')
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(33): App\Modules\Admin\Services\PermisosService->getAll('2')
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->rolesABM('2')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles/ed...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-12 21:16:17] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 25
+
+URL: http://127.0.0.1:8080/admin/permisos
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(25): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(25): App\Modules\Admin\Repositories\PermisosRepository::find()
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(41): App\Modules\Admin\Services\PermisosService->getAll()
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->permisos()
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/permisos', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 00:15:50] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 102
+
+URL: http://127.0.0.1:8080/admin/roles/edit/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(102): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(59): App\Modules\Admin\Repositories\PermisosRepository::desasignar('2', '15')
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(21): App\Modules\Admin\Services\PermisosService->asignaciones('2', Object(App\Support\Request))
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionar('2', Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles/ed...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+accion=desasignar&permisos_asignados%5B%5D=15&permisos_asignados%5B%5D=16&permisos_asignados%5B%5D=6&permisos_asignados%5B%5D=4&permisos_asignados%5B%5D=5&permisos_asignados%5B%5D=1
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 00:16:09] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+                permiso = '15'' at line 4
+Código: 42000
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 102
+
+URL: http://127.0.0.1:8080/admin/roles/edit/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(102): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(59): App\Modules\Admin\Repositories\PermisosRepository::desasignar('2', '15')
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(21): App\Modules\Admin\Services\PermisosService->asignaciones('2', Object(App\Support\Request))
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionar('2', Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles/ed...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+accion=desasignar&permisos_asignados%5B%5D=15&permisos_asignados%5B%5D=16&permisos_asignados%5B%5D=6&permisos_asignados%5B%5D=4&permisos_asignados%5B%5D=5&permisos_asignados%5B%5D=1
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 00:17:25] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+                permiso = '15'' at line 4
+Código: 42000
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 102
+
+URL: http://127.0.0.1:8080/admin/roles/edit/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(102): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(59): App\Modules\Admin\Repositories\PermisosRepository::desasignar('2', '15')
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(21): App\Modules\Admin\Services\PermisosService->asignaciones('2', Object(App\Support\Request))
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionar('2', Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles/ed...', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+accion=desasignar&permisos_asignados%5B%5D=15&permisos_asignados%5B%5D=16&permisos_asignados%5B%5D=6&permisos_asignados%5B%5D=4&permisos_asignados%5B%5D=5&permisos_asignados%5B%5D=1
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 15:19:11] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'borrado' in 'where clause'
+Código: 42
+Archivo: /var/www/html/app/Modules/Admin/Repositories/RolRepository.php
+Línea: 19
+
+URL: http://127.0.0.1:8080/admin/roles
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/RolRepository.php(19): PDOStatement->execute()
+#1 /var/www/html/app/Modules/Admin/Services/RolService.php(25): App\Modules\Admin\Repositories\RolRepository::find()
+#2 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(28): App\Modules\Admin\Services\RolService->getAll()
+#3 [internal function]: App\Modules\Admin\Controllers\AdminController->roles()
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/roles', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 20:10:29] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key, descripcion, estado) 
+                    VALUES 
+                    ('asd' at line 3
+Código: 42000
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 175
+
+URL: http://127.0.0.1:8080/admin/permisos/createOrUpdate
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(175): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(107): App\Modules\Admin\Repositories\PermisosRepository::createPermiso(Object(App\Support\Request))
+#2 /var/www/html/app/Modules/Admin/Services/PermisosService.php(120): App\Modules\Admin\Services\PermisosService->createPermiso(Object(App\Support\Request))
+#3 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(62): App\Modules\Admin\Services\PermisosService->acciones(Object(App\Support\Request))
+#4 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionarPermisos(Object(App\Support\Request))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/permisos...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 20:11:21] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key, descripcion, estado) 
+                    VALUES 
+                    ('asd' at line 3
+Código: 42000
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 175
+
+URL: http://127.0.0.1:8080/admin/permisos/createOrUpdate
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(175): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(107): App\Modules\Admin\Repositories\PermisosRepository::createPermiso(Object(App\Support\Request))
+#2 /var/www/html/app/Modules/Admin/Services/PermisosService.php(120): App\Modules\Admin\Services\PermisosService->createPermiso(Object(App\Support\Request))
+#3 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(62): App\Modules\Admin\Services\PermisosService->acciones(Object(App\Support\Request))
+#4 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionarPermisos(Object(App\Support\Request))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/permisos...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-13 20:37:47] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php
+Línea: 218
+
+URL: http://127.0.0.1:8080/admin/permisos/createOrUpdate
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Admin/Repositories/PermisosRepository.php(218): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/Admin/Services/PermisosService.php(110): App\Modules\Admin\Repositories\PermisosRepository::updatePermiso(Object(App\Support\Request))
+#2 /var/www/html/app/Modules/Admin/Services/PermisosService.php(133): App\Modules\Admin\Services\PermisosService->updatePermiso(Object(App\Support\Request))
+#3 /var/www/html/app/Modules/Admin/Controllers/AdminController.php(62): App\Modules\Admin\Services\PermisosService->acciones(Object(App\Support\Request))
+#4 [internal function]: App\Modules\Admin\Controllers\AdminController->gestionarPermisos(Object(App\Support\Request))
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Admin\Controllers\AdminController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/admin/permisos...', 'POST')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: N/A
+IP Address: 192.168.32.1
+[2025-02-14 12:29:10] [ERROR] [INFO] Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 22007
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 439
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(439): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:29:10] [ERROR] [INFO] Error: Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 442
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:29:16] [ERROR] [INFO] Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 22007
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 439
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(439): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:29:16] [ERROR] [INFO] Error: Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 442
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:37:56] [ERROR] [INFO] Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 22007
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 439
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(439): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:37:56] [ERROR] [INFO] Error: Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '2025-02-24'
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 442
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, NULL, NULL, NULL, NULL, '10')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:48:52] [ERROR] [INFO] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 439
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(439): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, 'ssssssss', '213', 'alexissaucedo@g...', 'asd', '10')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"ssssssss","telefono":"213","email":"alexissaucedo@gmail.com","domicilio":"asd"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:48:52] [ERROR] [INFO] Error: Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 442
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 9, 'ssssssss', '213', 'alexissaucedo@g...', 'asd', '10')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"10","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"ssssssss","telefono":"213","email":"alexissaucedo@gmail.com","domicilio":"asd"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 12:57:32] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id_sucursal = 1 AND (borrado IS NULL OR borrado != 1) LIMIT 10 OFFSET 0' at line 1
+Código: 42000
+Archivo: /var/www/html/app/Helpers/PaginatorHelper.php
+Línea: 60
+
+URL: http://127.0.0.1:8080/objetos_enmarcar?page=1&perPage=10&id_sucursal=1&_=1739537852748
+
+Stack Trace:
+#0 /var/www/html/app/Helpers/PaginatorHelper.php(60): PDO->query('SELECT * FROM o...')
+#1 /var/www/html/app/Modules/ObjetosEnmarcar/Repositories/ObjetosEnmarcarRepository.php(26): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 /var/www/html/app/Modules/ObjetosEnmarcar/Services/ObjetosEnmarcarService.php(24): App\Modules\ObjetosEnmarcar\Repositories\ObjetosEnmarcarRepository::find()
+#3 /var/www/html/app/Modules/ObjetosEnmarcar/Controllers/ObjetosEnmarcarController.php(17): App\Modules\ObjetosEnmarcar\Services\ObjetosEnmarcarService->getAll()
+#4 [internal function]: App\Modules\ObjetosEnmarcar\Controllers\ObjetosEnmarcarController->index()
+#5 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\ObjetosEnmarcar\Controllers\ObjetosEnmarcarController), Array)
+#6 /var/www/html/config/bootstrap.php(171): Router->dispatch('/objetos_enmarc...', 'GET')
+#7 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:24:58] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.nombre AS tipo_enmarcacion_nombre,
+                    CASE 
+					WHEN presupue' at line 17
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 389
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(389): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(209): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findByIdToPDF(2)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(132): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('2')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('2')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:25:08] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.nombre AS tipo_enmarcacion_nombre,
+                    CASE 
+					WHEN presupue' at line 17
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 389
+
+URL: http://127.0.0.1:8080/orden/pdf/cliente/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(389): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(145): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findByIdToPDF(2)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(119): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenCliente('2')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenCliente('2')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/clie...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:25:24] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'presupuestos.comentario_taller' in 'field list'
+Código: 42
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 389
+
+URL: http://127.0.0.1:8080/orden/pdf/taller/2
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(389): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(209): App\Modules\Presupuesto\Repositories\PresupuestosRepository::findByIdToPDF(2)
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(132): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->pdfOrdenTaller('2')
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->pdfOrdenTaller('2')
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/pdf/tall...', 'GET')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:44:45] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = 'asscscasc'
+            WHERE id = '9'' at line 12
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 443
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(443): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:44:45] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = 'asscscasc'
+            WHERE id = '9'' at line 12
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 446
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:48:42] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = '\'.asscscasc.\''
+            WHERE id = '9'' at line 12
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 443
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(443): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:48:42] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = '\'.asscscasc.\''
+            WHERE id = '9'' at line 12
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 446
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:50:32] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = 'saddsa sa dsad sads dasdasd'
+            WHERE id = '9'' at line 12
+Código: 42000
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 443
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php(443): PDOStatement->execute(Array)
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#2 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#3 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#4 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#5 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#6 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#7 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1
+[2025-02-14 13:50:32] [ERROR] [INFO] Error: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'comentarios = 'saddsa sa dsad sads dasdasd'
+            WHERE id = '9'' at line 12
+Código: 0
+Archivo: /var/www/html/app/Modules/Presupuesto/Repositories/PresupuestosRepository.php
+Línea: 446
+
+URL: http://127.0.0.1:8080/orden/generar
+
+Stack Trace:
+#0 /var/www/html/app/Modules/OrdenDeTrabajo/Services/OrdenDeTrabajoService.php(50): App\Modules\Presupuesto\Repositories\PresupuestosRepository->actualizarEstado('2025-02-24', '0', 12, 'aaaaaa', '32232', 'joses@joses.com', 'asdsadsadsadsa', 'asscscasc', '9')
+#1 /var/www/html/app/Modules/OrdenDeTrabajo/Controllers/OrdenDeTrabajoController.php(71): App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoService->generar(Object(App\Support\Request))
+#2 [internal function]: App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController->generar(Object(App\Support\Request))
+#3 /var/www/html/config/bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\OrdenDeTrabajo\Controllers\OrdenDeTrabajoController), Array)
+#4 /var/www/html/config/bootstrap.php(171): Router->dispatch('/orden/generar', 'POST')
+#5 /var/www/html/public/index.php(12): require('/var/www/html/c...')
+#6 {main}
+
+Input Data:
+{"id_presupuesto":"9","fecha_entrega":"2025-02-24","forma_pago":"1","reserva":"0","nombre":"aaaaaa","telefono":"32232","email":"joses@joses.com","domicilio":"asdsadsadsadsa","comentarios":"asscscasc"}
+
+User ID: 14
+IP Address: 192.168.32.1

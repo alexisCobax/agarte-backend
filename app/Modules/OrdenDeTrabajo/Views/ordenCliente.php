@@ -54,10 +54,7 @@
             </tr>
             <tr>
                 <td><strong>Cantidad:</strong> {{cantidad}}</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="2"><strong>Comentario:</strong> {{objeto_comentario}}</td>
+                <td><strong>Comentario:</strong> {{objeto_comentario}}</td>
             </tr>
         </table>
         <br />
@@ -92,6 +89,8 @@
     </tfoot>
 
         </table>
+        <br/>
+        <div>"Pasado los 30 días, la empresa no se responsabiliza por daños o pérdida del trabajo y el saldo se ajustará a los precios vigentes"</div>
     </div>
 
     <script>

@@ -22,7 +22,7 @@ class FindFilter
             $filters[] = "sucursales.id = " . $_GET['id_sucursal'];
         }
 
-        $filters[] = "empleados.borrado IS NULL OR empleados.borrado != 1";
+        $filters[] = "(empleados.borrado IS NULL OR empleados.borrado != 1)";
 
         return $filters;
     }

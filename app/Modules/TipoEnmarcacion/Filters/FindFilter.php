@@ -16,7 +16,7 @@ class FindFilter
             $filters[] = "id_sucursal = " . $_GET['id_sucursal'] . "";
         }  
 
-        $filters[] = "borrado IS NULL OR borrado != 1";
+        $filters[] = "(borrado IS NULL OR borrado != 1)";
 
         return $filters;
     }
