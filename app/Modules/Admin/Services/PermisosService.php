@@ -14,7 +14,7 @@ class PermisosService
         $Permisos = PermisosRepository::find();
 
         if (!$Permisos) {
-            throw new \Exception('No se encuentran Permisos');
+            return [];
         }
         return $Permisos;
     }

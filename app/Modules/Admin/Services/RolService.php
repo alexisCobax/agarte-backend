@@ -25,7 +25,7 @@ class RolService
         $Rol = RolRepository::find();
 
         if (!$Rol) {
-            throw new \Exception('No se encuentran rol');
+            return [];
         }
         return $Rol;
     }

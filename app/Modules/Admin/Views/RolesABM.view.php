@@ -177,6 +177,9 @@ function base_url($path = '') {
                                 Todos
                               </label>
                             </li>
+                            <?php if (empty($permisosDisponibles)): ?>
+                              <li class="list-group-item">No hay permisos asignados.</li>
+                            <?php else: ?>
                             <?php foreach ($permisosDisponibles as $permiso): ?>
                               <li class="list-group-item">
                                 <label>
@@ -186,6 +189,7 @@ function base_url($path = '') {
                                 </label>
                               </li>
                             <?php endforeach; ?>
+                            <?php endif; ?>
                           </ul>
                         </div>
                         <!-- Botones -->
