@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Empleado\Requests;
+namespace App\Modules\Caja\Requests;
 
 use App\Helpers\ValidatorHelper;
 
-class EmpleadosShowRequest
+class CajaDetalleRequest
 {
     protected $data;
 
@@ -15,9 +15,9 @@ class EmpleadosShowRequest
     }
 
     // Métodos para obtener los campos
-    public function getId()
+    public function getFecha()
     {
-        return $this->data['id'] ?? null;
+        return $this->data['fecha'] ?? date('Y-m-d');
     }
 
     protected function validate()

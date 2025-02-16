@@ -247,3 +247,142 @@ Input Data:
 
 User ID: 14
 IP Address: 192.168.32.1
+[2025-02-07 19:31:57] [ERROR] [INFO] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SUM(CASE WHEN rd.idFormaDePago = 1 THEN rd.monto ELSE 0 END) AS efectivo,
+     ' at line 5
+Código: 42000
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-07&_=1738956538052
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(39): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-02-07 19:34:01] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'recibo.fecha' in 'where clause'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-07&_=1738956538054
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(39): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-02-07 19:34:28] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'recibos.fecha' in 'where clause'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-07&_=1738956538055
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(39): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-02-07 19:35:44] [ERROR] [INFO] Error: SQLSTATE[HY000]: General error: 1525 Incorrect DATE value: '%2025-02-07%'
+Código: 0
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-07&_=1738956943784
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(39): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-02-15 21:19:45] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'recibos.idPresupuestoid_orden_de_trabajo' in 'on clause'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-15&_=1739654385154
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(41): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
+[2025-02-15 21:20:06] [ERROR] [INFO] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'recibos.idPresupuestoid_orden_de_trabajo' in 'on clause'
+Código: 42
+Archivo: C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php
+Línea: 60
+
+URL: http://agarte:8080/caja_detalle?page=1&perPage=10&fecha=2025-02-15&_=1739654406726
+
+Stack Trace:
+#0 C:\wamp64\www\agarte-backend\app\Helpers\PaginatorHelper.php(60): PDO->query('SELECT \r\n      ...')
+#1 C:\wamp64\www\agarte-backend\app\Modules\Caja\Repositories\CajaDetalleRepository.php(41): App\Helpers\PaginatorHelper->getPaginatedResults()
+#2 C:\wamp64\www\agarte-backend\app\Modules\Caja\Services\CajaDetalleService.php(14): App\Modules\Caja\Repositories\CajaDetalleRepository::find(NULL)
+#3 C:\wamp64\www\agarte-backend\app\Modules\Caja\Controllers\CajaDetalleController.php(18): App\Modules\Caja\Services\CajaDetalleService->getAll(NULL)
+#4 [internal function]: App\Modules\Caja\Controllers\CajaDetalleController->index(NULL)
+#5 C:\wamp64\www\agarte-backend\config\bootstrap.php(130): ReflectionMethod->invokeArgs(Object(App\Modules\Caja\Controllers\CajaDetalleController), Array)
+#6 C:\wamp64\www\agarte-backend\config\bootstrap.php(171): Router->dispatch('/caja_detalle', 'GET')
+#7 C:\wamp64\www\agarte-backend\public\index.php(12): require('C:\\wamp64\\www\\a...')
+#8 {main}
+
+Input Data:
+
+
+User ID: 14
+IP Address: ::1
