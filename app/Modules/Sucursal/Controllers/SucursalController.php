@@ -60,16 +60,4 @@ class SucursalController
             ResponseHelper::error($e->getMessage());
         }
     }
-
-    public function delete(SucursalDeleteRequest $request)
-    {
-        $service = new SucursalService;
-
-        try {
-            $service->delete($request);
-            ResponseHelper::success('Sucursal borrada con éxito');
-        } catch (\Exception $e) {
-            ResponseHelper::error($e->getMessage());
-        }
-    }
 }

@@ -6,6 +6,7 @@ use PDOException;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Helpers\LogHelper;
+use App\Helpers\RenderHelper;
 use App\Modules\Presupuesto\Repositories\PresupuestosRepository;
 use App\Modules\Presupuesto\Repositories\PresupuestosDetalleRepository;
 
@@ -55,7 +56,7 @@ class PresupuestosService
         }
         return ["presupuesto" => $presupuesto, "detalle" => $presupuestoDetalle];
     }
-
+    
     public function update($request): array
     {
         try {
@@ -90,7 +91,7 @@ class PresupuestosService
     
         $presupuesto = PresupuestosRepository::findByIdToPDF($id);
         $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
-    
+
         // Evitar errores si algún dato es null
         $datos = [
             'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',
@@ -124,9 +125,10 @@ class PresupuestosService
                 <td style='text-align:left; border: 1px solid black;'>{$item['descripcion']}</td>
             </tr>";
         }
-    
-        // Cargar la plantilla HTML y reemplazar variables
-        $html = $this->cargarHtml(__DIR__ . '/../Views/presupuesto.php', array_merge($datos, ['tabla_materiales' => $tablaMaterialesHtml]));
+        $html =  RenderHelper::pdf(
+            dirname(__DIR__,2).'/Presupuesto/Views/presupuesto.php', 
+            array_merge($datos, ['tabla_materiales' => $tablaMaterialesHtml])
+        );
     
         // Configurar Dompdf
         $options = new Options();
@@ -143,24 +145,10 @@ class PresupuestosService
         ob_end_clean(); // Limpiar cualquier salida antes de enviar el PDF
         $dompdf->stream('presupuesto.pdf', ['Attachment' => false]);
     
+        // Actualizo el id de estado a 2 que es en proceso
+        $presupuesto = PresupuestosRepository::enProceso($id);
+
         exit; // Finalizar script para evitar cualquier salida extra
     }
 
-        // Función para cargar la plantilla HTML y reemplazar variables
-        function cargarHtml($ruta, $variables = [])
-        {
-            $rutaCompleta = __DIR__ . '/../Views/' . basename($ruta);
-        
-            if (!file_exists($rutaCompleta)) {
-                die("Error: No se encontró la plantilla HTML en $rutaCompleta.");
-            }
-        
-            $html = file_get_contents($rutaCompleta);
-        
-            foreach ($variables as $key => $value) {
-                $html = str_replace("{{{$key}}}", $value ?? '', $html); // Convertir null en cadena vacía
-            }
-        
-            return $html;
-        }
 }

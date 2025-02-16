@@ -21,6 +21,8 @@ class ObjetosEnmarcarRepository
                 $SQL .= " WHERE " . implode(" AND ", $filters);
             }
 
+            $SQL .= " ORDER BY nombre ASC";
+
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();
@@ -118,9 +120,10 @@ class ObjetosEnmarcarRepository
     {
         try {
             $connection = Database::getConnection();
-            $SQL = "DELETE 
-                    FROM 
+            $SQL = "UPDATE 
                     objetos_a_enmarcar 
+                    SET 
+                    borrado=1
                     WHERE 
                     id = ?";
             $stmt = $connection->prepare($SQL);

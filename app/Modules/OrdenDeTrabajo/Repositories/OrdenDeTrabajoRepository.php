@@ -7,6 +7,7 @@ use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
 use App\Modules\OrdenDeTrabajo\Filters\FindFilter;
+use App\Modules\OrdenDeTrabajo\Filters\FindAllFilter;
 use App\Modules\Recibo\Repositories\RecibosRepository;
 
 class OrdenDeTrabajoRepository
@@ -18,7 +19,7 @@ class OrdenDeTrabajoRepository
             $connection = Database::getConnection();
             $SQL = "SELECT 
                         presupuestos.id AS id_presupuesto,
-                        presupuestos.id_estado,
+                        presupuestos.id_estado AS estado_presupuesto,
                         sucursales.nombre AS nombre_sucursal,
                         DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
                         presupuestos.cliente_nombre,
@@ -38,6 +39,47 @@ class OrdenDeTrabajoRepository
                         presupuestos.id_estado=3";
 
             $filters = FindFilter::getFilters();
+            if ($filters) {
+                $SQL .= " AND " . implode(" AND ", $filters);
+            }
+
+            $SQL .= " ORDER BY presupuestos.numero_orden DESC";
+
+            $paginator = new PaginatorHelper($connection, $SQL);
+
+            return $paginator->getPaginatedResults();
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error en la paginación: ' . $e->getMessage());
+        }
+    }
+
+    public static function findAll()
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT 
+                        presupuestos.id AS id_presupuesto,
+                        presupuestos.id_estado AS estado_presupuesto,
+                        sucursales.nombre AS nombre_sucursal,
+                        DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                        presupuestos.cliente_nombre,
+                        presupuestos.numero_orden,
+                        objetos_a_enmarcar.nombre AS objecto_enmarcar,
+                        estados_orden_trabajo.nombre AS estado,
+                        COALESCE(recibos.total,0) as pagos,
+                        COALESCE(presupuestos.total,0) - COALESCE(recibos.total,0) as saldo,
+                        COALESCE(presupuestos.total,0) AS total
+                    FROM 
+                        presupuestos
+                            LEFT JOIN sucursales ON presupuestos.id_sucursal = sucursales.id
+                            LEFT JOIN objetos_a_enmarcar ON presupuestos.id_objeto_a_enmarcar=objetos_a_enmarcar.id
+                            LEFT JOIN estados_orden_trabajo ON presupuestos.id_estado=estados_orden_trabajo.id
+                            LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
+                    WHERE
+                        presupuestos.id_estado=3";
+
+            $filters = FindAllFilter::getFilters();
             if ($filters) {
                 $SQL .= " AND " . implode(" AND ", $filters);
             }
@@ -104,119 +146,6 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function generar($request)
-    {
-
-        //MODIFICAR!!!!
-
-        try {
-            $connection = Database::getConnection();
-            $stmt = $connection->prepare("SELECT * FROM presupuestos WHERE id = ?");
-            $stmt->execute([$request->id_presupuesto]);
-            $datosPresupuesto = $stmt->fetch(\PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-
-
-        $connection = Database::getConnection();
-
-
-        $numeroOrden = OrdenDeTrabajoRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
-
-        try {
-            $connection = Database::getConnection();
-            $SQL = "UPDATE presupuestos 
-                            SET 
-                            id_estado = ?,
-                            fecha_entrega = ?,
-                            reserva = ?,
-                            numero_orden = ?
-                            WHERE 
-                            id = ?";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                3, // TIPO ORDEN
-                $request->fecha_entrega,
-                $request->reserva,
-                $numeroOrden,
-                $request->id_presupuesto
-            ]);
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-
-        $numeroRecibo = RecibosRepository::findLastNumber($datosPresupuesto['id_sucursal']) + 1;
-
-        try {
-            $SQL = "INSERT INTO 
-                    recibos 
-                    (id_cliente, 
-                    cliente_nombre,
-                    cliente_email, 
-                    cliente_domicilio,
-                    cliente_telefono,
-                    fecha,
-                    total,
-                    id_orden_de_trabajo,
-                    id_forma_de_pago,
-                    suspendido,
-                    cargado_por,
-                    numero,
-                    id_sucursal) 
-                    VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                $datosPresupuesto['id_cliente'],
-                $datosPresupuesto['cliente_nombre'],
-                $datosPresupuesto['cliente_email'],
-                $datosPresupuesto['cliente_domicilio'],
-                $datosPresupuesto['cliente_telefono'],
-                $datosPresupuesto['fecha'],
-                $request->reserva,
-                $request->id_presupuesto,
-                0, // ID FORMA DE PAGO 0 POR DEFAULT
-                0, // SUSPENDIDO 0 POR DEFAULT
-                $datosPresupuesto['creado_por'],
-                $numeroRecibo,
-                $datosPresupuesto['id_sucursal']
-            ]);
-
-            $connection = Database::getConnection();
-
-            $id = $connection->lastInsertId();
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-
-        try {
-            $SQL = "INSERT INTO 
-                    recibos_detalle 
-                    (idRecibo, 
-                    idFormaDePago,
-                    monto,
-                    observaciones) 
-                    VALUES 
-                    (?, ?, ?, ?)";
-            $stmt = $connection->prepare($SQL);
-            $stmt->execute([
-                $id,
-                $request->forma_pago,
-                $request->reserva,
-                ''
-            ]);
-
-            return $datosPresupuesto;
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-    }
-
     public static function update(array $datos): bool
     {
         try {
@@ -226,6 +155,26 @@ class OrdenDeTrabajoRepository
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function updateStatus($request): bool
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE 
+            presupuestos 
+            SET 
+            id_estado = ?,
+            comentarios_taller = ? 
+            WHERE 
+            id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$request->id_estado, $request->comentarios, $request->id]);
+            return true;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new \Exception('Error: ' . $e->getMessage());
         }
     }
 

@@ -44,18 +44,18 @@
                 <td><strong>Ancho:</strong> {{detalle_ancho}} cm</td>
             </tr>
             <tr>
-                <td><strong>Recepción:</strong> {{fecha_recepcion}}</td>
-                <td><strong>Entrega:</strong> {{fecha_entrega}}</td>
-            </tr>
             <tr>
                 <td><strong>Cantidad:</strong> {{cantidad}}</td>
-                <td>&nbsp;</td>
+                <td><strong>Recepción:</strong> {{fecha_recepcion}} | <strong>Entrega:</strong> {{fecha_entrega}}</td>
+            </tr>
+
             </tr>
             <tr>
-                <td colspan="2"><strong>Comentario:</strong> {{objeto_comentario}}</td>
+                <td><strong>Comentario:</strong> {{objeto_comentario}}</td>
+                <td><strong>Comentario Taller:</strong> {{objeto_comentarios_taller}}</td>
             </tr>
         </table>
-        <br/>
+        <br />
         <table border="1">
             <thead>
                 <tr>
@@ -70,6 +70,8 @@
                 {{tabla_materiales}}
             </tbody>
         </table>
+        <br />
+        <div>"Pasado los 30 días, la empresa no se responsabiliza por daños o pérdida del trabajo y el saldo se ajustará a los precios vigentes"</div>
     </div>
 </body>
 

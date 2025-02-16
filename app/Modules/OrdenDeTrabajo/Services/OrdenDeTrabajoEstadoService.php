@@ -3,7 +3,7 @@
 namespace App\Modules\OrdenDeTrabajo\Services;
 
 use PDOException;
-use App\Modules\Orden\Repositories\EstadosOrdenTrabajoRepository;
+use App\Modules\OrdenDeTrabajo\Repositories\EstadosOrdenTrabajoRepository;
 
 class OrdenDeTrabajoEstadoService
 {

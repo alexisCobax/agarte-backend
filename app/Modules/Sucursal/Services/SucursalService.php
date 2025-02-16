@@ -53,17 +53,4 @@ class SucursalService
             throw new \Exception('Error al modificar una sucursal. Inténtalo más tarde.');
         }
     }
-
-    public function delete($request): bool
-    {
-        try {
-            $sucursal = SucursalRepository::delete($request);
-            if (!$sucursal) {
-                throw new \Exception('Sucursal inexistente');
-            }
-            return $sucursal;
-        } catch (PDOException $e) {
-            throw new \Exception('Error al eliminar una sucursal. Inténtalo más tarde.');
-        }
-    }
 }

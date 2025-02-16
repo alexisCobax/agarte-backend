@@ -58,7 +58,7 @@ class PresupuestoDetalleController
 
         try {
             $response = $service->update($request);
-            ResponseHelper::success($response);
+            ResponseHelper::success([$response]);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

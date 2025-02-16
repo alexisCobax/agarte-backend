@@ -70,7 +70,7 @@ class EmpleadoController
 
         try {
             $service->delete($request);
-            ResponseHelper::success('Empleado borrado con éxito');
+            ResponseHelper::success(['Empleado borrado con éxito']);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());
         }

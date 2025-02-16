@@ -26,6 +26,18 @@ class OrdenDeTrabajoController
         }
     }
 
+    public function indexAll()
+    {
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $response = $service->getAllOrders();
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
     public function show(OrdenDeTrabajoShowRequest $request)
     {
         $service = new OrdenDeTrabajoService;
@@ -69,6 +81,18 @@ class OrdenDeTrabajoController
 
         try {
             $response = $service->update($request);
+            ResponseHelper::success($response);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $response = $service->updateStatus($request);
             ResponseHelper::success($response);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());

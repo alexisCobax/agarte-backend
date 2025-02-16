@@ -11,6 +11,8 @@ class FindFilter
         if (isset($_GET['id_sucursal']) && $_GET['id_sucursal'] !== '') {
             $filters[] = "id_sucursal = " . intval($_GET['id_sucursal']);
         }
+
+        $filters[] = "(borrado IS NULL OR borrado != 1)";
     
         return $filters;
     }    

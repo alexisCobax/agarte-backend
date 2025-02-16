@@ -2,12 +2,13 @@
 
 namespace App\Modules\OrdenDeTrabajo\Controllers;
 
-use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoCreateRequest;
-use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoShowRequest;
-use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoDeleteRequest;
-use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoUpdateRequest;
+use App\Support\Request;
 use App\Helpers\ResponseHelper;
 use App\Modules\OrdenDeTrabajo\Services\OrdenDeTrabajoEstadoService;
+use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoShowRequest;
+use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoCreateRequest;
+use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoDeleteRequest;
+use App\Modules\OrdenDeTrabajo\Requests\EstadosOrdenTrabajoUpdateRequest;
 
 class OrdenDeTrabajoEstadosController
 {

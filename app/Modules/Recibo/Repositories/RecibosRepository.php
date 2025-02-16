@@ -15,13 +15,13 @@ class RecibosRepository
     public static function find()
     {
         try {
-            $filtro = " WHERE recibos.`suspendido` = 0 ";
+            $filtro = " WHERE recibos.suspendido = 0 AND (borrado IS NULL OR borrado != 1)";
             $filters = FindFilter::getFilters();
             if ($filters) {
-                $filtro .= " AND ". implode(" AND ", $filters);
+                $filtro .= " AND " . implode(" AND ", $filters);
             }
 
-           
+
 
             $connection = Database::getConnection();
             $SQL = "SELECT  recibos.`id`, 
@@ -40,16 +40,15 @@ class RecibosRepository
                         presupuestos.numero_orden  
                     FROM recibos 
                         LEFT JOIN presupuestos on recibos.id_orden_de_trabajo = presupuestos.id
-                    ".$filtro."
+                    " . $filtro . "
                     order by id desc";
 
 
 
-//echo $SQL;
+            //echo $SQL;
             $paginator = new PaginatorHelper($connection, $SQL);
 
             return $paginator->getPaginatedResults();
-
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error en la paginación: ' . $e->getMessage());
@@ -96,8 +95,6 @@ class RecibosRepository
     {
         try {
             $connection = Database::getConnection();
-            $numero_orden = 0;
-            //$numero_orden = self::findOrderNumber($datos->getIdSucursal());
 
             $SQL = "INSERT INTO 
                     recibos 
@@ -143,15 +140,13 @@ class RecibosRepository
                     observaciones ) 
                 VALUES 
                 (?, ?, ?, ?)";
-                    $stmt = $connection->prepare($SQL);
-                    $stmt->execute([
-                        $id ,
-                        $detalle['id_forma_de_pago'],
-                        $detalle['monto'],
-                        $detalle['observaciones']
-                    ]);
-                
-
+                $stmt = $connection->prepare($SQL);
+                $stmt->execute([
+                    $id,
+                    $detalle['id_forma_de_pago'],
+                    $detalle['monto'],
+                    $detalle['observaciones']
+                ]);
             }
             return self::findById($id);
         } catch (PDOException $e) {
@@ -175,7 +170,7 @@ class RecibosRepository
             throw new PDOException('Error: ' . $e->getMessage());
         }
     }
-    
+
 
     public static function update(array $datos): bool
     {
@@ -189,13 +184,78 @@ class RecibosRepository
         }
     }
 
-    public static function delete(int $id): bool
+    public static function delete($request): bool
     {
         try {
             $connection = Database::getConnection();
-            $stmt = $connection->prepare("DELETE FROM recibos WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $connection->prepare("UPDATE recibos SET borrado=1 WHERE id = ?");
+            $stmt->execute([$request->getId()]);
             return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public function crearRecibo($datosPresupuesto, $reserva, $idPresupuesto, $numeroRecibo)
+    {
+
+        try {
+            $connection = Database::getConnection();
+
+            $SQL = "INSERT INTO 
+                recibos 
+                (id_cliente, 
+                cliente_nombre, 
+                cliente_email, 
+                cliente_domicilio, 
+                cliente_telefono, 
+                fecha, 
+                total, 
+                id_orden_de_trabajo, 
+                id_forma_de_pago, 
+                suspendido, 
+                cargado_por, 
+                numero, 
+                id_sucursal) 
+                VALUES 
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([
+                $datosPresupuesto['id_cliente'],
+                $datosPresupuesto['cliente_nombre'],
+                $datosPresupuesto['cliente_email'],
+                $datosPresupuesto['cliente_domicilio'],
+                $datosPresupuesto['cliente_telefono'],
+                $datosPresupuesto['fecha'],
+                $reserva,
+                $idPresupuesto,
+                0, // ID FORMA DE PAGO 0 POR DEFAULT
+                0, // SUSPENDIDO 0 POR DEFAULT
+                $datosPresupuesto['creado_por'],
+                $numeroRecibo,
+                $datosPresupuesto['id_sucursal']
+            ]);
+
+            return $connection->lastInsertId();
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public function crearReciboDetalle($idRecibo, $formaPago, $monto)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "INSERT INTO 
+                recibos_detalle 
+                (idRecibo, idFormaDePago, monto, observaciones) 
+                VALUES 
+                (?, ?, ?, ?)";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$idRecibo, $formaPago, $monto, '']);
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
