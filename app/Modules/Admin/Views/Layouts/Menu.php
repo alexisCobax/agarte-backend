@@ -15,6 +15,11 @@ $menus = [
         'nombre' => 'Permisos',
         'ruta'   => '/admin/permisos',
         'icono'  => 'cil-house'
+    ],
+    [
+        'nombre' => 'Logs',
+        'ruta'   => '/admin/logs',
+        'icono'  => 'cil-notes'
     ]
 ];
 ?>

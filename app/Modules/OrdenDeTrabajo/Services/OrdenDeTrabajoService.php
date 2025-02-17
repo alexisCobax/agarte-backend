@@ -113,10 +113,10 @@ class OrdenDeTrabajoService
         }
     }
 
-    public function updateStatus($request): array
+    public function updateStatus($request, $id): array
     {
         try {
-            $item = OrdenDeTrabajoRepository::updateStatus($request);
+            $item = OrdenDeTrabajoRepository::updateStatus($request, $id);
             if (!$item) {
                 throw new \Exception('OrdenDeTrabajo inexistente.');
             }

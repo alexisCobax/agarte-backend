@@ -87,12 +87,12 @@ class OrdenDeTrabajoController
         }
     }
 
-    public function updateStatus(Request $request)
+    public function updateStatus(Request $request, $id=null)
     {
         $service = new OrdenDeTrabajoService;
 
         try {
-            $response = $service->updateStatus($request);
+            $response = $service->updateStatus($request, $id);
             ResponseHelper::success($response);
         } catch (\Exception $e) {
             ResponseHelper::error($e->getMessage());

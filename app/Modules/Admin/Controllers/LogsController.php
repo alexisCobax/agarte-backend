@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Logs\Controllers;
+namespace App\Modules\Admin\Controllers;
 
 use App\Helpers\RenderHelper;
-use App\Modules\Logs\Services\LogService;
+use App\Modules\Admin\Services\LogService;
 
 class LogsController
 {
@@ -16,7 +16,7 @@ class LogsController
                 $paginatedLogs = $logService->getPaginatedLogs($page);
                 $paginationData = $logService->getPaginationData();
 
-        return RenderHelper::render('logs.views.logs',['paginatedLogs'=>$paginatedLogs,'paginationData'=>$paginationData]);
+        return RenderHelper::render('Admin.views.logs',['paginatedLogs'=>$paginatedLogs,'paginationData'=>$paginationData]);
     }
 
     public function show($id)
@@ -31,7 +31,7 @@ class LogsController
     
         $logDetail = $logService->getLogDetail($index);
     
-        return RenderHelper::render('logs.views.logsDetail', ['logDetail' => $logDetail]);
+        return RenderHelper::render('Admin.views.logsDetail', ['logDetail' => $logDetail]);
     }
 
     public function delete()

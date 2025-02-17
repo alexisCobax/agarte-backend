@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Modules\Logs\Services;
+namespace App\Modules\Admin\Services;
+
 
 class LogService
 {

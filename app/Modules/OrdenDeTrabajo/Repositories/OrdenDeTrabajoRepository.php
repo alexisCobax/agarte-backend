@@ -36,7 +36,7 @@ class OrdenDeTrabajoRepository
                             LEFT JOIN estados_orden_trabajo ON presupuestos.id_estado=estados_orden_trabajo.id
                             LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
                     WHERE
-                        presupuestos.id_estado=3";
+                        presupuestos.id_estado IN (3, 4) ";
 
             $filters = FindFilter::getFilters();
             if ($filters) {
@@ -158,8 +158,11 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function updateStatus($request): bool
+    public static function updateStatus($request, $id): bool
     {
+
+        $idPresupuesto = $id === null ? $request->id : $id;
+
         try {
             $connection = Database::getConnection();
             $SQL = "UPDATE 
@@ -170,7 +173,7 @@ class OrdenDeTrabajoRepository
             WHERE 
             id = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([$request->id_estado, $request->comentarios, $request->id]);
+            $stmt->execute([$request->id_estado, $request->comentarios, $idPresupuesto]);
             return true;
         } catch (PDOException $e) {
             LogHelper::error($e);
