@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Modules\Caja\Filters;
-
+use App\Helpers\UserDataHelper;
 class FindFilterDetalle
 {
     public static function getFilters(): array
@@ -12,10 +12,17 @@ class FindFilterDetalle
         
         if (isset($_GET['fecha'])) {
             $filters[] = "recibos.fecha = " . self::SQLformat( $_GET['fecha'] );
+        }
+        $filters[] = "recibos.borrado =0 ";
+
+        $user = UserDataHelper::getUserData();
+        $idSucursal=  $user['id_sucursal'] ?? 0;
+        if($idSucursal){
+            $filters[] = " recibos.id_sucursal = " . $idSucursal;
+        }
 
         return $filters;
     }
-}
     
 
     /* 
