@@ -17,42 +17,42 @@ class ClientesCreateRequest
 
     public function getNombre()
     {
-        return $this->data['nombre'] ?? null;
+        return $this->data['nombre'] ?? '';
     }
 
     public function getDomicilio()
     {
-        return $this->data['domicilio'] ?? null;
+        return $this->data['domicilio'] ?? '';
     }
 
     public function getIdLocalidad()
     {
-        return $this->data['id_localidad'] ?? null;
+        return $this->data['id_localidad'] ?? 0;
     }
 
     public function getEmail()
     {
-        return $this->data['email'] ?? null;
+        return $this->data['email'] ?? '';
     }
 
     public function getTelefono()
     {
-        return $this->data['telefono'] ?? null;
+        return $this->data['telefono'] ?? '';
     }
 
     public function getIdTipoDocumento()
     {
-        return $this->data['id_tipo_documento'] ?? null;
+        return $this->data['id_tipo_documento'] ?? 0;
     }
 
     public function getDocumento()
     {
-        return $this->data['documento'] ?? null;
+        return $this->data['documento'] ?? '';
     }
 
     public function getIdCondicionIva()
     {
-        return $this->data['id_condicion_iva'] ?? null;
+        return $this->data['id_condicion_iva'] ?? 0;
     }
 
     public function getdescuento()
@@ -68,13 +68,13 @@ class ClientesCreateRequest
     public function getCreadoPor()
     {
         $user = UserDataHelper::getUserData();
-        return $user['user']['id'] ?? null;
+        return $user['user']['id'] ?? 0;
     }
 
     public function getModificadoPor()
     {
         $user = UserDataHelper::getUserData();
-        return $user['user']['id'] ?? null;
+        return $user['user']['id'] ?? 0;
     }
 
     public function getFechaBaja()

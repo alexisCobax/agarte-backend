@@ -22,6 +22,8 @@ class FindFilter
             $filters[] = "sucursales.id = " . $_GET['id_sucursal'];
         }
 
+        
+
         return $filters;
     }
     
