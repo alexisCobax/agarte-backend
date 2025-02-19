@@ -7,7 +7,7 @@ use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
-use App\Modules\caja\Filters\FindFilterDetalle;
+use App\Modules\Caja\Filters\FindFilterDetalle;
 
 class CajaDetalleRepository
 {
