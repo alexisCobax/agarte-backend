@@ -298,15 +298,27 @@ class PresupuestosRepository extends BaseRepository
                                 FROM   presupuestos_extras
                                 GROUP BY presupuestos_extras.id_presupuesto) as totalExtras ON totalExtras.id_presupuesto = presupuestos.id
                     SET 
-                        presupuestos.sub_total = ROUND(
-                                            (((IFNULL(totalMateriales.total,0)+ IFNULL(totalExtras.total,0)) * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100)) * 
-                                            (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100)) + COALESCE(tipo_enmarcacion.comisionFija, 0) + COALESCE(objetos_a_enmarcar.extra_fijo, 0)))*presupuestos.cantidad
-                                            /500) * 500
+                    presupuestos.sub_total = ROUND(
+                                                    (
+                                                        (
+                                                            (
+                                                                IFNULL(totalMateriales.total,0) 
+                                                                * (1+(COALESCE(tipo_enmarcacion.comisionPorcentual, 0)/100) )
+                                                                * (1+(COALESCE(objetos_a_enmarcar.extra_porcentual, 0)/100) )
+                                                            )
+                                                        + COALESCE(tipo_enmarcacion.comisionFija, 0) 
+                                                        + COALESCE(objetos_a_enmarcar.extra_fijo, 0)
+                                                        )
+                                                        *
+                                                        presupuestos.cantidad + IFNULL(totalExtras.total,0)
+                                                    )/500
+                                                ) * 500
                     WHERE presupuestos.id = ?";
             $stmt1 = $connection->prepare($SQL);
             $stmt1->execute([
                 $id
             ]);
+
             $SQL2 = "UPDATE presupuestos
             SET 
             presupuestos.total = (IFNULL(presupuestos.sub_total,0) - ((IFNULL(presupuestos.descuento,0)/100)*IFNULL(presupuestos.sub_total,0)))
@@ -412,16 +424,16 @@ class PresupuestosRepository extends BaseRepository
     }
 
     public function actualizarEstado(
-        $fechaEntrega, 
-        $reserva, 
+        $fechaEntrega,
+        $reserva,
         $numeroOrden,
         $nombre,
         $telefono,
         $email,
         $domicilio,
         $comentarios,
-        $id)
-    {
+        $id
+    ) {
         try {
             $connection = Database::getConnection();
 
