@@ -6,7 +6,7 @@ use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
-use App\Modules\Presupuesto\Filters\FindFilter;
+use App\Modules\Presupuesto\Filters\FindFilterDetalle;
 
 class PresupuestosDetalleRepository
 {
@@ -31,7 +31,7 @@ class PresupuestosDetalleRepository
                             LEFT JOIN  materiales ON presupuestos_detalle.id_material=materiales.id
                             LEFT JOIN presupuestos ON presupuestos_detalle.id_presupuesto=presupuestos.id";
 
-            $filters = FindFilter::getFilters();
+            $filters = FindFilterDetalle::getFilters();
             if ($filters) {
                 $SQL .= " WHERE " . implode(" AND ", $filters);
             }

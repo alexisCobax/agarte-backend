@@ -135,4 +135,17 @@ class OrdenDeTrabajoController
             ResponseHelper::error($e->getMessage());
         }
     }
+
+    public function actualizarOrden(Request $request){
+
+        $service = new OrdenDeTrabajoService;
+
+        try {
+            $service->actualizarOrden($request);
+            ResponseHelper::success(['Orden actualizada']);
+        } catch (\Exception $e) {
+            ResponseHelper::error($e->getMessage());
+        }
+
+    }
 }

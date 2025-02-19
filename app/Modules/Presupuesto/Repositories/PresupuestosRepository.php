@@ -346,7 +346,7 @@ class PresupuestosRepository extends BaseRepository
             $connection = Database::getConnection();
 
             $SQL = "SELECT 
-                    DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                    DATE_FORMAT(presupuestos.fecha_orden_trabajo, '%d/%m/%Y') AS fecha_orden_trabajo,
                     DATE_FORMAT(presupuestos.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
                     presupuestos.id AS id_presupuesto,
                     presupuestos.cliente_nombre,
@@ -436,10 +436,12 @@ class PresupuestosRepository extends BaseRepository
             cliente_telefono = ?,
             cliente_email = ?,
             cliente_domicilio = ?,
-            comentarios = ?
+            comentarios = ?,
+            estado_orden_trabajo = ?,
+            fecha_orden_trabajo = ?
             WHERE id = ?";
             $stmt = $connection->prepare($SQL);
-            $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $nombre, $telefono, $email, $domicilio, $comentarios, $id]);
+            $stmt->execute([3, $fechaEntrega, $reserva, $numeroOrden, $nombre, $telefono, $email, $domicilio, $comentarios, 1, date('Y-m-d'), $id]);
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

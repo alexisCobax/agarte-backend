@@ -10,6 +10,7 @@ $router->get('/orden/pdf/cliente/{id}', [OrdenDeTrabajoController::class, 'pdfOr
 $router->get('/orden/pdf/taller/{id}', [OrdenDeTrabajoController::class, 'pdfOrdenTaller'], false);
 $router->post('/orden', [OrdenDeTrabajoController::class, 'create'], true); 
 $router->post('/orden/generar', [OrdenDeTrabajoController::class, 'generar'], true); 
+$router->post('/orden/actualizar', [OrdenDeTrabajoController::class, 'actualizarOrden'], true); 
 $router->put('/orden/status/{id}', [OrdenDeTrabajoController::class, 'updateStatus'], true); 
 $router->put('/orden/{id}', [OrdenDeTrabajoController::class, 'update'], true); 
 $router->delete('/orden/{id}', [OrdenDeTrabajoController::class, 'delete'], true); 

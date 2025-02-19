@@ -21,11 +21,12 @@ class OrdenDeTrabajoRepository
                         presupuestos.id AS id_presupuesto,
                         presupuestos.id_estado AS estado_presupuesto,
                         sucursales.nombre AS nombre_sucursal,
-                        DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                        DATE_FORMAT(presupuestos.fecha_orden_trabajo, '%d/%m/%Y') AS fecha,
                         presupuestos.cliente_nombre,
                         presupuestos.numero_orden,
                         objetos_a_enmarcar.nombre AS objecto_enmarcar,
                         estados_orden_trabajo.nombre AS estado,
+                        DATE_FORMAT(presupuestos.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
                         COALESCE(recibos.total,0) as pagos,
                         COALESCE(presupuestos.total,0) - COALESCE(recibos.total,0) as saldo,
                         COALESCE(presupuestos.total,0) AS total
@@ -33,7 +34,7 @@ class OrdenDeTrabajoRepository
                         presupuestos
                             LEFT JOIN sucursales ON presupuestos.id_sucursal = sucursales.id
                             LEFT JOIN objetos_a_enmarcar ON presupuestos.id_objeto_a_enmarcar=objetos_a_enmarcar.id
-                            LEFT JOIN estados_orden_trabajo ON presupuestos.id_estado=estados_orden_trabajo.id
+                            LEFT JOIN estados_orden_trabajo ON presupuestos.estado_orden_trabajo=estados_orden_trabajo.id
                             LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
                     WHERE
                         presupuestos.id_estado IN (3, 4) ";
@@ -62,11 +63,12 @@ class OrdenDeTrabajoRepository
                         presupuestos.id AS id_presupuesto,
                         presupuestos.id_estado AS estado_presupuesto,
                         sucursales.nombre AS nombre_sucursal,
-                        DATE_FORMAT(presupuestos.fecha, '%d/%m/%Y') AS fecha,
+                        DATE_FORMAT(presupuestos.fecha_orden_trabajo, '%d/%m/%Y') AS fecha,
                         presupuestos.cliente_nombre,
                         presupuestos.numero_orden,
                         objetos_a_enmarcar.nombre AS objecto_enmarcar,
                         estados_orden_trabajo.nombre AS estado,
+                        DATE_FORMAT(presupuestos.fecha_entrega, '%d/%m/%Y') AS fecha_entrega,
                         COALESCE(recibos.total,0) as pagos,
                         COALESCE(presupuestos.total,0) - COALESCE(recibos.total,0) as saldo,
                         COALESCE(presupuestos.total,0) AS total
@@ -74,7 +76,7 @@ class OrdenDeTrabajoRepository
                         presupuestos
                             LEFT JOIN sucursales ON presupuestos.id_sucursal = sucursales.id
                             LEFT JOIN objetos_a_enmarcar ON presupuestos.id_objeto_a_enmarcar=objetos_a_enmarcar.id
-                            LEFT JOIN estados_orden_trabajo ON presupuestos.id_estado=estados_orden_trabajo.id
+                            LEFT JOIN estados_orden_trabajo ON presupuestos.estado_orden_trabajo=estados_orden_trabajo.id
                             LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
                     WHERE
                         presupuestos.id_estado=3";
@@ -146,11 +148,26 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function update(array $datos): bool
+    public static function update($request): bool
     {
         try {
             $connection = Database::getConnection();
-            // Implementar la actualización en la tabla orden_de_trabajo
+            try {
+                $connection = Database::getConnection();
+                $SQL = "UPDATE 
+                presupuestos 
+                SET 
+                id_estado = ?,
+                comentarios = ? 
+                WHERE 
+                id = ?";
+                $stmt = $connection->prepare($SQL);
+                $stmt->execute([$request->fecha_entrega, $request->comentarios]);
+                return true;
+            } catch (PDOException $e) {
+                LogHelper::error($e);
+                throw new \Exception('Error: ' . $e->getMessage());
+            }
             return true;
         } catch (PDOException $e) {
             LogHelper::error($e);
@@ -191,6 +208,26 @@ class OrdenDeTrabajoRepository
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function actualizarOrden($request): bool
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "UPDATE 
+            presupuestos 
+            SET 
+            fecha_entrega = ?,
+            comentarios = ? 
+            WHERE 
+            id = ?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$request->fecha_entrega, $request->comentarios, $request->id_presupuesto]);
+            return true;
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new \Exception('Error: ' . $e->getMessage());
         }
     }
 }

@@ -161,7 +161,7 @@ class OrdenDeTrabajoService
             'detalle_ancho' => $presupuesto['ancho'] ?? '',
             'numero_orden' => str_pad($presupuesto['numero_orden'], 4, "0", STR_PAD_LEFT) ?? 0000,
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
-            'fecha_recepcion' => $presupuesto['fecha'] ?? '',
+            'fecha_recepcion' => $presupuesto['fecha_orden_trabajo'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
             'saldo' => $presupuesto['total'] - $presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
@@ -269,6 +269,20 @@ class OrdenDeTrabajoService
         $dompdf->stream('ordenTaller.pdf', ['Attachment' => false]);
 
         exit; // Finalizar script para evitar cualquier salida extra
+    }
+
+    public function actualizarOrden($request){
+
+        try {
+            $item = OrdenDeTrabajoRepository::actualizarOrden($request);
+            if (!$item) {
+                throw new \Exception('OrdenDeTrabajo inexistente.');
+            }
+            return $item;
+        } catch (PDOException $e) {
+            throw new \Exception('Error al eliminar unn ordendetrabajo. Inténtalo más tarde.');
+        }
+
     }
 
 }

@@ -1,16 +1,25 @@
 <?php
 
-namespace App\Modules\OrdenDeTrabajo\Filters;
-
+namespace App\Modules\Presupuesto\Filters;
 use App\Helpers\UserDataHelper;
 
-class FindAllFilter
+class FindFilterDetalle
 {
     public static function getFilters(): array
     {
         $filters = [];
+ 
+        if (isset($_GET['id_tipo_material'])) {
+            $filters[] = "materiales.id_tipo_material = " . self::SQLformat($_GET['id_tipo_material']);
+        }
 
-           if (isset($_GET['desde'])&&isset($_GET['hasta'])&&$_GET['desde']!=""&&$_GET['hasta']!="") {
+        if (isset($_GET['id_presupuesto'])) {
+            $filters[] = "presupuestos_detalle.id_presupuesto = " . self::SQLformat($_GET['id_presupuesto']);
+        }
+
+
+
+        if (isset($_GET['desde'])&&isset($_GET['hasta'])&&$_GET['desde']!=""&&$_GET['hasta']!="") {
             $filters[] = " presupuestos.fecha between " . self::SQLformat( $_GET['desde']) . " and " . self::SQLformat( $_GET['hasta']);
         }else{
             if (isset($_GET['desde'])&&$_GET['desde']!="") {
@@ -27,13 +36,8 @@ class FindAllFilter
         }
 
         if (isset($_GET['numero'])) {
-            $filters[] = " presupuestos.numero_orden = " . self::SQLformat( $_GET['numero'] );
+            $filters[] = " presupuestos.id = " . self::SQLformat( $_GET['numero'] );
         }
-
-        if (isset($_GET['estado']) && $_GET['estado'] != '') {
-            $filters[] = " presupuestos.estado_orden_trabajo = " . self::SQLformat( $_GET['estado'] );
-        }
-
         return $filters;
     }
     
