@@ -24,6 +24,7 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.cliente_nombre as nombre_cliente,
                     presupuestos.id_estado,
                     presupuestos.total,
+                    LPAD(presupuestos.numero_presupuesto, 4, '0') AS numero_presupuesto,
                     empleados.nombre AS nombre_empleado,
                     tipo_enmarcacion.nombre AS tipo_enmarcacion_nombre,
                     presupuestos.comentarios,
@@ -130,7 +131,6 @@ class PresupuestosRepository extends BaseRepository
         try {
             $connection = Database::getConnection();
             $numero_orden = 0;
-            //$numero_orden = self::findOrderNumber($datos->getIdSucursal());
 
             $SQL = "INSERT INTO 
                     presupuestos 
@@ -156,9 +156,10 @@ class PresupuestosRepository extends BaseRepository
                     creado_por,
                     cantidad,
                     estado_orden_trabajo,
-                    numero_orden) 
+                    numero_orden,
+                    numero_presupuesto) 
                     VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([
                 $datos->getIdSucursal(),
@@ -183,7 +184,8 @@ class PresupuestosRepository extends BaseRepository
                 $datos->getCreadoPor(),
                 $datos->getCantidad(),
                 $datos->getEstadoOrdenTrabajo(),
-                $numero_orden
+                $numero_orden,
+                self::findLastNumber($datos->getIdSucursal())+1
             ]);
 
             $id = $connection->lastInsertId();
@@ -366,6 +368,7 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.cliente_domicilio,
                     presupuestos.cliente_telefono,
                     presupuestos.numero_orden,
+                    LPAD(presupuestos.numero_presupuesto, 4, '0') AS numero_presupuesto,
                     presupuestos.reserva,
                     presupuestos.total,
                     presupuestos.modelo,
@@ -471,6 +474,21 @@ class PresupuestosRepository extends BaseRepository
                 WHERE id = ?";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([2, $id]);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function findLastNumber(int $id_sucursal): int
+    {
+
+        try {
+            $connection = Database::getConnection();
+            $stmt = $connection->prepare("SELECT numero_presupuesto FROM presupuestos WHERE id_sucursal = ? ORDER BY numero_presupuesto DESC LIMIT 1");
+            $stmt->execute([$id_sucursal]);
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $result['numero_presupuesto'] ?? 0;
         } catch (PDOException $e) {
             LogHelper::error($e);
             throw new PDOException('Error: ' . $e->getMessage());

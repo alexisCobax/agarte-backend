@@ -105,7 +105,7 @@ class PresupuestosService
             'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
             'detalle_alto' => $presupuesto['alto'] ?? '',
             'detalle_ancho' => $presupuesto['ancho'] ?? '',
-            'numero_presupuesto' => str_pad($presupuesto['id_presupuesto'], 4, "0", STR_PAD_LEFT) ?? 0000,
+            'numero_presupuesto' => $presupuesto['numero_presupuesto'] ?? 0000,
             'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
             'fecha_recepcion' => $presupuesto['fecha'] ?? '',
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',

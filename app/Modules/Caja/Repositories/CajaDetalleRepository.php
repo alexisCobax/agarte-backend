@@ -7,7 +7,7 @@ use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
-use App\Modules\caja\Filters\FindFilterDetalle;
+use App\Modules\Caja\Filters\FindFilterDetalle;
 
 class CajaDetalleRepository
 {
@@ -28,16 +28,15 @@ class CajaDetalleRepository
                     FROM recibos
                         JOIN recibos_detalle rd ON recibos.id = rd.idRecibo 
                         JOIN presupuestos on presupuestos.id = recibos.id_orden_de_trabajo";
-                  
-                    
 
             $filters = FindFilterDetalle::getFilters();
             if ($filters) {
                 $SQL .= " WHERE " . implode(" AND ", $filters);
             }
             $SQL.="  GROUP BY recibos.id, recibos.numero, recibos.cliente_nombre, presupuestos.numero_orden ";
+
             $paginator = new PaginatorHelper($connection, $SQL);
-//echo $SQL; die();
+
             return $paginator->getPaginatedResults();
         } catch (PDOException $e) {
             LogHelper::error($e);
