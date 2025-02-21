@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Empleado\Repositories;
+namespace App\Modules\Cajas\Repositories;
 
 use PDO;
 use PDOException;
@@ -9,7 +9,7 @@ use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
 use App\Modules\Empleado\Filters\FindFilter;
 
-class EmpleadosRepository
+class CajasRepository
 {
 
     public static function find()

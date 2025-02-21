@@ -18,32 +18,32 @@ class EmpleadosUpdateRequest
     // Métodos para obtener los campos
     public function getId()
     {
-        return $this->data['id'] ?? null;
+        return $this->data['id'] ?? 0;
     }
 
     public function getNombre()
     {
-        return $this->data['nombre'] ?? null;
+        return $this->data['nombre'] ?? "";
     }
 
     public function getEmail()
     {
-        return $this->data['email'] ?? null;
+        return $this->data['email'] ?? "";
     }
 
     public function getTelefono()
     {
-        return $this->data['telefono'] ?? null;
+        return $this->data['telefono'] ?? "";
     }
 
     public function getIdSucursal()
     {
-        return $this->data['id_sucursal'] ?? null;
+        return $this->data['id_sucursal'] ?? 0;
     }
 
     public function getIdUsuario()
     {
-        return $this->data['id_usuario'] ?? null;
+        return $this->data['id_usuario'] ?? 0;
     }
 
     public function setIdUsuario($idUsuario)
@@ -53,28 +53,28 @@ class EmpleadosUpdateRequest
 
     public function getSuspendido()
     {
-        return $this->data['suspendido'] ?? null;
+        return $this->data['suspendido'] ?? 0;
     }
 
     public function getFechaAlta()
     {
-        return $this->data['fecha_alta'] ?? null;
+        return $this->data['fecha_alta'] ?? date('Y-m-d');
     }
 
     public function getCreadoPor()
     {
         $user = UserDataHelper::getUserData();
-        return $user['user']['id'] ?? null;
+        return $user['user']['id'] ?? 0;
     }
 
     public function getModificadoPor()
     {
-        return $this->data['modificado_por'] ?? null;
+        return $this->data['modificado_por'] ?? 0;
     }
 
     public function getFechaBaja()
     {
-        return $this->data['fecha_baja'] ?? null;
+        return $this->data['fecha_baja'] ?? date('Y-m-d');
     }
 
     protected function validate()

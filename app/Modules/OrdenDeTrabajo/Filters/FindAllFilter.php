@@ -34,6 +34,11 @@ class FindAllFilter
             $filters[] = " presupuestos.estado_orden_trabajo = " . self::SQLformat( $_GET['estado'] );
         }
 
+        if (isset($_GET['sucursales']) && $_GET['sucursales'] != '') {
+            $filters[] = " presupuestos.id_sucursal = " . self::SQLformat( $_GET['sucursales'] );
+        }
+
+
         return $filters;
     }
     
