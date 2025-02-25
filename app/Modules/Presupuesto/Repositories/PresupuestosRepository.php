@@ -311,10 +311,10 @@ class PresupuestosRepository extends BaseRepository
                                                         + COALESCE(tipo_enmarcacion.comisionFija, 0) 
                                                         + COALESCE(objetos_a_enmarcar.extra_fijo, 0)
                                                         )
-                                                        *
-                                                        presupuestos.cantidad + IFNULL(totalExtras.total,0)
+                                                        + IFNULL(totalExtras.total,0)
                                                     )/500
                                                 ) * 500
+                                                * presupuestos.cantidad
                     WHERE presupuestos.id = ?";
             $stmt1 = $connection->prepare($SQL);
             $stmt1->execute([

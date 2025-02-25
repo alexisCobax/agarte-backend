@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\Cajas\Repositories;
+namespace App\Modules\Caja\Repositories;
 
 use PDO;
 use PDOException;
 use App\Config\Database;
 use App\Helpers\LogHelper;
 use App\Helpers\PaginatorHelper;
-use App\Modules\Empleado\Filters\FindFilter;
+use App\Modules\Caja\Filters\FindFilter;
 
-class CajasRepository
+class CajaRepository
 {
 
     public static function find()
@@ -67,6 +67,34 @@ class CajasRepository
                     empleados.id_usuario=usuarios.id
                     WHERE
                     empleados.id=?";
+            $stmt = $connection->prepare($SQL);
+            $stmt->execute([$id]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            LogHelper::error($e);
+            throw new PDOException('Error: ' . $e->getMessage());
+        }
+    }
+
+    public static function findBySucursalId(int $id)
+    {
+        try {
+            $connection = Database::getConnection();
+            $SQL = "SELECT
+                    recibos.id AS idRecibo,
+                    recibos.cliente_nombre,
+                    recibos.cliente_email,
+                    recibos.cliente_domicilio,
+                    recibos.cliente_telefono,
+                    sucursales.nombre AS nombreSucursal
+                    FROM
+                    recibos
+                    INNER JOIN
+                    sucursales
+                    ON
+                    recibos.id_sucursal=sucursales.id
+                    WHERE
+                    id_sucursal=?";
             $stmt = $connection->prepare($SQL);
             $stmt->execute([$id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);

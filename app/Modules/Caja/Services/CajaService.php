@@ -3,10 +3,16 @@
 namespace App\Modules\Caja\Services;
 
 use PDOException;
-use App\Modules\Caja\Repositories\CajasRepository;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use App\Support\Request;
+use App\Helpers\RenderHelper;
 use App\Modules\Auth\Services\AuthService;
+use App\Modules\Caja\Repositories\CajaRepository;
+use App\Modules\Caja\Repositories\CajasRepository;
+use App\Modules\Caja\Repositories\CajaDetalleRepository;
 
-class CajasService
+class CajaService
 {
     public function create($requestCajas): array
     {
@@ -14,7 +20,7 @@ class CajasService
             $auth = new AuthService();
             
             
-            $requestCajas->setIdUsuario($usuario['id']);
+            $requestCajas->setIdUsuario($auth['id']);
 
             $item = CajasRepository::create($requestCajas);
             return ["datos" => $item];
@@ -78,49 +84,55 @@ class CajasService
         }
     }
 
-    public function pdfCaja($id)
+    public function pdfCaja($request, $id)
     {
         ob_start(); // Iniciar buffer de salida para evitar problemas con headers
     
-        $presupuesto = PresupuestosRepository::findByIdToPDF($id);
-        $presupuestoDetalle = PresupuestosDetalleRepository::findByPresupuestoId($id);
+        $caja = CajaRepository::findBySucursalId($id);
 
-        // Evitar errores si algún dato es null
+        $cajaDetalle = CajaDetalleRepository::findById($request, $id);
+
+        $totalEfectivo = array_sum(array_column($cajaDetalle["results"], "efectivo"));
+        $totalTarjeta = array_sum(array_column($cajaDetalle["results"], "tarjeta"));
+        $totalTransferencia = array_sum(array_column($cajaDetalle["results"], "deposito"));
+        $total = $totalEfectivo+($totalTarjeta+$totalTransferencia);
+        $clienteNombre = $caja['cliente_nombre'] ?? '';
+        $clienteDomicilio = $caja['cliente_domicilio'] ?? '';
+        $clienteTelefono = $caja['cliente_telefono'] ?? '';
+        $clienteEmail = $caja['cliente_email'] ?? '';
+        $nombreSucursal = $caja['nombreSucursal'] ?? '';
+        $idRecibo = str_pad($caja['idRecibo'], 4, "0", STR_PAD_LEFT) ?? '';
+
         $datos = [
-            'cliente_nombre' => $presupuesto['cliente_nombre'] ?? '',
-            'cliente_email' => $presupuesto['cliente_email'] ?? '',
-            'cliente_domicilio' => $presupuesto['cliente_domicilio'] ?? '',
-            'cliente_telefono' => $presupuesto['cliente_telefono'] ?? '',
-            'objeto_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
-            'objeto_modelo' => $presupuesto['modelo'] ?? '',
-            'objeto_propiedad' => $presupuesto['propio'] ?? '',
-            'objeto_comentario' => $presupuesto['comentarios'] ?? '',
-            'detalle_tipo' => $presupuesto['tipo_enmarcacion_nombre'] ?? '',
-            'detalle_alto' => $presupuesto['alto'] ?? '',
-            'detalle_ancho' => $presupuesto['ancho'] ?? '',
-            'numero_presupuesto' => $presupuesto['numero_presupuesto'] ?? 0000,
-            'sucursal_nombre' => $presupuesto['sucursal_nombre'] ?? '',
-            'fecha_recepcion' => $presupuesto['fecha'] ?? '',
-            'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
-            'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
-            'total' => $presupuesto['total'] ?? '',
-            'reserva' => $presupuesto['reserva'] ?? '',
-            'cantidad' => $presupuesto['cantidad']
+            'id_recibo'=>$idRecibo ?? '',
+            'total_efectivo'=>$totalEfectivo  ?? '',
+            'total_tarjeta'=>$totalTarjeta  ?? '',
+            'total_transferencia'=>$totalTransferencia  ?? '',
+            'total'=>$total ?? '',
+            'cliente_nombre'=>$clienteNombre ?? '',
+            'cliente_domicilio'=>$clienteDomicilio ?? '',
+            'cliente_telefono'=>$clienteTelefono ?? '',
+            'cliente_email'=>$clienteEmail ?? '',
+            'nombre_sucursal'=>$nombreSucursal ?? ''
         ];
     
         // Construcción de la tabla en HTML
-        $tablaMaterialesHtml = "";
-        foreach ($presupuestoDetalle as $item) {
-            $tablaMaterialesHtml .= "<tr style='border: 1px solid black;'>
-                <td style='text-align:left; border: 1px solid black; width: 200px;'>{$item['nombre_materiales']}</td>
-                <td style='text-align:center; width:10px; border: 1px solid black;'>{$item['cm']}</td>
-                <td style='text-align:center; width:10px; border: 1px solid black;'>{$item['cs']}</td>
-                <td style='text-align:left; border: 1px solid black;'>{$item['descripcion']}</td>
+        $tablaCajaHtml = "";
+        foreach ($cajaDetalle['results'] as $item) {
+            $tablaCajaHtml .= "<tr style='border: 1px solid black;'>
+                <td style='text-align:left; border: 1px solid black; width: 20px;'>" . str_pad($item['id'], 4, '0', STR_PAD_LEFT) . "</td>
+                <td style='text-align:center; width:10px; border: 1px solid black;'>" . str_pad($item['orden'], 4, '0', STR_PAD_LEFT) . "</td>
+                <td style='text-align:center; width:200px; border: 1px solid black;'>{$item['cliente']}</td>
+                <td style='text-align:left; width:10px; border: 1px solid black;'>".'$'."{$item['efectivo']}</td>
+                <td style='text-align:left; width:10px; border: 1px solid black;'>".'$'."{$item['tarjeta']}</td>
+                <td style='text-align:left; width:10px; border: 1px solid black;'>".'$'."{$item['deposito']}</td>
+                <td style='text-align:left; width:10px; border: 1px solid black;'>".'$'."{$item['total']}</td>
             </tr>";
         }
+
         $html =  RenderHelper::pdf(
-            dirname(__DIR__,2).'/Presupuesto/Views/presupuesto.php', 
-            array_merge($datos, ['tabla_materiales' => $tablaMaterialesHtml])
+            dirname(__DIR__,2).'/Caja/Views/Caja.php', 
+            array_merge($datos, ['tabla_caja' => $tablaCajaHtml])
         );
     
         // Configurar Dompdf
@@ -129,17 +141,14 @@ class CajasService
         $options->set('isRemoteEnabled', true);
     
         $dompdf = new Dompdf($options);
-        $css = file_get_contents(dirname(__DIR__,1).'/Views/css/presupuesto.css');
+        $css = file_get_contents(dirname(__DIR__,1).'/Views/css/caja.css');
         $html = "<style>$css</style>" . $html;
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
     
         ob_end_clean(); // Limpiar cualquier salida antes de enviar el PDF
-        $dompdf->stream('presupuesto.pdf', ['Attachment' => false]);
-    
-        // Actualizo el id de estado a 2 que es en proceso
-        $presupuesto = PresupuestosRepository::enProceso($id);
+        $dompdf->stream('caja.pdf', ['Attachment' => false]);
 
         exit; // Finalizar script para evitar cualquier salida extra
     }

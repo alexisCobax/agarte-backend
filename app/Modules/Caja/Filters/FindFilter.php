@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Empleado\Filters;
+namespace App\Modules\Caja\Filters;
 
 class FindFilter
 {
@@ -8,21 +8,13 @@ class FindFilter
     {
         $filters = [];
 
-        /* Ejemplo */
-        
-        if (isset($_GET['nombre'])) {
-            $filters[] = "empleados.nombre LIKE " . self::SQLformat('%' . $_GET['nombre'] . '%');
-        }
-
-        if (isset($_GET['email'])) {
-            $filters[] = "empleados.email LIKE " . self::SQLformat('%' . $_GET['email'] . '%');
-        }
-
         if (isset($_GET['id_sucursal'])) {
-            $filters[] = "sucursales.id = " . $_GET['id_sucursal'];
+            $filters[] = "recibos.id_sucursal = " . $_GET['id_sucursal'];
         }
 
-        
+        if (isset($_GET['fecha'])) {
+            $filters[] = "recibos.fecha = " . $_GET['fecha'];
+        }
 
         return $filters;
     }
