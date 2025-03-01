@@ -311,10 +311,10 @@ class PresupuestosRepository extends BaseRepository
                                                         + COALESCE(tipo_enmarcacion.comisionFija, 0) 
                                                         + COALESCE(objetos_a_enmarcar.extra_fijo, 0)
                                                         )
-                                                        + IFNULL(totalExtras.total,0)
+                                                        *
+                                                        presupuestos.cantidad + IFNULL(totalExtras.total,0)
                                                     )/500
                                                 ) * 500
-                                                * presupuestos.cantidad
                     WHERE presupuestos.id = ?";
             $stmt1 = $connection->prepare($SQL);
             $stmt1->execute([
@@ -370,6 +370,7 @@ class PresupuestosRepository extends BaseRepository
                     presupuestos.numero_orden,
                     LPAD(presupuestos.numero_presupuesto, 4, '0') AS numero_presupuesto,
                     presupuestos.reserva,
+                    presupuestos.descuento,
                     presupuestos.total,
                     presupuestos.modelo,
                     presupuestos.alto,
@@ -383,7 +384,8 @@ class PresupuestosRepository extends BaseRepository
 					END AS propio,
                     presupuestos.comentarios,
                     objetos_a_enmarcar.nombre AS nombre_objeto_enmarcar,
-                    sucursales.nombre AS sucursal_nombre
+                    sucursales.nombre AS sucursal_nombre,
+                    sucursales.descripcion_papeleria
                     FROM 
                     presupuestos 
                     LEFT JOIN 

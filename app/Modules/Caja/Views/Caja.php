@@ -16,24 +16,12 @@
                 <td style="width: 33%; text-align: center; font-weight: bold;">
                     <h1>Caja</h1>
                 </td>
-                <td style="width: 33%; text-align: right;">N°: {{id_recibo}}</td>
+                <td style="width: 33%; text-align: right;">{{fecha}}</td>
             </tr>
         </table>
     </header>
 
     <div class="container">
-        <table>
-            <tr>
-                <td><strong>Nombre:</strong> {{cliente_nombre}}</td>
-                <td><strong>Email:</strong> {{cliente_email}}</td>
-            </tr>
-            <tr>
-                <td><strong>Domicilio:</strong> {{cliente_domicilio}}</td>
-                <td><strong>Teléfono:</strong> {{cliente_telefono}}</td>
-            </tr>
-        </table>
-        <hr />
-
         <table>
             <thead>
                 <tr>

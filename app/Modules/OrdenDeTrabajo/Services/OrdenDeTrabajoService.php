@@ -166,7 +166,8 @@ class OrdenDeTrabajoService
             'saldo' => $presupuesto['total'] - $presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
             'reserva' => $presupuesto['reserva'] ?? '0.00',
-            'cantidad' => $presupuesto['cantidad']
+            'cantidad' => $presupuesto['cantidad'],
+            'descripcion_papeleria' => $presupuesto['descripcion_papeleria']
         ];
 
         // Construcción de la tabla en HTML

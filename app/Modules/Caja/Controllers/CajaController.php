@@ -78,7 +78,7 @@ class CajaController
     }
 
     public function pdf(Request $request, $id)
-    {
+    {   
         $service = new CajaService;
 
         try {

@@ -19,7 +19,7 @@ class OrdenDeTrabajoRepository
             $connection = Database::getConnection();
             $SQL = "SELECT 
                         presupuestos.id AS id_presupuesto,
-                        presupuestos.id_estado AS estado_presupuesto,
+                        presupuestos.estado_orden_trabajo AS estado_presupuesto,
                         sucursales.nombre AS nombre_sucursal,
                         DATE_FORMAT(presupuestos.fecha_orden_trabajo, '%d/%m/%Y') AS fecha,
                         presupuestos.cliente_nombre,
@@ -37,7 +37,7 @@ class OrdenDeTrabajoRepository
                             LEFT JOIN estados_orden_trabajo ON presupuestos.estado_orden_trabajo=estados_orden_trabajo.id
                             LEFT JOIN (SELECT `id_orden_de_trabajo`, sum(`total`) as total FROM `recibos` where `suspendido` = 0 group by `id_orden_de_trabajo`  ) as recibos ON recibos.id_orden_de_trabajo = presupuestos.id
                     WHERE
-                        presupuestos.id_estado IN (3, 4) ";
+                        presupuestos.id_estado = 3 ";
 
             $filters = FindFilter::getFilters();
             if ($filters) {
@@ -148,32 +148,32 @@ class OrdenDeTrabajoRepository
         }
     }
 
-    public static function update($request): bool
-    {
-        try {
-            $connection = Database::getConnection();
-            try {
-                $connection = Database::getConnection();
-                $SQL = "UPDATE 
-                presupuestos 
-                SET 
-                id_estado = ?,
-                comentarios = ? 
-                WHERE 
-                id = ?";
-                $stmt = $connection->prepare($SQL);
-                $stmt->execute([$request->fecha_entrega, $request->comentarios]);
-                return true;
-            } catch (PDOException $e) {
-                LogHelper::error($e);
-                throw new \Exception('Error: ' . $e->getMessage());
-            }
-            return true;
-        } catch (PDOException $e) {
-            LogHelper::error($e);
-            throw new PDOException('Error: ' . $e->getMessage());
-        }
-    }
+    // public static function update($request): bool
+    // {
+    //     try {
+    //         $connection = Database::getConnection();
+    //         try {
+    //             $connection = Database::getConnection();
+    //             $SQL = "UPDATE 
+    //             presupuestos 
+    //             SET 
+    //             id_estado = ?,
+    //             comentarios = ? 
+    //             WHERE 
+    //             id = ?";
+    //             $stmt = $connection->prepare($SQL);
+    //             $stmt->execute([$request->fecha_entrega, $request->comentarios]);
+    //             return true;
+    //         } catch (PDOException $e) {
+    //             LogHelper::error($e);
+    //             throw new \Exception('Error: ' . $e->getMessage());
+    //         }
+    //         return true;
+    //     } catch (PDOException $e) {
+    //         LogHelper::error($e);
+    //         throw new PDOException('Error: ' . $e->getMessage());
+    //     }
+    // }
 
     public static function updateStatus($request, $id): bool
     {
@@ -185,7 +185,7 @@ class OrdenDeTrabajoRepository
             $SQL = "UPDATE 
             presupuestos 
             SET 
-            id_estado = ?,
+            estado_orden_trabajo  = ?,
             comentarios_taller = ? 
             WHERE 
             id = ?";

@@ -70,14 +70,27 @@
                 {{tabla_materiales}}
             </tbody>
             <tfoot>
-        <tr style="border-top: 2px solid black;">
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Total:</b> ${{total}}
-            </td>
-        </tr>
-    </tfoot>
+                {{ if(descuento!='0.00') }}
+                <tr>
+                    <td colspan="4" style="text-align:right;  min-width: 150px; ">
+                        <b>Descuento:</b> ${{descuento}}
+                    </td>
+                </tr>
+
+                {{ else }}
+
+                &nbsp;
+
+                {{ endif }}
+                <tr>
+                <td colspan="4" style="text-align:right;  min-width: 150px; ">
+                    <b>Total:</b> ${{total}}
+                </td>
+                </tr>
+            </tfoot>
 
         </table>
+        <p>Presupuesto válido por 15 días corridos desde la fecha de emisión. </p>
     </div>
 </body>
 

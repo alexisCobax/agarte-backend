@@ -7,6 +7,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Support\Request;
 use App\Helpers\RenderHelper;
+use App\Helpers\UserDataHelper;
 use App\Modules\Auth\Services\AuthService;
 use App\Modules\Caja\Repositories\CajaRepository;
 use App\Modules\Caja\Repositories\CajasRepository;
@@ -86,6 +87,7 @@ class CajaService
 
     public function pdfCaja($request, $id)
     {
+
         ob_start(); // Iniciar buffer de salida para evitar problemas con headers
     
         $caja = CajaRepository::findBySucursalId($id);
@@ -113,7 +115,8 @@ class CajaService
             'cliente_domicilio'=>$clienteDomicilio ?? '',
             'cliente_telefono'=>$clienteTelefono ?? '',
             'cliente_email'=>$clienteEmail ?? '',
-            'nombre_sucursal'=>$nombreSucursal ?? ''
+            'nombre_sucursal'=>$nombreSucursal ?? '',
+            'fecha' => date("m-d-Y", strtotime($request->fecha)) ?? ''
         ];
     
         // Construcción de la tabla en HTML

@@ -47,6 +47,7 @@ class CajaDetalleRepository
 
     public static function findById($request, $id)
     {
+        
         try {
             $connection = Database::getConnection();
             $SQL = "SELECT 

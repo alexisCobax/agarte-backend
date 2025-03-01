@@ -111,6 +111,7 @@ class PresupuestosService
             'fecha_entrega' => $presupuesto['fecha_entrega'] ?? '',
             'saldo' => $presupuesto['total']-$presupuesto['reserva'] ?? '',
             'total' => $presupuesto['total'] ?? '',
+            'descuento' => $presupuesto['descuento'] ?? '0.00',
             'reserva' => $presupuesto['reserva'] ?? '',
             'cantidad' => $presupuesto['cantidad']
         ];

@@ -9,10 +9,13 @@
 
 <body>
 
-    <header style="width: 100%; border-bottom: 2px solid #333; padding: 10px 0;">
+    <header style="width: 100%; border-bottom: 2px solid #333; padding: 15px 0;">
         <table style="width: 100%; border-collapse: collapse;">
             <tr>
-                <td style="width: 33%; text-align: left;">{{sucursal_nombre}}</td>
+                <td style="width: 33%; text-align: left;">
+                    {{sucursal_nombre}}<br/>
+                    <small>{{descripcion_papeleria}}<small>
+                </td>
                 <td style="width: 33%; text-align: center; font-weight: bold;">
                     <h1>Orden de trabajo</h1>
                 </td>
@@ -71,25 +74,25 @@
                 {{tabla_materiales}}
             </tbody>
             <tfoot>
-        <tr style="border-top: 2px solid black;">
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Total:</b> ${{total}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Seña:</b> ${{reserva}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
-                <b>Saldo:</b> ${{saldo}}
-            </td>
-        </tr>
-    </tfoot>
+                <tr style="border-top: 2px solid black;">
+                    <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                        <b>Total:</b> ${{total}}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                        <b>Seña:</b> ${{reserva}}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:right;  min-width: 150px; white-space: nowrap;">
+                        <b>Saldo:</b> ${{saldo}}
+                    </td>
+                </tr>
+            </tfoot>
 
         </table>
-        <br/>
+        <br />
         <div>"Pasado los 30 días, la empresa no se responsabiliza por daños o pérdida del trabajo y el saldo se ajustará a los precios vigentes"</div>
     </div>
 
